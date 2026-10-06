@@ -1,0 +1,58 @@
+name: Build Android APK
+
+# ============================================================
+#  Mortal Glory 安卓移植 · 云端编译管线
+#  触发方式：push 到 main 分支，或在 Actions 页手动触发
+#  使用的 Unity 版本：2019.1.8f1（必须和游戏原版一致）
+#  构建镜像：game-ci/unity-builder（开源社区维护）
+# ============================================================
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}   # 允许在 GitHub 网页手动点按钮构建
+
+jobs:
+  buildAndroid:
+    name: Build for Android
+    runs-on: ubuntu-latest
+    steps:
+      # ---------- 1. 拉取代码 ----------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # ---------- 2. 缓存 Library（加速后续构建）----------
+      - name: Cache Unity Library
+        uses: actions/cache@v4
+        with:
+          path: UnityProject/Library
+          key: Library-Android-${{ github.sha }}
+          restore-keys: |
+            Library-Android-
+            Library-
+
+      # ---------- 3. 用 Unity 2019.1.8f1 构建 Android ----------
+      - name: Build with Unity
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}          # 方案X 需要：个人版授权文件内容
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}              # 你的 Unity 账号邮箱
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}        # 你的 Unity 账号密码
+        with:
+          projectPath: UnityProject
+          unityVersion: 2019.1.8f1
+          targetPlatform: Android
+          androidExportType: androidPackage     # 直接导出 APK
+          buildMethod: ""                       # 留空则用默认构建方法；后续可填自定义 BuildScript.BuildAndroid
+          allowDirtyBuild: true
+
+      # ---------- 4. 上传 APK 产物 ----------
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: MortalGlory-Android-APK
+          path: build/Android/*.apk
+          if-no-files-found: error

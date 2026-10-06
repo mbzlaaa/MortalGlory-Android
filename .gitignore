@@ -1,0 +1,47 @@
+# ===== Unity 生成物（不需要进 Git，体积大且机器可重建）=====
+UnityProject/[Ll]ibrary/
+UnityProject/[Tt]emp/
+UnityProject/[Oo]bj/
+UnityProject/[Bb]uild/
+UnityProject/[Bb]uilds/
+UnityProject/[Ll]ogs/
+UnityProject/[Uu]ser[Ss]ettings/
+UnityProject/[Mm]emoryCaptures/
+
+# Unity 崩溃日志
+sysinfo.txt
+
+# ===== IDE / 编辑器 =====
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# ===== 编译产物 =====
+Output/*.apk
+Output/*.aab
+Output/*.idsig
+*.apk
+*.aab
+
+# ===== OS 杂物 =====
+.DS_Store
+Thumbs.db
+*~
+
+# ===== 大体积原始资源（可选：游戏原包不重复上传）=====
+# 如需把原始 PC 游戏文件也备份进来，注释掉下面两行
+# Tools/raw_game/
+# *.resS

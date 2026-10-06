@@ -1,0 +1,19 @@
+MortalGlory-Android — Copyright Notice & License
+
+This repository contains ONLY the porting scaffolding (build scripts,
+platform-adaptation code, documentation) created for personal research
+and educational purposes.
+
+ALL game content — including but not limited to source code (decompiled
+or otherwise), sprites, audio, fonts, scenes, and data — is the property
+of Redbeak Games and is protected by copyright law.
+
+You may NOT redistribute, sell, or commercially use any part of the
+original game assets contained or referenced by this project.
+
+This project is provided "AS IS", without warranty of any kind.
+
+—— 中文说明 ——
+本仓库仅包含「移植脚手架」（编译脚本、平台适配代码、文档），
+用于个人学习研究。游戏本体的一切资源版权归 Redbeak Games 所有。
+禁止任何形式的商业使用或二次分发。
