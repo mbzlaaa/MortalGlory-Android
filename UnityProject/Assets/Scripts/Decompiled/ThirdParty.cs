@@ -24,6 +24,8 @@ using UnityEngine.UI;
 using ca.HenrySoftware;
 using ca.HenrySoftware.Rage;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
+using Debug = UnityEngine.Debug;
 using ThreadPriority = System.Threading.ThreadPriority;
 
 namespace I2.Loc
