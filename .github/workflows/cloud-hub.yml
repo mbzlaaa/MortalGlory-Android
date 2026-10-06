@@ -1,0 +1,140 @@
+name: Cloud Unity Hub (free Personal license)
+
+# 在 runner 上跑一个云端桌面 (Xvfb + fluxbox + x11vnc + noVNC),
+# 用 cloudflared 临时隧道投屏成网址, 用户手机浏览器接入,
+# 在 Unity Hub 里登录并领取免费个人许可证, 服务器轮询到
+# Unity_lic.ulf 后导出为 artifact, 并把隧道网址写进 Issue.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  cloud-hub:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install desktop stack
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
+            xvfb fluxbox x11vnc novnc websockify wget curl gnupg ca-certificates \
+            libnss3 libgbm1 libasound2 libgtk-3-0 libxss1 libxshmfence1 libcups2 \
+            libdrm2 libxcomposite1 libxdamage1 libxrandr2 libxkbcommon0 \
+            libatk-bridge2.0-0 xdg-utils desktop-file-utils >/dev/null 2>&1 || true
+          echo STACK_DONE
+
+      - name: Install Unity Hub
+        run: |
+          wget -qO - https://hub.unity3d.com/linux/keys/public | sudo gpg --dearmor -o /usr/share/keyrings/unity.gpg
+          echo "deb [signed-by=/usr/share/keyrings/unity.gpg] https://hub.unity3d.com/linux/repos/deb stable main" | sudo tee /etc/apt/sources.list.d/unity.list >/dev/null
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq unityhub && echo HUB_OK || echo HUB_FAIL
+          ls -la /usr/bin/unityhub /usr/lib/unityhub/ 2>&1 | head -40
+
+      - name: Install Google Chrome
+        run: |
+          wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -qq /tmp/chrome.deb >/dev/null 2>&1 && echo CHROME_OK || echo CHROME_FAIL
+
+      - name: Install cloudflared
+        run: |
+          wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O /tmp/cloudflared
+          chmod +x /tmp/cloudflared
+          /tmp/cloudflared --version
+
+      - name: Register unityhub handler and default browser
+        run: |
+          sudo tee /usr/share/applications/unityhub-handler.desktop >/dev/null <<'EOF'
+          [Desktop Entry]
+          Name=Unity Hub Protocol
+          Exec=/usr/bin/unityhub %u
+          Type=Application
+          Terminal=false
+          NoDisplay=true
+          MimeType=x-scheme-handler/unityhub;
+          EOF
+          sudo sed -i 's|^Exec=/usr/bin/google-chrome-stable |Exec=/usr/bin/google-chrome-stable --no-sandbox |' /usr/share/applications/google-chrome.desktop 2>/dev/null || true
+          xdg-mime default unityhub-handler.desktop x-scheme-handler/unityhub
+          xdg-settings set default-web-browser google-chrome.desktop || true
+          echo "handler=$(xdg-mime query default x-scheme-handler/unityhub)"
+          echo "browser=$(xdg-settings get default-web-browser || true)"
+          ls /usr/share/applications | grep -i -E 'unity|chrome' || true
+
+      - name: Start desktop, tunnel, Hub, then wait for license
+        timeout-minutes: 110
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+          REPO: ${{ github.repository }}
+        run: |
+          export DISPLAY=:1
+          Xvfb :1 -screen 0 1600x1000x24 > /tmp/xvfb.log 2>&1 &
+          sleep 3
+          fluxbox > /tmp/fluxbox.log 2>&1 &
+          sleep 1
+          x11vnc -display :1 -nopw -forever -shared -rfbport 5900 -bg -o /tmp/x11vnc.log
+          sleep 2
+          websockify --web=/usr/share/novnc 6080 localhost:5900 > /tmp/novnc.log 2>&1 &
+          sleep 2
+          /tmp/cloudflared tunnel --url http://localhost:6080 --no-autoupdate > /tmp/cf.log 2>&1 &
+          URL=""
+          for i in $(seq 1 30); do
+            URL=$(grep -oE 'https://[a-z0-9-]+\.trycloudflare\.com' /tmp/cf.log | head -n1)
+            [ -n "$URL" ] && break
+            sleep 2
+          done
+          echo "============================================================"
+          echo "TUNNEL_URL=$URL"
+          echo "============================================================"
+          if [ -z "$URL" ]; then
+            echo "NO_TUNNEL_URL"
+            tail -40 /tmp/cf.log
+            exit 1
+          fi
+          if [ -n "$GH_TOKEN" ]; then
+            BODY="Cloud Unity Hub tunnel: $URL/vnc.html?autoconnect=1&resize=scale"
+            curl -s -m 30 -X POST \
+              -H "Authorization: token $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$REPO/issues" \
+              -d "{\"title\":\"[CI] Cloud Unity Hub tunnel URL\",\"body\":\"$BODY\"}" \
+              -o /tmp/issue.json || true
+            head -c 300 /tmp/issue.json || true
+          fi
+          /usr/bin/unityhub --no-sandbox --disable-gpu --disable-dev-shm-usage > /tmp/hub.log 2>&1 &
+          sleep 5
+          echo "HUB_STARTED; waiting for personal license..."
+          ULF1="$HOME/.local/share/unity3d/Unity/Unity_lic.ulf"
+          ULF2="$HOME/Unity_lic.ulf"
+          found=""
+          for i in $(seq 1 200); do
+            if [ -f "$ULF1" ]; then found="$ULF1"; break; fi
+            if [ -f "$ULF2" ]; then found="$ULF2"; break; fi
+            sleep 25
+          done
+          if [ -n "$found" ]; then
+            cp "$found" "$GITHUB_WORKSPACE/Unity_lic.ulf"
+            base64 -w 0 "$GITHUB_WORKSPACE/Unity_lic.ulf" > "$GITHUB_WORKSPACE/Unity_lic.b64"
+            echo "ULF_FOUND: $found"
+            echo "ULF_SIZE=$(wc -c < "$GITHUB_WORKSPACE/Unity_lic.ulf")"
+          else
+            echo "ULF_NOT_FOUND_TIMEOUT"
+          fi
+          echo "=== hub log tail ==="
+          tail -30 /tmp/hub.log || true
+
+      - name: Upload .ulf artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-ulf
+          path: |
+            Unity_lic.ulf
+            Unity_lic.b64
+          if-no-files-found: warn
