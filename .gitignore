@@ -45,3 +45,5 @@ Thumbs.db
 # 如需把原始 PC 游戏文件也备份进来，注释掉下面两行
 # Tools/raw_game/
 # *.resS
+# ===== 本地语法检查环境（mono 引用库，机器可重建）=====
+_syntaxcheck/
