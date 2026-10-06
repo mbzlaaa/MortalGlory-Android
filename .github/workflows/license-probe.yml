@@ -1,0 +1,85 @@
+name: License Probe
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - name: Install packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb x11-utils xdotool xclip imagemagick wget gnupg curl python3-pil libnss3 libgbm1 libasound2 libgtk-3-0 2>/dev/null || true
+          echo PKG_DONE
+
+      - name: Install Unity Hub
+        run: |
+          wget -qO - https://hub.unity3d.com/linux/keys/public | sudo gpg --dearmor -o /usr/share/keyrings/unity.gpg
+          echo "deb [signed-by=/usr/share/keyrings/unity.gpg] https://hub.unity3d.com/linux/repos/deb stable main" | sudo tee /etc/apt/sources.list.d/unity.list
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq unityhub && echo HUB_OK || echo HUB_FAIL
+
+      - name: Probe CLI
+        run: |
+          echo "=== paths ==="
+          ls -la /usr/bin/unityhub 2>&1 | head -5
+          ls -la /usr/lib/unityhub/ 2>&1 | head -40
+          echo "=== hub help ==="
+          timeout 30 /usr/bin/unityhub -- --headless help 2>&1 | head -80 || echo HUBHELP_TIMEOUT
+          echo "=== licensing client ==="
+          find /usr/lib/unityhub -iname '*licens*' 2>/dev/null | head -20
+          LC=$(find /usr/lib/unityhub -name 'Unity.Licensing.Client' 2>/dev/null | head -1)
+          echo "LC=$LC"
+          if [ -n "$LC" ]; then timeout 30 "$LC" --help 2>&1 | head -120; fi
+          echo "=== other bins ==="
+          ls /usr/lib/unityhub/*/ 2>/dev/null | head -40
+          echo PROBE1_DONE
+
+      - name: Probe GUI
+        run: |
+          Xvfb :99 -screen 0 1440x900x24 > /tmp/xvfb.log 2>&1 &
+          sleep 3
+          export DISPLAY=:99
+          unityhub --no-sandbox --disable-gpu > /tmp/hub.log 2>&1 &
+          sleep 35
+          echo "=== windows ==="
+          xdotool search --onlyvisible --name "." 2>/dev/null | while read w; do
+            echo "WIN $w : $(xdotool getwindowname $w 2>/dev/null) : $(xdotool getwindowgeometry $w 2>/dev/null | tr '\n' ' ')"
+          done
+          echo "=== screenshot ==="
+          import -window root /tmp/shot.png 2>/dev/null && echo SHOT_OK || echo SHOT_FAIL
+          python3 - << 'PY'
+          try:
+              from PIL import Image
+              img = Image.open('/tmp/shot.png').convert('RGB')
+              w, h = img.size
+              print("SHOT %dx%d" % (w, h))
+              g = img.convert('L').resize((100, 40))
+              px = g.load()
+              chars = " .:-=+*#%@"
+              for y in range(40):
+                  print("".join(chars[min(9, px[x, y] * 10 // 256)] for x in range(100)))
+              small = img.resize((40, 25))
+              p2 = small.load()
+              blue = [(x, y) for y in range(25) for x in range(40)
+                      if p2[x, y][2] > 120 and p2[x, y][2] > p2[x, y][0] + 40 and p2[x, y][2] > p2[x, y][1] + 20]
+              print("BLUE_COUNT", len(blue))
+              if blue:
+                  xs = [b[0] for b in blue]
+                  ys = [b[1] for b in blue]
+                  print("BLUE_BOX", min(xs), max(xs), min(ys), max(ys))
+          except Exception as e:
+              print("PY_ERR", e)
+          PY
+          echo "=== hub log tail ==="
+          tail -40 /tmp/hub.log
+          echo PROBE2_DONE
+
+      - name: Upload screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-shot
+          path: /tmp/shot.png
+          if-no-files-found: ignore
