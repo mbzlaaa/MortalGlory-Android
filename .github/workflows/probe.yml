@@ -1,0 +1,66 @@
+name: Probe Unity 2019.1.8f1 environment
+# ============================================================
+#  探路 workflow：不要求 license，不产出 APK
+#  目的：
+#    1) 验证 game-ci 是否能拉到 Unity 2019.1.8f1 镜像
+#    2) 用仓库内 Unity 引擎 DLL 对降级源码做分层编译诊断
+#  触发：手动 workflow_dispatch
+# ============================================================
+on:
+  workflow_dispatch: {}
+
+jobs:
+  probe:
+    name: Probe Unity + compile check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ---------- 1. 清点仓库里的输入 ----------
+      - name: Inventory
+        run: |
+          set -u
+          echo "===== Input/Managed (游戏程序集) ====="
+          ls -la Input/Managed/ || true
+          echo "===== Input/UnityManaged (Unity 引擎 DLL) ====="
+          ls Input/UnityManaged/*.dll | wc -l
+          echo "===== Decompiled source ====="
+          wc -l UnityProject/Assets/Scripts/Decompiled/*.cs || true
+
+      # ---------- 2. 探测 game-ci 2019.1.8f1 镜像 ----------
+      - name: Probe game-ci image tag
+        run: |
+          set -u
+          echo "===== docker version ====="
+          docker --version || true
+          echo "===== try pull base layer for 2019.1.8f1 ====="
+          timeout 420 docker pull unityci/editor:ubuntu-2019.1.8f1-base-3 2>&1 | tail -25 || echo "PULL_FAILED_OR_TIMEOUT"
+
+      # ---------- 3. 装 mono ----------
+      - name: Install mono
+        run: |
+          set -u
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mono-devel
+          mono --version | head -3
+
+      # ---------- 4. 分层编译诊断：Unity 引擎 DLL + 降级源码 ----------
+      - name: Compile diagnosis
+        run: |
+          set -u
+          ROOT="$PWD"
+          R=""
+          for f in "$ROOT"/Input/UnityManaged/*.dll; do R="$R -r:$f"; done
+          echo "===== engine dll count ====="
+          ls "$ROOT"/Input/UnityManaged/*.dll | wc -l
+          cd "$ROOT/UnityProject/Assets/Scripts/Decompiled"
+          echo "===== [A] 单独编译 ThirdParty.cs ====="
+          mcs -langversion:latest -target:library -out:/tmp/tp.dll $R ThirdParty.cs 2>&1 | tee /tmp/tp.log | tail -30
+          echo "----- ThirdParty 错误分布 -----"
+          grep -oE 'error CS[0-9]+' /tmp/tp.log | sort | uniq -c | sort -rn || echo "NO_ERRORS"
+          echo "===== [B] ThirdParty + GameCore 一起编译 ====="
+          mcs -langversion:latest -target:library -out:/tmp/both.dll $R GameCore.cs ThirdParty.cs 2>&1 | tee /tmp/both.log | tail -30
+          echo "----- Both 错误分布 -----"
+          grep -oE 'error CS[0-9]+' /tmp/both.log | sort | uniq -c | sort -rn || echo "NO_ERRORS"
+          echo "===== done ====="
