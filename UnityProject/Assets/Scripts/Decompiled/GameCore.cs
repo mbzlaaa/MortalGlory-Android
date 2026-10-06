@@ -23,6 +23,10 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using ca.HenrySoftware;
 using ca.HenrySoftware.Rage;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
+using Debug = UnityEngine.Debug;
+using ThreadPriority = System.Threading.ThreadPriority;
 
 [assembly: CompilationRelaxations(8)]
 [assembly: RuntimeCompatibility(WrapNonExceptionThrows = true)]
@@ -575,11 +579,11 @@ public class Effects : MonoBehaviour
 			obj.color = ((setColor && color.HasValue && color.HasValue) ? color.Value : Color.white);
 			((Renderer)obj).material = (model.Blend ? _materialAdditive : _materialNormal);
 		}
-		((Component)componentsInChildren[1]).transform.localPosition = Vector2.op_Implicit(model.BackOffset);
+		((Component)componentsInChildren[1]).transform.localPosition = MGCompat.Op.Imp(model.BackOffset);
 		((Renderer)componentsInChildren[1]).sortingOrder = -1;
-		((Component)componentsInChildren[2]).transform.localPosition = Vector2.op_Implicit(model.ForeOffset);
+		((Component)componentsInChildren[2]).transform.localPosition = MGCompat.Op.Imp(model.ForeOffset);
 		((Renderer)componentsInChildren[2]).sortingOrder = 2;
-		((Component)componentsInChildren[0]).transform.localPosition = Vector2.op_Implicit(model.Offset);
+		((Component)componentsInChildren[0]).transform.localPosition = MGCompat.Op.Imp(model.Offset);
 		((Renderer)componentsInChildren[0]).sortingOrder = 1;
 		Animator componentInChildren = val.GetComponentInChildren<Animator>();
 		componentInChildren.runtimeAnimatorController = model.Controller;
@@ -621,28 +625,28 @@ public class Effects1 : MonoBehaviour
 		yield return (object)new WaitForSeconds(0.333f);
 		while (true)
 		{
-			switch (Random.Range(0, 6))
+			switch (UnityEngine.Random.Range(0, 6))
 			{
 			case 0:
-				_effects.TriggerStar(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerStar(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 1:
-				_effects.TriggerCircle(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerCircle(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 2:
-				_effects.TriggerGlint(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerGlint(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 3:
-				_effects.TriggerPuff(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerPuff(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 4:
-				_effects.TriggerWeb(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerWeb(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 5:
-				_effects.TriggerBlock(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerBlock(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -668,19 +672,19 @@ public class Effects10 : MonoBehaviour
 		yield return (object)new WaitForSeconds(0.333f);
 		while (true)
 		{
-			switch (Random.Range(0, 3))
+			switch (UnityEngine.Random.Range(0, 3))
 			{
 			case 0:
-				_effects.TriggerBox(Random.value > 0.5f, Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerBox(Random.value > 0.5f, MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 1:
-				_effects.TriggerSquare(Random.value > 0.5f, Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerSquare(Random.value > 0.5f, MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 2:
-				_effects.TriggerTouch(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerTouch(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -708,13 +712,13 @@ public class Effects11 : MonoBehaviour
 		{
 			if (Random.value > 0.5f)
 			{
-				_effects.TriggerTeleport(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerTeleport(MGCompat.Op.Imp(_t.localPosition));
 			}
 			else
 			{
-				_effects.TriggerNuclear(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerNuclear(MGCompat.Op.Imp(_t.localPosition));
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -742,10 +746,10 @@ public class Effects2 : MonoBehaviour
 		{
 			if (Random.value > 0.5f)
 			{
-				_effects.TriggerLightning(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerLightning(MGCompat.Op.Imp(_t.localPosition));
 			}
-			_effects.TriggerElectric(Vector2.op_Implicit(_t.localPosition));
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			_effects.TriggerElectric(MGCompat.Op.Imp(_t.localPosition));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -773,13 +777,13 @@ public class Effects3 : MonoBehaviour
 		{
 			if (Random.value > 0.5f)
 			{
-				_effects.TriggerShield(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerShield(MGCompat.Op.Imp(_t.localPosition));
 			}
 			else
 			{
-				_effects.TriggerBubble(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerBubble(MGCompat.Op.Imp(_t.localPosition));
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -805,19 +809,19 @@ public class Effects4 : MonoBehaviour
 		yield return (object)new WaitForSeconds(0.333f);
 		while (true)
 		{
-			switch (Random.Range(0, 3))
+			switch (UnityEngine.Random.Range(0, 3))
 			{
 			case 0:
-				_effects.TriggerSlash(Random.Range(0, 3), Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerSlash(UnityEngine.Random.Range(0, 3), MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 1:
-				_effects.TriggerClaw(Random.value > 0.5f, Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerClaw(Random.value > 0.5f, MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 2:
-				_effects.TriggerSplatterBlood(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerSplatterBlood(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -845,14 +849,14 @@ public class Effects5 : MonoBehaviour
 		{
 			if (Random.value > 0.5f)
 			{
-				_effects.TriggerSparks(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerSparks(MGCompat.Op.Imp(_t.localPosition));
 			}
 			else
 			{
 				int num = ((!(Random.value > 0.5f)) ? 2 : ((!(Random.value > 0.5f)) ? 1 : 0));
-				_effects.TriggerConsume(num, Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerConsume(num, MGCompat.Op.Imp(_t.localPosition));
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -880,13 +884,13 @@ public class Effects6 : MonoBehaviour
 		{
 			if (Random.value > 0.5f)
 			{
-				_effects.TriggerPoison(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerPoison(MGCompat.Op.Imp(_t.localPosition));
 			}
 			else
 			{
-				_effects.TriggerDark(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerDark(MGCompat.Op.Imp(_t.localPosition));
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -912,22 +916,22 @@ public class Effects7 : MonoBehaviour
 		yield return (object)new WaitForSeconds(0.333f);
 		while (true)
 		{
-			switch (Random.Range(0, 4))
+			switch (UnityEngine.Random.Range(0, 4))
 			{
 			case 0:
-				_effects.TriggerFire(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerFire(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 1:
-				_effects.TriggerEarth(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerEarth(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 2:
-				_effects.TriggerIce(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerIce(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			case 3:
-				_effects.TriggerWater(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerWater(MGCompat.Op.Imp(_t.localPosition));
 				break;
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -953,8 +957,8 @@ public class Effects8 : MonoBehaviour
 		yield return (object)new WaitForSeconds(0.333f);
 		while (true)
 		{
-			_effects.TriggerHeal(Random.value > 0.5f, Vector2.op_Implicit(_t.localPosition));
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			_effects.TriggerHeal(Random.value > 0.5f, MGCompat.Op.Imp(_t.localPosition));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -982,13 +986,13 @@ public class Effects9 : MonoBehaviour
 		{
 			if (Random.value > 0.5f)
 			{
-				_effects.TriggerWarp(Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerWarp(MGCompat.Op.Imp(_t.localPosition));
 			}
 			else
 			{
-				_effects.TriggerExplode(Random.Range(0, 4), Vector2.op_Implicit(_t.localPosition));
+				_effects.TriggerExplode(UnityEngine.Random.Range(0, 4), MGCompat.Op.Imp(_t.localPosition));
 			}
-			yield return (object)new WaitForSeconds(Random.Range(0.5f, 1f));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 		}
 	}
 }
@@ -1540,7 +1544,7 @@ public class AIModule : MonoBehaviour
 			{
 				yield return (object)new WaitForSeconds(SecondarySkillDelay);
 			}
-			yield return (object)new WaitForSeconds(Random.Range(ThinkingDelay / ThinkingDelayVariance, ThinkingDelay * ThinkingDelayVariance));
+			yield return (object)new WaitForSeconds(UnityEngine.Random.Range(ThinkingDelay / ThinkingDelayVariance, ThinkingDelay * ThinkingDelayVariance));
 			ChooseAction();
 			ThinkingStarted = false;
 			AIOperating.Remove(1);
@@ -1570,8 +1574,8 @@ public class AIModule : MonoBehaviour
 				TargetChoices.Add(item.Value);
 			}
 		}
-		CurrentTarget = TargetChoices[Random.Range(0, TargetChoices.Count)];
-		if (Random.Range(0, 100) < SkillUseChance && CreateSkillPriority())
+		CurrentTarget = TargetChoices[UnityEngine.Random.Range(0, TargetChoices.Count)];
+		if (UnityEngine.Random.Range(0, 100) < SkillUseChance && CreateSkillPriority())
 		{
 			bool flag = false;
 			foreach (Buff buff in Unit.Buffs)
@@ -1617,7 +1621,7 @@ public class AIModule : MonoBehaviour
 					AIOperating.Remove(1);
 					return;
 				}
-				if (value.SkillTargets == SkillTargets.Self && Random.Range(0, 100) < 30 && ((value.SkillType != SkillType.BuffAll && value.SkillType != SkillType.RandomBuffAll) || BattleProcessor.instance.HowManyAlive(Hero: false) >= 3) && ((value.SkillType != SkillType.BuffAll && value.SkillType != SkillType.RandomBuffAll && value.SkillType != SkillType.BerserkBuff && value.SkillType != SkillType.Buff) || !(ProgressManager.instance.CareerSpecialRule == "Contagion")) && ((value.SkillType != SkillType.DebuffAll && value.SkillType != SkillType.RandomDebuffAll) || BattleProcessor.instance.HowManyAlive(Hero: true) >= 3))
+				if (value.SkillTargets == SkillTargets.Self && UnityEngine.Random.Range(0, 100) < 30 && ((value.SkillType != SkillType.BuffAll && value.SkillType != SkillType.RandomBuffAll) || BattleProcessor.instance.HowManyAlive(Hero: false) >= 3) && ((value.SkillType != SkillType.BuffAll && value.SkillType != SkillType.RandomBuffAll && value.SkillType != SkillType.BerserkBuff && value.SkillType != SkillType.Buff) || !(ProgressManager.instance.CareerSpecialRule == "Contagion")) && ((value.SkillType != SkillType.DebuffAll && value.SkillType != SkillType.RandomDebuffAll) || BattleProcessor.instance.HowManyAlive(Hero: true) >= 3))
 				{
 					SkillController.instance.UseSkill(value, ((Component)this).gameObject, ((Component)this).gameObject);
 					SkillUsedThisturn = true;
@@ -1647,7 +1651,7 @@ public class AIModule : MonoBehaviour
 		}
 		foreach (Skill characterSkill in Unit.ThisCharacter.CharacterSkills)
 		{
-			float num = (float)characterSkill.ExtraDamage + (float)characterSkill.SkillNumberVariable + Random.Range(1f, 1.005f);
+			float num = (float)characterSkill.ExtraDamage + (float)characterSkill.SkillNumberVariable + UnityEngine.Random.Range(1f, 1.005f);
 			if (characterSkill.SkillRarity == Rarity.Epic)
 			{
 				num *= 1.3f;
@@ -1670,7 +1674,7 @@ public class AIModule : MonoBehaviour
 				int num2 = BattleProcessor.instance.EstimateDamage(attackDetails);
 				if (num2 != 9999)
 				{
-					num = (float)num2 + Random.Range(1f, 1.005f);
+					num = (float)num2 + UnityEngine.Random.Range(1f, 1.005f);
 				}
 			}
 			if (characterSkill.BowSkill && num > 1f)
@@ -1890,7 +1894,7 @@ public class AIModule : MonoBehaviour
 		}
 		foreach (Vector3 preferredMoveLocation in PreferredMoveLocations)
 		{
-			if (!Object.op_Implicit((Object)(object)BattleProcessor.instance.IsTileOccupied(preferredMoveLocation)) && Unit.TryToMove(((Component)this).transform.position, preferredMoveLocation))
+			if (!MGCompat.Op.Imp((Object)(object)BattleProcessor.instance.IsTileOccupied(preferredMoveLocation)) && Unit.TryToMove(((Component)this).transform.position, preferredMoveLocation))
 			{
 				return;
 			}
@@ -2103,7 +2107,7 @@ public class AIModule : MonoBehaviour
 		}
 		foreach (Vector3 item in list)
 		{
-			if (!Object.op_Implicit((Object)(object)BattleProcessor.instance.IsTileOccupied(item)) && Unit.TryToMove(((Component)this).transform.position, item))
+			if (!MGCompat.Op.Imp((Object)(object)BattleProcessor.instance.IsTileOccupied(item)) && Unit.TryToMove(((Component)this).transform.position, item))
 			{
 				BackedAwayThisTurn = true;
 				return true;
@@ -2159,7 +2163,7 @@ public class AIModule : MonoBehaviour
 					}
 				}
 			}
-			num2 *= Random.Range(1f, 1.00005f);
+			num2 *= UnityEngine.Random.Range(1f, 1.00005f);
 			num2 *= -1f;
 			if (TargetPriority.ContainsKey(num2))
 			{
@@ -2334,9 +2338,9 @@ public class AudienceManager : MonoBehaviour
 				tempposition = startingposition;
 				for (int k = 1; k <= spectatorsinrow; k++)
 				{
-					if ((float)Random.Range(0, 100) < percentage)
+					if ((float)UnityEngine.Random.Range(0, 100) < percentage)
 					{
-						switch (Random.Range(0, 5))
+						switch (UnityEngine.Random.Range(0, 5))
 						{
 						case 0:
 							NewSpectator = Object.Instantiate<Transform>(SpectatorPrefab, startingposition, Quaternion.identity);
@@ -2404,7 +2408,7 @@ public class AudienceManager : MonoBehaviour
 		for (int i = 0; i < AudienceList.Count; i++)
 		{
 			Transform value = AudienceList[i];
-			int index = Random.Range(i, AudienceList.Count);
+			int index = UnityEngine.Random.Range(i, AudienceList.Count);
 			AudienceList[i] = AudienceList[index];
 			AudienceList[index] = value;
 		}
@@ -2422,7 +2426,7 @@ public class AudienceManager : MonoBehaviour
 		for (int j = 0; j < AudienceList.Count; j++)
 		{
 			Transform value2 = AudienceList[j];
-			int index2 = Random.Range(j, AudienceList.Count);
+			int index2 = UnityEngine.Random.Range(j, AudienceList.Count);
 			AudienceList[j] = AudienceList[index2];
 			AudienceList[index2] = value2;
 		}
@@ -2720,46 +2724,46 @@ public class AudioManager : MonoBehaviour
 		switch (effect)
 		{
 		case "MinorHit":
-			SFXPlayer.PlayOneShot(meleeSmallSounds[Random.Range(0, meleeSmallSounds.Count)]);
+			SFXPlayer.PlayOneShot(meleeSmallSounds[UnityEngine.Random.Range(0, meleeSmallSounds.Count)]);
 			break;
 		case "ModerateHit":
-			SFXPlayer.PlayOneShot(meleeMediumSounds[Random.Range(0, meleeMediumSounds.Count)]);
+			SFXPlayer.PlayOneShot(meleeMediumSounds[UnityEngine.Random.Range(0, meleeMediumSounds.Count)]);
 			break;
 		case "MajorHit":
-			SFXPlayer.PlayOneShot(meleeBigSounds[Random.Range(0, meleeBigSounds.Count)]);
+			SFXPlayer.PlayOneShot(meleeBigSounds[UnityEngine.Random.Range(0, meleeBigSounds.Count)]);
 			break;
 		case "NoBlood":
-			SFXPlayer.PlayOneShot(meleeNoBloodSounds[Random.Range(0, meleeNoBloodSounds.Count)]);
+			SFXPlayer.PlayOneShot(meleeNoBloodSounds[UnityEngine.Random.Range(0, meleeNoBloodSounds.Count)]);
 			break;
 		case "Block":
-			SFXPlayer.PlayOneShot(meleeBlockSounds[Random.Range(0, meleeBlockSounds.Count)]);
+			SFXPlayer.PlayOneShot(meleeBlockSounds[UnityEngine.Random.Range(0, meleeBlockSounds.Count)]);
 			break;
 		case "BlockMagic":
-			SFXPlayer.PlayOneShot(magicBlockSounds[Random.Range(0, magicBlockSounds.Count)]);
+			SFXPlayer.PlayOneShot(magicBlockSounds[UnityEngine.Random.Range(0, magicBlockSounds.Count)]);
 			break;
 		case "Dodge":
-			SFXPlayer.PlayOneShot(meleeDodgeSounds[Random.Range(0, meleeDodgeSounds.Count)]);
+			SFXPlayer.PlayOneShot(meleeDodgeSounds[UnityEngine.Random.Range(0, meleeDodgeSounds.Count)]);
 			break;
 		case "DodgeMagic":
-			SFXPlayer.PlayOneShot(magicDodgeSounds[Random.Range(0, magicDodgeSounds.Count)]);
+			SFXPlayer.PlayOneShot(magicDodgeSounds[UnityEngine.Random.Range(0, magicDodgeSounds.Count)]);
 			break;
 		case "Charge":
-			SFXPlayer.PlayOneShot(chargeSounds[Random.Range(0, chargeSounds.Count)]);
+			SFXPlayer.PlayOneShot(chargeSounds[UnityEngine.Random.Range(0, chargeSounds.Count)]);
 			break;
 		case "ImpactSmall":
-			SFXPlayer.PlayOneShot(impactSmallSounds[Random.Range(0, impactSmallSounds.Count)]);
+			SFXPlayer.PlayOneShot(impactSmallSounds[UnityEngine.Random.Range(0, impactSmallSounds.Count)]);
 			break;
 		case "ImpactMedium":
-			SFXPlayer.PlayOneShot(impactMediumSounds[Random.Range(0, impactMediumSounds.Count)]);
+			SFXPlayer.PlayOneShot(impactMediumSounds[UnityEngine.Random.Range(0, impactMediumSounds.Count)]);
 			break;
 		case "ImpactBig":
-			SFXPlayer.PlayOneShot(impactBigSounds[Random.Range(0, impactBigSounds.Count)]);
+			SFXPlayer.PlayOneShot(impactBigSounds[UnityEngine.Random.Range(0, impactBigSounds.Count)]);
 			break;
 		case "Knockback":
-			SFXPlayer.PlayOneShot(KBSounds[Random.Range(0, KBSounds.Count)]);
+			SFXPlayer.PlayOneShot(KBSounds[UnityEngine.Random.Range(0, KBSounds.Count)]);
 			break;
 		case "SmallDamage":
-			SFXPlayer.PlayOneShot(SmallDamageSounds[Random.Range(0, SmallDamageSounds.Count)]);
+			SFXPlayer.PlayOneShot(SmallDamageSounds[UnityEngine.Random.Range(0, SmallDamageSounds.Count)]);
 			break;
 		case "Critical":
 			SFXPlayer.PlayOneShot(Critical);
@@ -2918,7 +2922,7 @@ public class AudioManager : MonoBehaviour
 			SFXPlayer.PlayOneShot(DialogueOK);
 			break;
 		case "ButtonClick":
-			SFXPlayer.PlayOneShot(Clicks[Random.Range(0, Clicks.Count)]);
+			SFXPlayer.PlayOneShot(Clicks[UnityEngine.Random.Range(0, Clicks.Count)]);
 			break;
 		case "ButtonClickSpecial":
 			SFXPlayer.PlayOneShot(ButtonClickSpecial);
@@ -2969,7 +2973,7 @@ public class AudioManager : MonoBehaviour
 			SFXPlayer.PlayOneShot(EventStart);
 			break;
 		case "EventChoice":
-			SFXPlayer.PlayOneShot(EventChoiceSounds[Random.Range(0, EventChoiceSounds.Count)]);
+			SFXPlayer.PlayOneShot(EventChoiceSounds[UnityEngine.Random.Range(0, EventChoiceSounds.Count)]);
 			break;
 		case "EventEnd":
 			SFXPlayer.PlayOneShot(EventEnd);
@@ -3038,17 +3042,17 @@ public class AudioManager : MonoBehaviour
 			SFXPlayer.PlayOneShot(CareerNotificationStayAtRank);
 			break;
 		case "EnterTown":
-			SFXPlayer.PlayOneShot(EnterTownSounds[Random.Range(0, EnterTownSounds.Count)]);
+			SFXPlayer.PlayOneShot(EnterTownSounds[UnityEngine.Random.Range(0, EnterTownSounds.Count)]);
 			break;
 		case "Arrow":
-			SFXPlayer.PlayOneShot(ArrowSounds[Random.Range(0, ArrowSounds.Count)]);
+			SFXPlayer.PlayOneShot(ArrowSounds[UnityEngine.Random.Range(0, ArrowSounds.Count)]);
 			break;
 		case "BowDraw":
-			SFXPlayer.PlayOneShot(BowDrawSounds[Random.Range(0, BowDrawSounds.Count)]);
+			SFXPlayer.PlayOneShot(BowDrawSounds[UnityEngine.Random.Range(0, BowDrawSounds.Count)]);
 			((MonoBehaviour)this).StartCoroutine(DelayedSound("Arrow", 0.12f));
 			break;
 		case "DrinkBlood":
-			SFXPlayer.PlayOneShot(BloodDrinkSounds[Random.Range(0, BloodDrinkSounds.Count)]);
+			SFXPlayer.PlayOneShot(BloodDrinkSounds[UnityEngine.Random.Range(0, BloodDrinkSounds.Count)]);
 			break;
 		}
 	}
@@ -3072,13 +3076,13 @@ public class AudioManager : MonoBehaviour
 			MusicPlayer.clip = EventAmbiance;
 			break;
 		case "Town":
-			MusicPlayer.clip = TownMusic[Random.Range(0, TownMusic.Count)];
+			MusicPlayer.clip = TownMusic[UnityEngine.Random.Range(0, TownMusic.Count)];
 			break;
 		case "Menu":
-			MusicPlayer.clip = MenuMusic[Random.Range(0, MenuMusic.Count)];
+			MusicPlayer.clip = MenuMusic[UnityEngine.Random.Range(0, MenuMusic.Count)];
 			break;
 		case "Battle":
-			MusicPlayer.clip = BattleMusic[Random.Range(0, BattleMusic.Count)];
+			MusicPlayer.clip = BattleMusic[UnityEngine.Random.Range(0, BattleMusic.Count)];
 			break;
 		case "ChampionshipBattle":
 			MusicPlayer.clip = Championship;
@@ -3327,11 +3331,11 @@ public class BattleCharacterBar : MonoBehaviour
 		}
 		if ((double)num > 0.5)
 		{
-			((Graphic)((Component)HpBar).GetComponent<Image>()).color = Color32.op_Implicit(Color32.Lerp(new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), new Color32((byte)70, (byte)250, (byte)50, byte.MaxValue), (num - 0.5f) * 2f));
+			((Graphic)((Component)HpBar).GetComponent<Image>()).color = MGCompat.Op.Imp(Color32.Lerp(new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), new Color32((byte)70, (byte)250, (byte)50, byte.MaxValue), (num - 0.5f) * 2f));
 		}
 		else
 		{
-			((Graphic)((Component)HpBar).GetComponent<Image>()).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), num * 2f));
+			((Graphic)((Component)HpBar).GetComponent<Image>()).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), num * 2f));
 		}
 		HpBar.localScale = new Vector3(num, 1f, 1f);
 		float num2 = ((Character.MP.GetValue() > 0) ? ((float)Character.CurrentMP / (float)Character.MP.GetValue()) : 0f);
@@ -3955,8 +3959,8 @@ public class BattleProcessor : MonoBehaviour
 		//IL_0071: Unknown result type (might be due to invalid IL or missing references)
 		tileWorldLocations = new List<Vector3>();
 		BoundsInt cellBounds = CollideTilemap.cellBounds;
-		PositionEnumerator allPositionsWithin = cellBounds.allPositionsWithin;
-		PositionEnumerator enumerator = allPositionsWithin.GetEnumerator();
+		BoundsInt.PositionEnumerator allPositionsWithin = cellBounds.allPositionsWithin;
+		BoundsInt.PositionEnumerator enumerator = allPositionsWithin.GetEnumerator();
 		try
 		{
 			while (enumerator.MoveNext())
@@ -3984,7 +3988,7 @@ public class BattleProcessor : MonoBehaviour
 			{
 				if (GlobalVariables.instance.RandomizeCDAtStart)
 				{
-					int value = Random.Range(1, characterSkill.MaxCooldown + 1);
+					int value = UnityEngine.Random.Range(1, characterSkill.MaxCooldown + 1);
 					item.Cooldowns.Add(characterSkill, value);
 				}
 				else if (characterSkill.MaxCooldown > 1)
@@ -4000,7 +4004,7 @@ public class BattleProcessor : MonoBehaviour
 			{
 				if (GlobalVariables.instance.RandomizeCDAtStart)
 				{
-					int value3 = Random.Range(1, characterSkill2.MaxCooldown + 1);
+					int value3 = UnityEngine.Random.Range(1, characterSkill2.MaxCooldown + 1);
 					item2.Cooldowns.Add(characterSkill2, value3);
 				}
 				else if (characterSkill2.MaxCooldown > 1)
@@ -4124,7 +4128,7 @@ public class BattleProcessor : MonoBehaviour
 			}
 			else
 			{
-				enemyBattler = ((!Object.op_Implicit((Object)(object)component.AI)) ? GetRandomAliveUnit(Enemy: true) : GetRandomAliveUnit(Enemy: false));
+				enemyBattler = ((!MGCompat.Op.Imp((Object)(object)component.AI)) ? GetRandomAliveUnit(Enemy: true) : GetRandomAliveUnit(Enemy: false));
 			}
 			thisCharacter2 = enemyBattler.ThisCharacter;
 		}
@@ -4211,7 +4215,7 @@ public class BattleProcessor : MonoBehaviour
 			val2 = new Vector3(Attack.AttackerObject.transform.position.x, Attack.AttackerObject.transform.position.y, Attack.AttackerObject.transform.position.z);
 		}
 		DamageEstimator.instance.ClearEstimates();
-		if ((Attack.Skill == SkillType.Charge || Attack.Skill == SkillType.PacifistCharge || Attack.Skill == SkillType.ChargeKnockback || Attack.Skill == SkillType.ChargeKnockbackScaling || Attack.Skill == SkillType.ChargeScaling) && !Object.op_Implicit((Object)(object)component.AI) && ProgressManager.instance.EmpDemand == "No rushing")
+		if ((Attack.Skill == SkillType.Charge || Attack.Skill == SkillType.PacifistCharge || Attack.Skill == SkillType.ChargeKnockback || Attack.Skill == SkillType.ChargeKnockbackScaling || Attack.Skill == SkillType.ChargeScaling) && !MGCompat.Op.Imp((Object)(object)component.AI) && ProgressManager.instance.EmpDemand == "No rushing")
 		{
 			isEmperorAnnoyed = true;
 		}
@@ -5018,18 +5022,18 @@ public class BattleProcessor : MonoBehaviour
 			}
 			break;
 		}
-		num3 = Mathf.RoundToInt(Random.Range((1f - DamageVariance) * (float)num3, (1f + DamageVariance) * (float)num3));
+		num3 = Mathf.RoundToInt(UnityEngine.Random.Range((1f - DamageVariance) * (float)num3, (1f + DamageVariance) * (float)num3));
 		int currentHP = enemyBattler.ThisCharacter.CurrentHP;
 		if (enemyBattler.TakeDamage(num3, Attack.DamageType, showInLog, Attack.HitAnimation, Attack.HitSFX, forceanimation))
 		{
 			if (GlobalVariables.instance.FirstBlood && !FirstBlood)
 			{
 				FirstBlood = true;
-				UIManager.instance.ShowNotificationMessage(LocalizationManager.GetTranslation("LOG/LOG_firstblood"), 12, "#FF0000", Vector2.op_Implicit(GetUnitPositionOnCanvas(Vector2.op_Implicit(val + Vector3.up * 1.6f))), 0.7f);
+				UIManager.instance.ShowNotificationMessage(LocalizationManager.GetTranslation("LOG/LOG_firstblood"), 12, "#FF0000", MGCompat.Op.Imp(GetUnitPositionOnCanvas(MGCompat.Op.Imp(val + Vector3.up * 1.6f))), 0.7f);
 			}
 			int currentHP2 = enemyBattler.ThisCharacter.CurrentHP;
 			int num12 = currentHP - currentHP2;
-			if (ProgressManager.instance.EmpDesire == "Devastating blow" && Object.op_Implicit((Object)(object)enemyBattler.AI) && num12 >= enemyBattler.ThisCharacter.HP.GetValue())
+			if (ProgressManager.instance.EmpDesire == "Devastating blow" && MGCompat.Op.Imp((Object)(object)enemyBattler.AI) && num12 >= enemyBattler.ThisCharacter.HP.GetValue())
 			{
 				CompleteDesire();
 			}
@@ -5307,7 +5311,7 @@ public class BattleProcessor : MonoBehaviour
 				CompleteDesire();
 			}
 		}
-		if (ProgressManager.instance.EmpDemand == "High spirits" && !Object.op_Implicit((Object)(object)component.AI) && (float)thisCharacter.CurrentMP < (float)thisCharacter.MP.GetValue() / 5f)
+		if (ProgressManager.instance.EmpDemand == "High spirits" && !MGCompat.Op.Imp((Object)(object)component.AI) && (float)thisCharacter.CurrentMP < (float)thisCharacter.MP.GetValue() / 5f)
 		{
 			isEmperorAnnoyed = true;
 		}
@@ -5697,7 +5701,7 @@ public class BattleProcessor : MonoBehaviour
 						BloodMediumLocations.Remove(Location);
 						Transform val = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 						BloodBigLocations.Add(Location, ((Component)val).gameObject);
-						((Component)val).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[Random.Range(0, BloodBigList.Count)];
+						((Component)val).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[UnityEngine.Random.Range(0, BloodBigList.Count)];
 					}
 					else if (BloodSmallLocations.ContainsKey(Location))
 					{
@@ -5705,13 +5709,13 @@ public class BattleProcessor : MonoBehaviour
 						BloodSmallLocations.Remove(Location);
 						Transform val2 = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 						BloodBigLocations.Add(Location, ((Component)val2).gameObject);
-						((Component)val2).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[Random.Range(0, BloodBigList.Count)];
+						((Component)val2).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[UnityEngine.Random.Range(0, BloodBigList.Count)];
 					}
 					else
 					{
 						Transform val3 = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 						BloodBigLocations.Add(Location, ((Component)val3).gameObject);
-						((Component)val3).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[Random.Range(0, BloodBigList.Count)];
+						((Component)val3).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[UnityEngine.Random.Range(0, BloodBigList.Count)];
 					}
 				}
 			}
@@ -5725,7 +5729,7 @@ public class BattleProcessor : MonoBehaviour
 						BloodMediumLocations.Remove(Location);
 						Transform val4 = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 						BloodBigLocations.Add(Location, ((Component)val4).gameObject);
-						((Component)val4).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[Random.Range(0, BloodBigList.Count)];
+						((Component)val4).GetComponentInParent<SpriteRenderer>().sprite = BloodBigList[UnityEngine.Random.Range(0, BloodBigList.Count)];
 					}
 					else if (BloodSmallLocations.ContainsKey(Location))
 					{
@@ -5733,13 +5737,13 @@ public class BattleProcessor : MonoBehaviour
 						BloodSmallLocations.Remove(Location);
 						Transform val5 = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 						BloodMediumLocations.Add(Location, ((Component)val5).gameObject);
-						((Component)val5).GetComponentInParent<SpriteRenderer>().sprite = BloodMediumList[Random.Range(0, BloodMediumList.Count)];
+						((Component)val5).GetComponentInParent<SpriteRenderer>().sprite = BloodMediumList[UnityEngine.Random.Range(0, BloodMediumList.Count)];
 					}
 					else
 					{
 						Transform val6 = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 						BloodMediumLocations.Add(Location, ((Component)val6).gameObject);
-						((Component)val6).GetComponentInParent<SpriteRenderer>().sprite = BloodMediumList[Random.Range(0, BloodMediumList.Count)];
+						((Component)val6).GetComponentInParent<SpriteRenderer>().sprite = BloodMediumList[UnityEngine.Random.Range(0, BloodMediumList.Count)];
 					}
 				}
 			}
@@ -5751,13 +5755,13 @@ public class BattleProcessor : MonoBehaviour
 					BloodSmallLocations.Remove(Location);
 					Transform val7 = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 					BloodMediumLocations.Add(Location, ((Component)val7).gameObject);
-					((Component)val7).GetComponentInParent<SpriteRenderer>().sprite = BloodMediumList[Random.Range(0, BloodMediumList.Count)];
+					((Component)val7).GetComponentInParent<SpriteRenderer>().sprite = BloodMediumList[UnityEngine.Random.Range(0, BloodMediumList.Count)];
 				}
 				else
 				{
 					Transform val8 = Object.Instantiate<Transform>(Blood.transform, Location, Quaternion.identity);
 					BloodSmallLocations.Add(Location, ((Component)val8).gameObject);
-					((Component)val8).GetComponentInParent<SpriteRenderer>().sprite = BloodSmallList[Random.Range(0, BloodSmallList.Count)];
+					((Component)val8).GetComponentInParent<SpriteRenderer>().sprite = BloodSmallList[UnityEngine.Random.Range(0, BloodSmallList.Count)];
 				}
 			}
 		}
@@ -5892,11 +5896,11 @@ public class BattleProcessor : MonoBehaviour
 	{
 		string text = "";
 		int num = Char.ThisCharacter.DodgeChance.GetValue();
-		if (!Object.op_Implicit((Object)(object)Char.AI) && num > 0)
+		if (!MGCompat.Op.Imp((Object)(object)Char.AI) && num > 0)
 		{
 			num += 5;
 		}
-		else if (Object.op_Implicit((Object)(object)Char.AI) && num > 0)
+		else if (MGCompat.Op.Imp((Object)(object)Char.AI) && num > 0)
 		{
 			num = Mathf.Clamp(num - 5, 1, 55);
 		}
@@ -5951,7 +5955,7 @@ public class BattleProcessor : MonoBehaviour
 		{
 			return true;
 		}
-		if (CheckRandom(Char.KnockbackChance.GetValue()) || (GlobalVariables.instance.ChallengeBurlyEnemies && Object.op_Implicit((Object)(object)Char.BattleUnit.AI)))
+		if (CheckRandom(Char.KnockbackChance.GetValue()) || (GlobalVariables.instance.ChallengeBurlyEnemies && MGCompat.Op.Imp((Object)(object)Char.BattleUnit.AI)))
 		{
 			string translation = LocalizationManager.GetTranslation("LOG/LOG_knockback");
 			CombatLog.instance.WriteLog("<color=#FF8500>" + translation + "</color>");
@@ -6106,7 +6110,7 @@ public class BattleProcessor : MonoBehaviour
 	{
 		//IL_001c: Unknown result type (might be due to invalid IL or missing references)
 		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		Color32 PoolOriginalColor = Color32.op_Implicit(BloodPile.color);
+		Color32 PoolOriginalColor = MGCompat.Op.Imp(BloodPile.color);
 		Color32 PoolNewColor = new Color32(PoolOriginalColor.r, PoolOriginalColor.g, PoolOriginalColor.b, (byte)0);
 		for (float t = 0f; t < 1f; t += Time.deltaTime * 3.5f)
 		{
@@ -6114,7 +6118,7 @@ public class BattleProcessor : MonoBehaviour
 			{
 				break;
 			}
-			BloodPile.color = Color32.op_Implicit(Color32.Lerp(PoolOriginalColor, PoolNewColor, t));
+			BloodPile.color = MGCompat.Op.Imp(Color32.Lerp(PoolOriginalColor, PoolNewColor, t));
 			yield return null;
 		}
 		if ((Object)(object)BloodPile != (Object)null)
@@ -6188,7 +6192,7 @@ public class BattleProcessor : MonoBehaviour
 					bool flag;
 					do
 					{
-						zero = new Vector3((float)Mathf.CeilToInt(Random.Range(-27.5f, -18.5f)) - 0.5f, (float)Mathf.CeilToInt(Random.Range(-10.5f, 0.5f)) - 0.5f, 0f);
+						zero = new Vector3((float)Mathf.CeilToInt(UnityEngine.Random.Range(-27.5f, -18.5f)) - 0.5f, (float)Mathf.CeilToInt(UnityEngine.Random.Range(-10.5f, 0.5f)) - 0.5f, 0f);
 						num2++;
 						if (num2 > 100)
 						{
@@ -6241,7 +6245,7 @@ public class BattleProcessor : MonoBehaviour
 				bool flag2;
 				do
 				{
-					zero2 = new Vector3((float)Mathf.CeilToInt(Random.Range(-27.5f, -18.5f)) - 0.5f, (float)Mathf.CeilToInt(Random.Range(-10.5f, 0.5f)) - 0.5f, 0f);
+					zero2 = new Vector3((float)Mathf.CeilToInt(UnityEngine.Random.Range(-27.5f, -18.5f)) - 0.5f, (float)Mathf.CeilToInt(UnityEngine.Random.Range(-10.5f, 0.5f)) - 0.5f, 0f);
 					num3++;
 					if (num3 > 100)
 					{
@@ -6342,16 +6346,16 @@ public class BattleProcessor : MonoBehaviour
 		if (((Component)NewCharacter).tag == "Enemy")
 		{
 			val.transform.SetParent(EnemyPanel, false);
-			((Graphic)((Component)val.transform.Find("Background")).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)215, (byte)84, (byte)84, byte.MaxValue));
-			((Component)((Component)NewCharacter).transform.Find("TeamIndicator")).gameObject.GetComponent<SpriteRenderer>().color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, (byte)230));
+			((Graphic)((Component)val.transform.Find("Background")).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)215, (byte)84, (byte)84, byte.MaxValue));
+			((Component)((Component)NewCharacter).transform.Find("TeamIndicator")).gameObject.GetComponent<SpriteRenderer>().color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, (byte)230));
 		}
 		else
 		{
 			val.transform.SetParent(HeroPanel, false);
 			Transform transform = ((Component)val.transform.Find("PortraitPicture")).transform;
 			transform.localScale += new Vector3(-2f, 0f, 0f);
-			((Graphic)((Component)val.transform.Find("Background")).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)108, (byte)226, (byte)108, byte.MaxValue));
-			((Component)((Component)NewCharacter).transform.Find("TeamIndicator")).gameObject.GetComponent<SpriteRenderer>().color = Color32.op_Implicit(new Color32((byte)0, (byte)200, (byte)0, (byte)230));
+			((Graphic)((Component)val.transform.Find("Background")).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)108, (byte)226, (byte)108, byte.MaxValue));
+			((Component)((Component)NewCharacter).transform.Find("TeamIndicator")).gameObject.GetComponent<SpriteRenderer>().color = MGCompat.Op.Imp(new Color32((byte)0, (byte)200, (byte)0, (byte)230));
 		}
 	}
 
@@ -6373,7 +6377,7 @@ public class BattleProcessor : MonoBehaviour
 	{
 		//IL_000f: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0014: Unknown result type (might be due to invalid IL or missing references)
-		Character.color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)120, (byte)120, byte.MaxValue));
+		Character.color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)120, (byte)120, byte.MaxValue));
 	}
 
 	public void CreateRewards()
@@ -6385,7 +6389,7 @@ public class BattleProcessor : MonoBehaviour
 		Object.Destroy((Object)(object)RewardChest);
 		AudioManager.instance.AudioEffect("Treasure");
 		((Component)RewardScreen).gameObject.SetActive(true);
-		int num = Random.Range(0, 100);
+		int num = UnityEngine.Random.Range(0, 100);
 		int presetrarity = 0;
 		if (GlobalVariables.instance.CareerModeActivated && ProgressManager.instance.CareerFightRewardType > 0 && ProgressManager.instance.CareerFightRewardType <= 3)
 		{
@@ -6413,7 +6417,7 @@ public class BattleProcessor : MonoBehaviour
 			}
 			GameObject val = Object.Instantiate<GameObject>(RewardSlot);
 			val.transform.SetParent(RewardPanel, false);
-			val.transform.localPosition = Vector2.op_Implicit(new Vector2(0f, 0f));
+			val.transform.localPosition = MGCompat.Op.Imp(new Vector2(0f, 0f));
 			if (flag)
 			{
 				val.GetComponent<RewardButton>().InitializeSpecificReward(4);
@@ -6430,7 +6434,7 @@ public class BattleProcessor : MonoBehaviour
 			{
 				GameObject val2 = Object.Instantiate<GameObject>(RewardSlot);
 				val2.transform.SetParent(RewardPanel, false);
-				val2.transform.localPosition = Vector2.op_Implicit(new Vector2((float)(-170 + i * 170), 0f));
+				val2.transform.localPosition = MGCompat.Op.Imp(new Vector2((float)(-170 + i * 170), 0f));
 				if (GlobalVariables.instance.GroupBattleRewards)
 				{
 					val2.GetComponent<RewardButton>().InitializeReward(AudienceManager.instance.AudienceCount, presetrarity, num);
@@ -6526,15 +6530,15 @@ public class BattleProcessor : MonoBehaviour
 		//IL_0136: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0159: Unknown result type (might be due to invalid IL or missing references)
 		//IL_015e: Unknown result type (might be due to invalid IL or missing references)
-		((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
-		((Graphic)((Component)ButtonArrowPass.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+		((Graphic)((Component)ButtonArrowPass.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 	}
 
 	public void CheckArrows()
@@ -6669,33 +6673,33 @@ public class BattleProcessor : MonoBehaviour
 		List<GameObject> list = new List<GameObject>();
 		DirectionBlockedByWall.Clear();
 		DirectionBlockedByEnemy.Clear();
-		((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
-		((Graphic)((Component)ButtonArrowPass.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)ButtonArrowPass.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 		Vector3 position = ((Component)CurrentCharacter).transform.position;
 		Vector3 val = position + Vector3.up + Vector3.left;
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("NW");
-			((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("NW");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowNW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("NW");
 				list.Add(OccupiedOrNot);
 			}
@@ -6704,19 +6708,19 @@ public class BattleProcessor : MonoBehaviour
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("N");
-			((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("N");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowN.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("N");
 				list.Add(OccupiedOrNot);
 			}
@@ -6725,19 +6729,19 @@ public class BattleProcessor : MonoBehaviour
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("NE");
-			((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("NE");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowNE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("NE");
 				list.Add(OccupiedOrNot);
 			}
@@ -6746,19 +6750,19 @@ public class BattleProcessor : MonoBehaviour
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("W");
-			((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("W");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("W");
 				list.Add(OccupiedOrNot);
 			}
@@ -6767,19 +6771,19 @@ public class BattleProcessor : MonoBehaviour
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("E");
-			((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("E");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("E");
 				list.Add(OccupiedOrNot);
 			}
@@ -6788,19 +6792,19 @@ public class BattleProcessor : MonoBehaviour
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("SW");
-			((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("SW");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowSW.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("SW");
 				list.Add(OccupiedOrNot);
 			}
@@ -6809,19 +6813,19 @@ public class BattleProcessor : MonoBehaviour
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("S");
-			((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("S");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowS.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("S");
 				list.Add(OccupiedOrNot);
 			}
@@ -6830,19 +6834,19 @@ public class BattleProcessor : MonoBehaviour
 		if (tileWorldLocations.Contains(val))
 		{
 			DirectionBlockedByWall.Add("SE");
-			((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+			((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 		}
 		OccupiedOrNot = IsTileOccupied(val);
 		if ((Object)(object)OccupiedOrNot != (Object)null)
 		{
 			if (OccupiedOrNot.tag == ((Component)CurrentCharacter).tag)
 			{
-				((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+				((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				DirectionBlockedByWall.Add("SE");
 			}
 			else
 			{
-				((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ButtonArrowSE.GetChild(0)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 				DirectionBlockedByEnemy.Add("SE");
 				list.Add(OccupiedOrNot);
 			}
@@ -7306,7 +7310,7 @@ public class BattleProcessor : MonoBehaviour
 			GildedSticker.SetActive(true);
 		}
 		float num3 = 3f;
-		int num4 = Random.Range(30, 52);
+		int num4 = UnityEngine.Random.Range(30, 52);
 		if (GlobalVariables.instance.CareerModeActivated)
 		{
 			num3 = 2.3f;
@@ -7457,7 +7461,7 @@ public class BattleProcessor : MonoBehaviour
 			text2 = LocalizationManager.GetTranslation("TOOLTIP/TOOLTIP_punishdead");
 			text2 = text2.Replace("<CHAR>", item4.Charname);
 			((TMP_Text)val2.GetComponent<TextMeshProUGUI>()).SetText(text2);
-			((Graphic)val2.GetComponent<TextMeshProUGUI>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
+			((Graphic)val2.GetComponent<TextMeshProUGUI>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue));
 			val2.transform.SetParent(SkillGainPanel, false);
 		}
 		((MonoBehaviour)this).StartCoroutine(FadeInEndStatPanel());
@@ -7650,7 +7654,7 @@ public class BattleProcessor : MonoBehaviour
 		{
 			if (Enemy)
 			{
-				enemyBattler = EnemiesInBattle[Random.Range(0, EnemiesInBattle.Count)];
+				enemyBattler = EnemiesInBattle[UnityEngine.Random.Range(0, EnemiesInBattle.Count)];
 				if (((Component)enemyBattler).tag == "Enemy")
 				{
 					break;
@@ -7658,7 +7662,7 @@ public class BattleProcessor : MonoBehaviour
 			}
 			else
 			{
-				enemyBattler = HerosInBattle[Random.Range(0, HerosInBattle.Count)];
+				enemyBattler = HerosInBattle[UnityEngine.Random.Range(0, HerosInBattle.Count)];
 				if (((Component)enemyBattler).tag == "Hero")
 				{
 					break;
@@ -7738,7 +7742,7 @@ public class BattleProcessor : MonoBehaviour
 			do
 			{
 				num++;
-				enemyBattler = HerosInBattle[Random.Range(0, HerosInBattle.Count)];
+				enemyBattler = HerosInBattle[UnityEngine.Random.Range(0, HerosInBattle.Count)];
 			}
 			while (!(((Component)enemyBattler).tag != "DeadHero") && num <= 30);
 		}
@@ -7747,7 +7751,7 @@ public class BattleProcessor : MonoBehaviour
 			do
 			{
 				num++;
-				enemyBattler = EnemiesInBattle[Random.Range(0, EnemiesInBattle.Count)];
+				enemyBattler = EnemiesInBattle[UnityEngine.Random.Range(0, EnemiesInBattle.Count)];
 			}
 			while (!(((Component)enemyBattler).tag != "DeadEnemy") && num <= 30);
 		}
@@ -7766,7 +7770,7 @@ public class BattleProcessor : MonoBehaviour
 			}
 		}
 		int num2 = 0;
-		num2 = ((num <= 1) ? Random.Range(1, 4) : Random.Range(1, 7));
+		num2 = ((num <= 1) ? UnityEngine.Random.Range(1, 4) : UnityEngine.Random.Range(1, 7));
 		EnemyBattler enemyBattler = ChooseRandomUnit(Hero: true);
 		if (minorpenalty)
 		{
@@ -7923,7 +7927,7 @@ public class BattleProcessor : MonoBehaviour
 
 	public bool CheckRandom(int comparison)
 	{
-		if (Random.Range(0, 100) < comparison)
+		if (UnityEngine.Random.Range(0, 100) < comparison)
 		{
 			return true;
 		}
@@ -7959,9 +7963,9 @@ public class BattleProcessor : MonoBehaviour
 		//IL_0015: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0020: Unknown result type (might be due to invalid IL or missing references)
 		//IL_002a: Unknown result type (might be due to invalid IL or missing references)
-		Vector2 val = Vector2.op_Implicit(Camera.main.WorldToScreenPoint(Vector2.op_Implicit(position)));
+		Vector2 val = MGCompat.Op.Imp(Camera.main.WorldToScreenPoint(MGCompat.Op.Imp(position)));
 		Vector2 result = default(Vector2);
-		RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.instance.TooltipCanvasRectTransform, val, (Camera)null, ref result);
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.instance.TooltipCanvasRectTransform, val, (Camera)null, out result);
 		return result;
 	}
 
@@ -8140,22 +8144,22 @@ public class CareerModeEnemyTeam : MonoBehaviour
 		int num = Mathf.Clamp(ChangingVariables.instance.EnemyTeamSize, 1, 4);
 		difficultyModifier = 1f;
 		rewardModifier = 1f;
-		if (Random.Range(0, 100) < 25 && MatchType < 19)
+		if (UnityEngine.Random.Range(0, 100) < 25 && MatchType < 19)
 		{
-			difficultyModifier = Random.Range(1f, 1.3f);
+			difficultyModifier = UnityEngine.Random.Range(1f, 1.3f);
 			rewardModifier += difficultyModifier - 1f;
 		}
-		if (Random.Range(0, 100) < 12 && num > 2 && MatchType < 19)
+		if (UnityEngine.Random.Range(0, 100) < 12 && num > 2 && MatchType < 19)
 		{
 			num--;
-			difficultyModifier += Random.Range(0.2f, 0.4f);
+			difficultyModifier += UnityEngine.Random.Range(0.2f, 0.4f);
 			rewardModifier += 0.3f;
 			if (ChangingVariables.instance.EnemyTeamRarityPoints >= 12)
 			{
 				difficultyModifier += 0.2f;
 			}
 		}
-		else if (Random.Range(0, 100) < 12 && num < 4 && MatchType < 19)
+		else if (UnityEngine.Random.Range(0, 100) < 12 && num < 4 && MatchType < 19)
 		{
 			num++;
 			rewardModifier += 0.2f;
@@ -8187,7 +8191,7 @@ public class CareerModeEnemyTeam : MonoBehaviour
 		{
 			for (int i = 0; i < num; i++)
 			{
-				if (Random.Range(0, 100) < GlobalVariables.instance.CareerEnemyBeastChance + ChangingVariables.instance.EnemyTeamBossChance)
+				if (UnityEngine.Random.Range(0, 100) < GlobalVariables.instance.CareerEnemyBeastChance + ChangingVariables.instance.EnemyTeamBossChance)
 				{
 					num5++;
 					rewardModifier += 0.4f;
@@ -8201,12 +8205,12 @@ public class CareerModeEnemyTeam : MonoBehaviour
 		Debug.Log((object)("Creating team with parameters: " + num + " " + num2 + " " + num3 + " " + num4 + " " + num5 + " " + difficultyModifier + " " + rewardModifier));
 		EnemyTeam = ProgressManager.instance.CreateCareerEnemyTeam(num, num2, num3, num4, num5, statmodifier);
 		TeamName = DataTablesPersisting.instance.GetRandomTeamName();
-		if (Random.Range(0, 100) < GlobalVariables.instance.CareerDemandChance || GlobalVariables.instance.ChallengeNeedyEmperor)
+		if (UnityEngine.Random.Range(0, 100) < GlobalVariables.instance.CareerDemandChance || GlobalVariables.instance.ChallengeNeedyEmperor)
 		{
 			rewardModifier += 0.1f;
 			EmperorDemand = DataTables.instance.GetRandomEmperorDemand();
 		}
-		if (Random.Range(0, 100) < GlobalVariables.instance.CareerDesireChance || GlobalVariables.instance.ChallengeNeedyEmperor)
+		if (UnityEngine.Random.Range(0, 100) < GlobalVariables.instance.CareerDesireChance || GlobalVariables.instance.ChallengeNeedyEmperor)
 		{
 			rewardModifier -= 0.1f;
 			EmperorDesire = DataTables.instance.GetRandomEmperorDesire();
@@ -8253,7 +8257,7 @@ public class CareerModeEnemyTeam : MonoBehaviour
 			EmperorDesire = "";
 			rewardModifier += 0.1f;
 		}
-		if (Random.Range(0, 100) < GlobalVariables.instance.CareerSpecialRuleChance || GlobalVariables.instance.ChallengeNeedyEmperor)
+		if (UnityEngine.Random.Range(0, 100) < GlobalVariables.instance.CareerSpecialRuleChance || GlobalVariables.instance.ChallengeNeedyEmperor)
 		{
 			rewardModifier += 0.05f;
 			SpecialRule = DataTables.instance.GetRandomSpecialRule();
@@ -8301,7 +8305,7 @@ public class CareerModeEnemyTeam : MonoBehaviour
 			RewardValue += 50;
 		}
 		RewardValue = Mathf.RoundToInt((float)RewardValue * rewardModifier);
-		int num6 = Random.Range(0, 100);
+		int num6 = UnityEngine.Random.Range(0, 100);
 		if (num6 < GlobalVariables.instance.CareerRewardCharacterChance && RewardValue >= 55)
 		{
 			RewardPresetType = 1;
@@ -8314,7 +8318,7 @@ public class CareerModeEnemyTeam : MonoBehaviour
 		{
 			RewardPresetType = 3;
 		}
-		if (Random.Range(0, 100) < 50)
+		if (UnityEngine.Random.Range(0, 100) < 50)
 		{
 			RewardPresetType += 3;
 		}
@@ -8665,7 +8669,7 @@ public class CareerModeEnemyTeam : MonoBehaviour
 				int num3 = 0;
 				if (GlobalVariables.instance.CareerSabotageRandomAmount)
 				{
-					int num4 = Random.Range(0, 100);
+					int num4 = UnityEngine.Random.Range(0, 100);
 					if (num4 < 5)
 					{
 						num3 = 3;
@@ -9158,7 +9162,7 @@ public class DamageEstimator : MonoBehaviour
 			string text = "";
 			text = ((!(category == "damage")) ? "#FFFFFF" : "#FF8684");
 			damageEstimateEntry.SetText(value, text);
-			((Component)damageEstimateEntry).transform.localPosition = Vector2.op_Implicit(GetUnitPositionOnCanvas(Vector2.op_Implicit(position + Vector3.up * 0.8f)));
+			((Component)damageEstimateEntry).transform.localPosition = MGCompat.Op.Imp(GetUnitPositionOnCanvas(MGCompat.Op.Imp(position + Vector3.up * 0.8f)));
 			CurrentlyVisibleEntries.Add(damageEstimateEntry);
 			((MonoBehaviour)this).StartCoroutine(damageEstimateEntry.BecomeVisible());
 		}
@@ -9204,9 +9208,9 @@ public class DamageEstimator : MonoBehaviour
 		//IL_0015: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0020: Unknown result type (might be due to invalid IL or missing references)
 		//IL_002a: Unknown result type (might be due to invalid IL or missing references)
-		Vector2 val = Vector2.op_Implicit(Camera.main.WorldToScreenPoint(Vector2.op_Implicit(position)));
+		Vector2 val = MGCompat.Op.Imp(Camera.main.WorldToScreenPoint(MGCompat.Op.Imp(position)));
 		Vector2 result = default(Vector2);
-		RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.instance.TooltipCanvasRectTransform, val, (Camera)null, ref result);
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.instance.TooltipCanvasRectTransform, val, (Camera)null, out result);
 		return result;
 	}
 }
@@ -9424,11 +9428,11 @@ public class DataTables : MonoBehaviour
 
 	public Item GetRandomItem()
 	{
-		if (Random.Range(0, 100) >= 80)
+		if (UnityEngine.Random.Range(0, 100) >= 80)
 		{
-			return ListOfSpellbooks[Random.Range(0, ListOfSpellbooks.Count)];
+			return ListOfSpellbooks[UnityEngine.Random.Range(0, ListOfSpellbooks.Count)];
 		}
-		return ListOfEquipment[Random.Range(0, ListOfEquipment.Count)];
+		return ListOfEquipment[UnityEngine.Random.Range(0, ListOfEquipment.Count)];
 	}
 
 	public string GetRandomItemName(EquipmentSlot slot)
@@ -9436,49 +9440,48 @@ public class DataTables : MonoBehaviour
 		switch (slot)
 		{
 			case EquipmentSlot.Weapon:
-				return ListOfAdjectives[Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfWeaponNames[Random.Range(0, ListOfWeaponNames.Count)];
+				return ListOfAdjectives[UnityEngine.Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfWeaponNames[UnityEngine.Random.Range(0, ListOfWeaponNames.Count)];
 			case EquipmentSlot.Chest:
-				return ListOfAdjectives[Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfArmorNames[Random.Range(0, ListOfArmorNames.Count)];
+				return ListOfAdjectives[UnityEngine.Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfArmorNames[UnityEngine.Random.Range(0, ListOfArmorNames.Count)];
 			default:
-				return ListOfAdjectives[Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfAccessoryNames[Random.Range(0, ListOfAccessoryNames.Count)];
+				return ListOfAdjectives[UnityEngine.Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfAccessoryNames[UnityEngine.Random.Range(0, ListOfAccessoryNames.Count)];
 		}
 	}
 
 	public string GetRandomBowName()
 	{
-		return ListOfAdjectives[Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfBowNames[Random.Range(0, ListOfBowNames.Count)];
+		return ListOfAdjectives[UnityEngine.Random.Range(0, ListOfAdjectives.Count)] + " " + ListOfBowNames[UnityEngine.Random.Range(0, ListOfBowNames.Count)];
 	}
 
 	public Equipment GetRandomEquipment(EquipmentSlot slot = EquipmentSlot.Random, classType type = classType.Balanced, bool ExactMatch = false, int bowchance = 0)
 	{
 		Equipment equipment;
-		if (ProfileManager.instance.DLC_ContentEnabled && bowchance > 0 && slot == EquipmentSlot.Weapon && Random.Range(0, 100) < bowchance)
+		if (ProfileManager.instance.DLC_ContentEnabled && bowchance > 0 && slot == EquipmentSlot.Weapon && UnityEngine.Random.Range(0, 100) < bowchance)
 		{
 			equipment = GetRandomBow();
 		}
 		else if (slot == EquipmentSlot.Random)
 		{
-			equipment = ListOfEquipment[Random.Range(0, ListOfEquipment.Count)];
+			equipment = ListOfEquipment[UnityEngine.Random.Range(0, ListOfEquipment.Count)];
 		}
 		else
 		{
 			int num = 0;
 			do
 			{
-				equipment;
 				switch (slot)
 				{
 					case EquipmentSlot.Weapon:
-						equipment = ListOfWeapons[Random.Range(0, ListOfWeapons.Count)];
+						equipment = ListOfWeapons[UnityEngine.Random.Range(0, ListOfWeapons.Count)];
 						break;
 					case EquipmentSlot.Chest:
-						equipment = ListOfArmor[Random.Range(0, ListOfArmor.Count)];
+						equipment = ListOfArmor[UnityEngine.Random.Range(0, ListOfArmor.Count)];
 						break;
 					case EquipmentSlot.Accessory:
-						equipment = ListOfAccessories[Random.Range(0, ListOfAccessories.Count)];
+						equipment = ListOfAccessories[UnityEngine.Random.Range(0, ListOfAccessories.Count)];
 						break;
 					default:
-						equipment = ListOfEquipment[Random.Range(0, ListOfEquipment.Count)];
+						equipment = ListOfEquipment[UnityEngine.Random.Range(0, ListOfEquipment.Count)];
 						break;
 				}
 				if ((ExactMatch && equipment.EquipmentMainType == type) || type == classType.Balanced || type == equipment.EquipmentMainType || equipment.EquipmentMainType == classType.Balanced)
@@ -9494,42 +9497,42 @@ public class DataTables : MonoBehaviour
 
 	public Equipment GetRandomBow()
 	{
-		return ListOfBows[Random.Range(0, ListOfBows.Count)];
+		return ListOfBows[UnityEngine.Random.Range(0, ListOfBows.Count)];
 	}
 
 	public Skill GetRandomBowSkill(int rarity = 0, bool AI = false)
 	{
 		if (AI)
 		{
-			return ListOfAIFriendlyBowSkills[Random.Range(0, ListOfAIFriendlyBowSkills.Count)];
+			return ListOfAIFriendlyBowSkills[UnityEngine.Random.Range(0, ListOfAIFriendlyBowSkills.Count)];
 		}
 		switch (rarity)
 		{
 		case 3:
-			return ListOfBowSkillsLevel3[Random.Range(0, ListOfBowSkillsLevel3.Count)];
+			return ListOfBowSkillsLevel3[UnityEngine.Random.Range(0, ListOfBowSkillsLevel3.Count)];
 		case 2:
-			return ListOfBowSkillsLevel2[Random.Range(0, ListOfBowSkillsLevel2.Count)];
+			return ListOfBowSkillsLevel2[UnityEngine.Random.Range(0, ListOfBowSkillsLevel2.Count)];
 		case 1:
-			return ListOfBowSkillsLevel1[Random.Range(0, ListOfBowSkillsLevel1.Count)];
+			return ListOfBowSkillsLevel1[UnityEngine.Random.Range(0, ListOfBowSkillsLevel1.Count)];
 		default:
 		{
-			int num = Random.Range(0, 100);
+			int num = UnityEngine.Random.Range(0, 100);
 			if (num < 11)
 			{
-				return ListOfBowSkillsLevel3[Random.Range(0, ListOfBowSkillsLevel3.Count)];
+				return ListOfBowSkillsLevel3[UnityEngine.Random.Range(0, ListOfBowSkillsLevel3.Count)];
 			}
 			if (num < 33)
 			{
-				return ListOfBowSkillsLevel2[Random.Range(0, ListOfBowSkillsLevel2.Count)];
+				return ListOfBowSkillsLevel2[UnityEngine.Random.Range(0, ListOfBowSkillsLevel2.Count)];
 			}
-			return ListOfBowSkillsLevel1[Random.Range(0, ListOfBowSkillsLevel1.Count)];
+			return ListOfBowSkillsLevel1[UnityEngine.Random.Range(0, ListOfBowSkillsLevel1.Count)];
 		}
 		}
 	}
 
 	public Item GetRandomItemNonEquip()
 	{
-		return ListOfSpellbooks[Random.Range(0, ListOfSpellbooks.Count)];
+		return ListOfSpellbooks[UnityEngine.Random.Range(0, ListOfSpellbooks.Count)];
 	}
 
 	public Skill GetRandomSkill(int chancebonus = 0, int rarity = 0, bool AI = false, classType type = classType.Balanced, bool EpicsPossible = true, bool forcetype = false, bool ExactMatch = false, bool bowskill = false)
@@ -9550,27 +9553,27 @@ public class DataTables : MonoBehaviour
 			switch (rarity)
 			{
 			case 3:
-				skill = ListOfSkillsLevel3[Random.Range(0, ListOfSkillsLevel3.Count)];
+				skill = ListOfSkillsLevel3[UnityEngine.Random.Range(0, ListOfSkillsLevel3.Count)];
 				break;
 			case 2:
-				skill = ListOfSkillsLevel2[Random.Range(0, ListOfSkillsLevel2.Count)];
+				skill = ListOfSkillsLevel2[UnityEngine.Random.Range(0, ListOfSkillsLevel2.Count)];
 				break;
 			case 1:
-				skill = ListOfSkillsLevel1[Random.Range(0, ListOfSkillsLevel1.Count)];
+				skill = ListOfSkillsLevel1[UnityEngine.Random.Range(0, ListOfSkillsLevel1.Count)];
 				break;
 			case 99:
-				skill = ListOfSkills[Random.Range(0, ListOfSkills.Count)];
+				skill = ListOfSkills[UnityEngine.Random.Range(0, ListOfSkills.Count)];
 				break;
 			default:
 			{
-				int num2 = Random.Range(0, 100);
+				int num2 = UnityEngine.Random.Range(0, 100);
 				if ((num2 < GlobalVariables.instance.SkillRarityNewRecruitLevel3 + chancebonus) & EpicsPossible)
 				{
-					skill = ListOfSkillsLevel3[Random.Range(0, ListOfSkillsLevel3.Count)];
+					skill = ListOfSkillsLevel3[UnityEngine.Random.Range(0, ListOfSkillsLevel3.Count)];
 				}
 				else
 				{
-					skill = ((num2 >= GlobalVariables.instance.SkillRarityNewRecruitLevel2 + chancebonus) ? ListOfSkillsLevel1[Random.Range(0, ListOfSkillsLevel1.Count)] : ListOfSkillsLevel2[Random.Range(0, ListOfSkillsLevel2.Count)]);
+					skill = ((num2 >= GlobalVariables.instance.SkillRarityNewRecruitLevel2 + chancebonus) ? ListOfSkillsLevel1[UnityEngine.Random.Range(0, ListOfSkillsLevel1.Count)] : ListOfSkillsLevel2[UnityEngine.Random.Range(0, ListOfSkillsLevel2.Count)]);
 				}
 				break;
 			}
@@ -9615,32 +9618,32 @@ public class DataTables : MonoBehaviour
 
 	public CharacterTemplate GetRandomCharacter()
 	{
-		return ListOfRaces[Random.Range(0, ListOfRaces.Count)];
+		return ListOfRaces[UnityEngine.Random.Range(0, ListOfRaces.Count)];
 	}
 
 	public CharacterTemplate GetRandomBoss()
 	{
-		return ListOfBosses[Random.Range(0, ListOfBosses.Count)];
+		return ListOfBosses[UnityEngine.Random.Range(0, ListOfBosses.Count)];
 	}
 
 	public CharacterTemplate GetRandomSpecialCharacter()
 	{
-		return ListOfSpecialCharacters[Random.Range(0, ListOfSpecialCharacters.Count)];
+		return ListOfSpecialCharacters[UnityEngine.Random.Range(0, ListOfSpecialCharacters.Count)];
 	}
 
 	public Equipment GetRandomSpecialEquipment()
 	{
-		return ListOfSpecialEquipment[Random.Range(0, ListOfSpecialEquipment.Count)];
+		return ListOfSpecialEquipment[UnityEngine.Random.Range(0, ListOfSpecialEquipment.Count)];
 	}
 
 	public Equipment GetRandomCursedEquipment()
 	{
-		return ListOfCursedEquipment[Random.Range(0, ListOfCursedEquipment.Count)];
+		return ListOfCursedEquipment[UnityEngine.Random.Range(0, ListOfCursedEquipment.Count)];
 	}
 
 	public Equipment GetRandomSpecialTrinket()
 	{
-		return ListOfSpecialTrinkets[Random.Range(0, ListOfSpecialTrinkets.Count)];
+		return ListOfSpecialTrinkets[UnityEngine.Random.Range(0, ListOfSpecialTrinkets.Count)];
 	}
 
 	public Perk GetRandomPerk(int chancebonus = 0, int rarity = 0, bool PreventAmnesiac = false)
@@ -9652,27 +9655,27 @@ public class DataTables : MonoBehaviour
 			switch (rarity)
 			{
 			case 3:
-				perk = ListOfPerksLevel3[Random.Range(0, ListOfPerksLevel3.Count)];
+				perk = ListOfPerksLevel3[UnityEngine.Random.Range(0, ListOfPerksLevel3.Count)];
 				break;
 			case 2:
-				perk = ListOfPerksLevel2[Random.Range(0, ListOfPerksLevel2.Count)];
+				perk = ListOfPerksLevel2[UnityEngine.Random.Range(0, ListOfPerksLevel2.Count)];
 				break;
 			case 1:
-				perk = ListOfPerksLevel1[Random.Range(0, ListOfPerksLevel1.Count)];
+				perk = ListOfPerksLevel1[UnityEngine.Random.Range(0, ListOfPerksLevel1.Count)];
 				break;
 			case 99:
-				perk = ListOfPerks[Random.Range(0, ListOfPerks.Count)];
+				perk = ListOfPerks[UnityEngine.Random.Range(0, ListOfPerks.Count)];
 				break;
 			default:
 			{
-				int num2 = Random.Range(0, 100);
+				int num2 = UnityEngine.Random.Range(0, 100);
 				if (num2 >= GlobalVariables.instance.PerkRarityNewRecruitLevel3 + chancebonus)
 				{
-					perk = ((num2 >= GlobalVariables.instance.PerkRarityNewRecruitLevel2 + chancebonus) ? ListOfPerksLevel1[Random.Range(0, ListOfPerksLevel1.Count)] : ListOfPerksLevel2[Random.Range(0, ListOfPerksLevel2.Count)]);
+					perk = ((num2 >= GlobalVariables.instance.PerkRarityNewRecruitLevel2 + chancebonus) ? ListOfPerksLevel1[UnityEngine.Random.Range(0, ListOfPerksLevel1.Count)] : ListOfPerksLevel2[UnityEngine.Random.Range(0, ListOfPerksLevel2.Count)]);
 				}
 				else
 				{
-					perk = ListOfPerksLevel3[Random.Range(0, ListOfPerksLevel3.Count)];
+					perk = ListOfPerksLevel3[UnityEngine.Random.Range(0, ListOfPerksLevel3.Count)];
 				}
 				break;
 			}
@@ -9697,7 +9700,7 @@ public class DataTables : MonoBehaviour
 		TownEvent townEvent = null;
 		while (true)
 		{
-			townEvent = ListOfEvents[Random.Range(0, ListOfEvents.Count)];
+			townEvent = ListOfEvents[UnityEngine.Random.Range(0, ListOfEvents.Count)];
 			bool flag = false;
 			foreach (TownEvent completedEvent in ProgressManager.instance.CompletedEvents)
 			{
@@ -9722,90 +9725,90 @@ public class DataTables : MonoBehaviour
 
 	public string GetRandomTitle()
 	{
-		return ListOfTitles[Random.Range(0, ListOfTitles.Count)];
+		return ListOfTitles[UnityEngine.Random.Range(0, ListOfTitles.Count)];
 	}
 
 	public string GetRandomCharacterName(CharacterTemplate Character)
 	{
 		if (Character.Race == CharacterRace.Minotaur)
 		{
-			return MinotaurNames[Random.Range(0, MinotaurNames.Count)];
+			return MinotaurNames[UnityEngine.Random.Range(0, MinotaurNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Werewolf)
 		{
-			return WerewolfNames[Random.Range(0, WerewolfNames.Count)];
+			return WerewolfNames[UnityEngine.Random.Range(0, WerewolfNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Elf)
 		{
-			return ElfNames[Random.Range(0, ElfNames.Count)];
+			return ElfNames[UnityEngine.Random.Range(0, ElfNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Dryad)
 		{
-			return DryadNames[Random.Range(0, DryadNames.Count)];
+			return DryadNames[UnityEngine.Random.Range(0, DryadNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Vampire)
 		{
-			return VampireNames[Random.Range(0, VampireNames.Count)];
+			return VampireNames[UnityEngine.Random.Range(0, VampireNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Fiendling)
 		{
-			return DemonNames[Random.Range(0, DemonNames.Count)];
+			return DemonNames[UnityEngine.Random.Range(0, DemonNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Wizard)
 		{
-			return WizardNames[Random.Range(0, WizardNames.Count)];
+			return WizardNames[UnityEngine.Random.Range(0, WizardNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Whisperer)
 		{
-			return WhispererNames[Random.Range(0, WhispererNames.Count)];
+			return WhispererNames[UnityEngine.Random.Range(0, WhispererNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Gnome)
 		{
-			return GnomeNames[Random.Range(0, GnomeNames.Count)];
+			return GnomeNames[UnityEngine.Random.Range(0, GnomeNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Troll)
 		{
-			return TrollNames[Random.Range(0, TrollNames.Count)];
+			return TrollNames[UnityEngine.Random.Range(0, TrollNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Undine)
 		{
-			return UndineNames[Random.Range(0, UndineNames.Count)];
+			return UndineNames[UnityEngine.Random.Range(0, UndineNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Lizard)
 		{
-			return LizardNames[Random.Range(0, LizardNames.Count)];
+			return LizardNames[UnityEngine.Random.Range(0, LizardNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Angel)
 		{
-			return AngelNames[Random.Range(0, AngelNames.Count)];
+			return AngelNames[UnityEngine.Random.Range(0, AngelNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Prowler)
 		{
-			return ProwlerNames[Random.Range(0, ProwlerNames.Count)];
+			return ProwlerNames[UnityEngine.Random.Range(0, ProwlerNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Dwarf)
 		{
-			return DwarfNames[Random.Range(0, DwarfNames.Count)];
+			return DwarfNames[UnityEngine.Random.Range(0, DwarfNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Slitherer)
 		{
-			return SlithererNames[Random.Range(0, SlithererNames.Count)];
+			return SlithererNames[UnityEngine.Random.Range(0, SlithererNames.Count)];
 		}
 		if (Character.Race == CharacterRace.Umibozu)
 		{
-			return UmibozuNames[Random.Range(0, UmibozuNames.Count)];
+			return UmibozuNames[UnityEngine.Random.Range(0, UmibozuNames.Count)];
 		}
-		return MiscNames[Random.Range(0, MiscNames.Count)];
+		return MiscNames[UnityEngine.Random.Range(0, MiscNames.Count)];
 	}
 
 	public string GetRandomBeforeBattleTaunt()
 	{
-		return LocalizationManager.GetTranslation("TAUNT/TAUNT_" + Random.Range(0, BeforeBattleTaunts.Count));
+		return LocalizationManager.GetTranslation("TAUNT/TAUNT_" + UnityEngine.Random.Range(0, BeforeBattleTaunts.Count));
 	}
 
 	public string GetRandomAfterDeathTaunt()
 	{
-		return AfterDeathTaunts[Random.Range(0, AfterDeathTaunts.Count)];
+		return AfterDeathTaunts[UnityEngine.Random.Range(0, AfterDeathTaunts.Count)];
 	}
 
 	public string GetRandomEmperorDesire()
@@ -9820,7 +9823,7 @@ public class DataTables : MonoBehaviour
 				break;
 			}
 			num++;
-			text = EmperorDesires[Random.Range(0, EmperorDesires.Count)];
+			text = EmperorDesires[UnityEngine.Random.Range(0, EmperorDesires.Count)];
 		}
 		while (!ProfileManager.instance.BloodEnabled && text == "Carnage");
 		return text;
@@ -9838,7 +9841,7 @@ public class DataTables : MonoBehaviour
 				break;
 			}
 			num++;
-			text = EmperorDemands[Random.Range(0, EmperorDemands.Count)];
+			text = EmperorDemands[UnityEngine.Random.Range(0, EmperorDemands.Count)];
 		}
 		while (!ProfileManager.instance.BloodEnabled && text == "Clean fight");
 		return text;
@@ -9945,7 +9948,7 @@ public class DataTables : MonoBehaviour
 
 	public string GetRandomSpecialRule()
 	{
-		return SpecialRules[Random.Range(0, SpecialRules.Count)];
+		return SpecialRules[UnityEngine.Random.Range(0, SpecialRules.Count)];
 	}
 
 	public void CreateEmperorDemandsAndDesires()
@@ -10254,12 +10257,12 @@ public class DataTablesBattle : MonoBehaviour
 
 	public Buff GetRandomBuff()
 	{
-		return ListOfBuffs[Random.Range(0, ListOfBuffs.Count)];
+		return ListOfBuffs[UnityEngine.Random.Range(0, ListOfBuffs.Count)];
 	}
 
 	public Buff GetRandomDebuff()
 	{
-		return ListOfDebuffs[Random.Range(0, ListOfDebuffs.Count)];
+		return ListOfDebuffs[UnityEngine.Random.Range(0, ListOfDebuffs.Count)];
 	}
 }
 public class DataTablesPersisting : MonoBehaviour
@@ -10447,7 +10450,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "en":
 			if (EN_TeamNameComponent1.Count > 0 && EN_TeamNameComponent2.Count > 0)
 			{
-				result = EN_TeamNameComponent1[Random.Range(0, EN_TeamNameComponent1.Count)] + EN_TeamNameComponent2[Random.Range(0, EN_TeamNameComponent2.Count)];
+				result = EN_TeamNameComponent1[UnityEngine.Random.Range(0, EN_TeamNameComponent1.Count)] + EN_TeamNameComponent2[UnityEngine.Random.Range(0, EN_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10457,7 +10460,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "fi":
 			if (FI_TeamNameComponent1.Count > 0 && FI_TeamNameComponent2.Count > 0)
 			{
-				result = FI_TeamNameComponent1[Random.Range(0, FI_TeamNameComponent1.Count)] + FI_TeamNameComponent2[Random.Range(0, FI_TeamNameComponent2.Count)];
+				result = FI_TeamNameComponent1[UnityEngine.Random.Range(0, FI_TeamNameComponent1.Count)] + FI_TeamNameComponent2[UnityEngine.Random.Range(0, FI_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10467,7 +10470,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "ru":
 			if (RU_TeamNameComponent1.Count > 0 && RU_TeamNameComponent2.Count > 0)
 			{
-				result = RU_TeamNameComponent1[Random.Range(0, RU_TeamNameComponent1.Count)] + RU_TeamNameComponent2[Random.Range(0, RU_TeamNameComponent2.Count)];
+				result = RU_TeamNameComponent1[UnityEngine.Random.Range(0, RU_TeamNameComponent1.Count)] + RU_TeamNameComponent2[UnityEngine.Random.Range(0, RU_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10477,7 +10480,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "ja":
 			if (JA_TeamNameComponent1.Count > 0 && JA_TeamNameComponent2.Count > 0)
 			{
-				result = JA_TeamNameComponent1[Random.Range(0, JA_TeamNameComponent1.Count)] + JA_TeamNameComponent2[Random.Range(0, JA_TeamNameComponent2.Count)];
+				result = JA_TeamNameComponent1[UnityEngine.Random.Range(0, JA_TeamNameComponent1.Count)] + JA_TeamNameComponent2[UnityEngine.Random.Range(0, JA_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10487,7 +10490,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "fr":
 			if (FR_TeamNameComponent1.Count > 0 && FR_TeamNameComponent2.Count > 0)
 			{
-				result = FR_TeamNameComponent1[Random.Range(0, FR_TeamNameComponent1.Count)] + FR_TeamNameComponent2[Random.Range(0, FR_TeamNameComponent2.Count)];
+				result = FR_TeamNameComponent1[UnityEngine.Random.Range(0, FR_TeamNameComponent1.Count)] + FR_TeamNameComponent2[UnityEngine.Random.Range(0, FR_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10497,7 +10500,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "de":
 			if (GR_TeamNameComponent1.Count > 0 && GR_TeamNameComponent2.Count > 0)
 			{
-				result = GR_TeamNameComponent1[Random.Range(0, GR_TeamNameComponent1.Count)] + GR_TeamNameComponent2[Random.Range(0, GR_TeamNameComponent2.Count)];
+				result = GR_TeamNameComponent1[UnityEngine.Random.Range(0, GR_TeamNameComponent1.Count)] + GR_TeamNameComponent2[UnityEngine.Random.Range(0, GR_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10507,7 +10510,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "ko":
 			if (KO_TeamNameComponent1.Count > 0 && KO_TeamNameComponent2.Count > 0)
 			{
-				result = KO_TeamNameComponent1[Random.Range(0, KO_TeamNameComponent1.Count)] + KO_TeamNameComponent2[Random.Range(0, KO_TeamNameComponent2.Count)];
+				result = KO_TeamNameComponent1[UnityEngine.Random.Range(0, KO_TeamNameComponent1.Count)] + KO_TeamNameComponent2[UnityEngine.Random.Range(0, KO_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10517,7 +10520,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "es-ES":
 			if (SP_TeamNameComponent1.Count > 0 && SP_TeamNameComponent2.Count > 0)
 			{
-				result = SP_TeamNameComponent1[Random.Range(0, SP_TeamNameComponent1.Count)] + SP_TeamNameComponent2[Random.Range(0, SP_TeamNameComponent2.Count)];
+				result = SP_TeamNameComponent1[UnityEngine.Random.Range(0, SP_TeamNameComponent1.Count)] + SP_TeamNameComponent2[UnityEngine.Random.Range(0, SP_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10527,7 +10530,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "it":
 			if (IT_TeamNameComponent1.Count > 0 && IT_TeamNameComponent2.Count > 0)
 			{
-				result = IT_TeamNameComponent1[Random.Range(0, IT_TeamNameComponent1.Count)] + IT_TeamNameComponent2[Random.Range(0, IT_TeamNameComponent2.Count)];
+				result = IT_TeamNameComponent1[UnityEngine.Random.Range(0, IT_TeamNameComponent1.Count)] + IT_TeamNameComponent2[UnityEngine.Random.Range(0, IT_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10537,7 +10540,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "pt-BR":
 			if (PT_TeamNameComponent1.Count > 0 && PT_TeamNameComponent2.Count > 0)
 			{
-				result = PT_TeamNameComponent1[Random.Range(0, PT_TeamNameComponent1.Count)] + PT_TeamNameComponent2[Random.Range(0, PT_TeamNameComponent2.Count)];
+				result = PT_TeamNameComponent1[UnityEngine.Random.Range(0, PT_TeamNameComponent1.Count)] + PT_TeamNameComponent2[UnityEngine.Random.Range(0, PT_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10547,7 +10550,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "zh-CN":
 			if (CN_TeamNameComponent1.Count > 0 && CN_TeamNameComponent2.Count > 0)
 			{
-				result = CN_TeamNameComponent1[Random.Range(0, CN_TeamNameComponent1.Count)] + CN_TeamNameComponent2[Random.Range(0, CN_TeamNameComponent2.Count)];
+				result = CN_TeamNameComponent1[UnityEngine.Random.Range(0, CN_TeamNameComponent1.Count)] + CN_TeamNameComponent2[UnityEngine.Random.Range(0, CN_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10557,7 +10560,7 @@ public class DataTablesPersisting : MonoBehaviour
 		case "pl":
 			if (PO_TeamNameComponent1.Count > 0 && PO_TeamNameComponent2.Count > 0)
 			{
-				result = PO_TeamNameComponent1[Random.Range(0, PO_TeamNameComponent1.Count)] + PO_TeamNameComponent2[Random.Range(0, PO_TeamNameComponent2.Count)];
+				result = PO_TeamNameComponent1[UnityEngine.Random.Range(0, PO_TeamNameComponent1.Count)] + PO_TeamNameComponent2[UnityEngine.Random.Range(0, PO_TeamNameComponent2.Count)];
 			}
 			else
 			{
@@ -10567,7 +10570,7 @@ public class DataTablesPersisting : MonoBehaviour
 		}
 		if (flag)
 		{
-			result = EN_TeamNameComponent1[Random.Range(0, EN_TeamNameComponent1.Count)] + EN_TeamNameComponent2[Random.Range(0, EN_TeamNameComponent2.Count)];
+			result = EN_TeamNameComponent1[UnityEngine.Random.Range(0, EN_TeamNameComponent1.Count)] + EN_TeamNameComponent2[UnityEngine.Random.Range(0, EN_TeamNameComponent2.Count)];
 		}
 		return result;
 	}
@@ -10766,7 +10769,7 @@ public class RosterDragHandler : MonoBehaviour, IDropHandler, IEventSystemHandle
 {
 	public void OnDrop(PointerEventData eventData)
 	{
-		if (!Object.op_Implicit((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerCharacter>()))
+		if (!MGCompat.Op.Imp((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerCharacter>()))
 		{
 			return;
 		}
@@ -10801,7 +10804,7 @@ public class TeamDragHandler : MonoBehaviour, IDropHandler, IEventSystemHandler
 {
 	public void OnDrop(PointerEventData eventData)
 	{
-		if (!Object.op_Implicit((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerCharacter>()))
+		if (!MGCompat.Op.Imp((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerCharacter>()))
 		{
 			return;
 		}
@@ -10853,7 +10856,7 @@ public class TrainDragHandler : MonoBehaviour, IDropHandler, IEventSystemHandler
 {
 	public void OnDrop(PointerEventData eventData)
 	{
-		if (!Object.op_Implicit((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerCharacter>()))
+		if (!MGCompat.Op.Imp((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerCharacter>()))
 		{
 			return;
 		}
@@ -11055,7 +11058,7 @@ public class EnemyBattler : MonoBehaviour
 			MovesTaken = 0;
 			if (BattleProcessor.instance.CheckForDeaths() > 0 || CharacterState == CharacterStates.DEAD || CharacterState == CharacterStates.DYING)
 			{
-				if (ProgressManager.instance.EmpDesire == "Delayed knockout" && Object.op_Implicit((Object)(object)AI))
+				if (ProgressManager.instance.EmpDesire == "Delayed knockout" && MGCompat.Op.Imp((Object)(object)AI))
 				{
 					BattleProcessor.instance.CompleteDesire();
 				}
@@ -11069,7 +11072,7 @@ public class EnemyBattler : MonoBehaviour
 			if (ProfileManager.instance.TurnIndicatorsEnabled)
 			{
 				TurnSelectorAnimator.ResetTrigger("Deactivate");
-				if (!Object.op_Implicit((Object)(object)AI))
+				if (!MGCompat.Op.Imp((Object)(object)AI))
 				{
 					TurnSelectorAnimator.SetTrigger("Activate");
 				}
@@ -11118,20 +11121,20 @@ public class EnemyBattler : MonoBehaviour
 					Debug.LogError((object)("EB (BeforeMove): UNIT OFF GRID!! " + ThisCharacter.Charname + " " + ((Component)this).transform.position.x + " : " + ((Component)this).transform.position.y));
 					SnapToGrid();
 				}
-				if (!Object.op_Implicit((Object)(object)AI))
+				if (!MGCompat.Op.Imp((Object)(object)AI))
 				{
 					DamageEstimator.instance.ClearEstimates();
 				}
 				ActionCooldown = true;
-				if (!Object.op_Implicit((Object)(object)AI) && !KilledSomethingThisTurn)
+				if (!MGCompat.Op.Imp((Object)(object)AI) && !KilledSomethingThisTurn)
 				{
 					BattleProcessor.instance.KillStreak = 0;
 				}
-				if (ProgressManager.instance.EmpDemand == "Snail pace" && !Object.op_Implicit((Object)(object)AI) && MovesTaken > 1)
+				if (ProgressManager.instance.EmpDemand == "Snail pace" && !MGCompat.Op.Imp((Object)(object)AI) && MovesTaken > 1)
 				{
 					BattleProcessor.instance.isEmperorAnnoyed = true;
 				}
-				if (!Object.op_Implicit((Object)(object)AI) && MovesTaken >= 10)
+				if (!MGCompat.Op.Imp((Object)(object)AI) && MovesTaken >= 10)
 				{
 					SteamAchievements.instance.UnlockSteamAchievement("ACH_Bunny");
 				}
@@ -11162,7 +11165,7 @@ public class EnemyBattler : MonoBehaviour
 		case CharacterStates.DYING:
 			if ((Object)(object)this == (Object)(object)BattleProcessor.instance.CurrentCharacter)
 			{
-				if (!Object.op_Implicit((Object)(object)AI))
+				if (!MGCompat.Op.Imp((Object)(object)AI))
 				{
 					DamageEstimator.instance.ClearEstimates();
 				}
@@ -11595,7 +11598,7 @@ public class EnemyBattler : MonoBehaviour
 		Buffs.Add(buff);
 		CharacterBattleBar.AddBuffIcon(buff);
 		ActivateBuff(buff);
-		if (!(ProgressManager.instance.EmpDesire == "Ailments") || !Object.op_Implicit((Object)(object)AI))
+		if (!(ProgressManager.instance.EmpDesire == "Ailments") || !MGCompat.Op.Imp((Object)(object)AI))
 		{
 			return;
 		}
@@ -11726,7 +11729,7 @@ public class EnemyBattler : MonoBehaviour
 		//IL_01fc: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0163: Unknown result type (might be due to invalid IL or missing references)
 		string text = "";
-		if (!buff.IsItBuff && Random.Range(0, 100) >= initialchance - ThisCharacter.DebuffResistance.GetValue())
+		if (!buff.IsItBuff && UnityEngine.Random.Range(0, 100) >= initialchance - ThisCharacter.DebuffResistance.GetValue())
 		{
 			if (NoDmg)
 			{
@@ -11766,15 +11769,15 @@ public class EnemyBattler : MonoBehaviour
 			ActivateBuff(buff2);
 		}
 		((MonoBehaviour)this).StartCoroutine(FloatingCombatText.instance.NewFloatingText(LocalizationManager.GetTranslation("BUFF/BUFF_" + buff2.title), "buff", ((Component)this).transform.position, ((Component)this).gameObject));
-		if (ProgressManager.instance.EmpDemand == "Honest fight" && Object.op_Implicit((Object)(object)AI) && !buff.IsItBuff && !ApplierIsAI)
+		if (ProgressManager.instance.EmpDemand == "Honest fight" && MGCompat.Op.Imp((Object)(object)AI) && !buff.IsItBuff && !ApplierIsAI)
 		{
 			BattleProcessor.instance.isEmperorAnnoyed = true;
 		}
-		if (ProgressManager.instance.EmpDemand == "Fair fight" && !Object.op_Implicit((Object)(object)AI) && buff.IsItBuff && !ApplierIsAI)
+		if (ProgressManager.instance.EmpDemand == "Fair fight" && !MGCompat.Op.Imp((Object)(object)AI) && buff.IsItBuff && !ApplierIsAI)
 		{
 			BattleProcessor.instance.isEmperorAnnoyed = true;
 		}
-		if (ProgressManager.instance.EmpDesire == "Enhancements" && !Object.op_Implicit((Object)(object)AI))
+		if (ProgressManager.instance.EmpDesire == "Enhancements" && !MGCompat.Op.Imp((Object)(object)AI))
 		{
 			int num = 0;
 			foreach (Buff buff4 in Buffs)
@@ -11789,7 +11792,7 @@ public class EnemyBattler : MonoBehaviour
 				BattleProcessor.instance.CompleteDesire();
 			}
 		}
-		if (!(ProgressManager.instance.EmpDesire == "Ailments") || !Object.op_Implicit((Object)(object)AI))
+		if (!(ProgressManager.instance.EmpDesire == "Ailments") || !MGCompat.Op.Imp((Object)(object)AI))
 		{
 			return;
 		}
@@ -11930,7 +11933,7 @@ public class EnemyBattler : MonoBehaviour
 			RemainingMoves--;
 		}
 		MovesTaken++;
-		if (MovesTaken >= 6 && !Object.op_Implicit((Object)(object)AI) && ProgressManager.instance.EmpDesire == "Sprinting")
+		if (MovesTaken >= 6 && !MGCompat.Op.Imp((Object)(object)AI) && ProgressManager.instance.EmpDesire == "Sprinting")
 		{
 			BattleProcessor.instance.CompleteDesire();
 		}
@@ -12117,7 +12120,7 @@ public class EnemyBattler : MonoBehaviour
 			translation = translation.Replace("<CHAR>", ThisCharacter.Charname);
 			CombatLog.instance.WriteLog("<color=#725407>" + translation + "</color>");
 		}
-		else if (Random.Range(0, 100) < ThisCharacter.KnockbackResistance.GetValue())
+		else if (UnityEngine.Random.Range(0, 100) < ThisCharacter.KnockbackResistance.GetValue())
 		{
 			string translation = LocalizationManager.GetTranslation("LOG/LOG_kbresist");
 			translation = translation.Replace("<CHAR>", ThisCharacter.Charname);
@@ -12206,7 +12209,7 @@ public class EnemyBattler : MonoBehaviour
 						ShowInLog = 0,
 						HitAnimation = "none"
 					};
-					if (ProgressManager.instance.EmpDesire == "Collateral damage" && Object.op_Implicit((Object)(object)AI))
+					if (ProgressManager.instance.EmpDesire == "Collateral damage" && MGCompat.Op.Imp((Object)(object)AI))
 					{
 						BattleProcessor.instance.CompleteDesire();
 					}
@@ -12221,11 +12224,11 @@ public class EnemyBattler : MonoBehaviour
 			{
 				yield return null;
 			}
-			if (ProgressManager.instance.EmpDesire == "Assisted flight" && Object.op_Implicit((Object)(object)AI) && howFar >= 3)
+			if (ProgressManager.instance.EmpDesire == "Assisted flight" && MGCompat.Op.Imp((Object)(object)AI) && howFar >= 3)
 			{
 				BattleProcessor.instance.CompleteDesire();
 			}
-			if (Object.op_Implicit((Object)(object)AI) & (howFar >= 10))
+			if (MGCompat.Op.Imp((Object)(object)AI) & (howFar >= 10))
 			{
 				SteamAchievements.instance.UnlockSteamAchievement("ACH_BigKB");
 			}
@@ -12562,7 +12565,7 @@ public class EnemyBattler : MonoBehaviour
 			return false;
 		}
 		UpdateBar();
-		if (ProgressManager.instance.EmpDesire == "Close call" && !Object.op_Implicit((Object)(object)AI) && ThisCharacter.CurrentHP >= 1 && ThisCharacter.CurrentHP < 4)
+		if (ProgressManager.instance.EmpDesire == "Close call" && !MGCompat.Op.Imp((Object)(object)AI) && ThisCharacter.CurrentHP >= 1 && ThisCharacter.CurrentHP < 4)
 		{
 			BattleProcessor.instance.CompleteDesire();
 		}
@@ -13424,7 +13427,7 @@ public class EventController : MonoBehaviour
 				}
 				else if (RosterManager.instance.Roster.Count > 0)
 				{
-					AffectedCharacter = RosterManager.instance.Roster[Random.Range(0, RosterManager.instance.Roster.Count)];
+					AffectedCharacter = RosterManager.instance.Roster[UnityEngine.Random.Range(0, RosterManager.instance.Roster.Count)];
 				}
 			}
 			if (ProgressManager.instance.NextEvent != null)
@@ -13432,12 +13435,12 @@ public class EventController : MonoBehaviour
 				NextEvent = ProgressManager.instance.NextEvent;
 				ProgressManager.instance.NextEvent = null;
 			}
-			if (NextEvent == null && ProgressManager.instance.UnlockedSpecialEvents.Count > 0 && Random.Range(0, 100) < ChangingVariables.instance.SpecialQuestActivationChance)
+			if (NextEvent == null && ProgressManager.instance.UnlockedSpecialEvents.Count > 0 && UnityEngine.Random.Range(0, 100) < ChangingVariables.instance.SpecialQuestActivationChance)
 			{
 				int num = 0;
 				while (true)
 				{
-					NextEvent = ProgressManager.instance.UnlockedSpecialEvents[Random.Range(0, ProgressManager.instance.UnlockedSpecialEvents.Count)];
+					NextEvent = ProgressManager.instance.UnlockedSpecialEvents[UnityEngine.Random.Range(0, ProgressManager.instance.UnlockedSpecialEvents.Count)];
 					if (CheckUniqueRequirements(NextEvent.Title))
 					{
 						ProgressManager.instance.UnlockedSpecialEvents.Remove(NextEvent);
@@ -13545,7 +13548,7 @@ public class EventController : MonoBehaviour
 				}
 				else if (RosterManager.instance.Roster.Count > 0)
 				{
-					AffectedCharacter = RosterManager.instance.Roster[Random.Range(0, RosterManager.instance.Roster.Count)];
+					AffectedCharacter = RosterManager.instance.Roster[UnityEngine.Random.Range(0, RosterManager.instance.Roster.Count)];
 				}
 			}
 			if (ProgressManager.instance.NextEvent != null)
@@ -13553,12 +13556,12 @@ public class EventController : MonoBehaviour
 				NextEvent = ProgressManager.instance.NextEvent;
 				ProgressManager.instance.NextEvent = null;
 			}
-			if (NextEvent == null && ProgressManager.instance.UnlockedSpecialEvents.Count > 0 && Random.Range(0, 100) < ChangingVariables.instance.SpecialQuestActivationChance)
+			if (NextEvent == null && ProgressManager.instance.UnlockedSpecialEvents.Count > 0 && UnityEngine.Random.Range(0, 100) < ChangingVariables.instance.SpecialQuestActivationChance)
 			{
 				int num = 0;
 				while (true)
 				{
-					NextEvent = ProgressManager.instance.UnlockedSpecialEvents[Random.Range(0, ProgressManager.instance.UnlockedSpecialEvents.Count)];
+					NextEvent = ProgressManager.instance.UnlockedSpecialEvents[UnityEngine.Random.Range(0, ProgressManager.instance.UnlockedSpecialEvents.Count)];
 					if (CheckUniqueRequirements(NextEvent.Title))
 					{
 						ProgressManager.instance.UnlockedSpecialEvents.Remove(NextEvent);
@@ -13832,12 +13835,12 @@ public class EventController : MonoBehaviour
 			{
 				num = ((!(NextEvent.Choice3SuccessText != "")) ? 2 : 3);
 			}
-			ChoiceNumber = Random.Range(1, num + 1);
+			ChoiceNumber = UnityEngine.Random.Range(1, num + 1);
 		}
 		else if (NextEvent.QuestStaticAction == "RANDOMCHOICEWITHDECLINE" && ChoiceNumber != 2)
 		{
 			int num2 = ((!(NextEvent.Choice4SuccessText != "")) ? 2 : 3);
-			ChoiceNumber = Random.Range(1, num2 + 1);
+			ChoiceNumber = UnityEngine.Random.Range(1, num2 + 1);
 			if (ChoiceNumber > 1)
 			{
 				ChoiceNumber++;
@@ -13847,7 +13850,7 @@ public class EventController : MonoBehaviour
 		switch (ChoiceNumber)
 		{
 		case 1:
-			if (Random.Range(0, 100) < NextEvent.Choice1SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
+			if (UnityEngine.Random.Range(0, 100) < NextEvent.Choice1SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
 			{
 				ChoiceAction = NextEvent.Choice1SuccessAction;
 				ChoiceValue = NextEvent.Choice1SuccessValue;
@@ -13863,7 +13866,7 @@ public class EventController : MonoBehaviour
 			ChoiceStaticActionValue = NextEvent.Choice1StaticActionValue;
 			break;
 		case 2:
-			if (Random.Range(0, 100) < NextEvent.Choice2SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
+			if (UnityEngine.Random.Range(0, 100) < NextEvent.Choice2SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
 			{
 				ChoiceAction = NextEvent.Choice2SuccessAction;
 				ChoiceValue = NextEvent.Choice2SuccessValue;
@@ -13879,7 +13882,7 @@ public class EventController : MonoBehaviour
 			ChoiceStaticActionValue = NextEvent.Choice2StaticActionValue;
 			break;
 		case 3:
-			if (Random.Range(0, 100) < NextEvent.Choice3SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
+			if (UnityEngine.Random.Range(0, 100) < NextEvent.Choice3SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
 			{
 				ChoiceAction = NextEvent.Choice3SuccessAction;
 				ChoiceValue = NextEvent.Choice3SuccessValue;
@@ -13895,7 +13898,7 @@ public class EventController : MonoBehaviour
 			ChoiceStaticActionValue = NextEvent.Choice3StaticActionValue;
 			break;
 		case 4:
-			if (Random.Range(0, 100) < NextEvent.Choice4SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
+			if (UnityEngine.Random.Range(0, 100) < NextEvent.Choice4SuccessChance + ProgressManager.instance.EventLuckBonusTotal)
 			{
 				ChoiceAction = NextEvent.Choice4SuccessAction;
 				ChoiceValue = NextEvent.Choice4SuccessValue;
@@ -14077,7 +14080,7 @@ public class EventController : MonoBehaviour
 			val47.GetComponent<EventRewardSlot>().RewardType = Action;
 			val47.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val47.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val47.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val47.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			((Component)val47.transform.Find("RewardIcon")).GetComponent<Image>().sprite = GoldReward;
 			switch (ActionValue)
 			{
@@ -14103,7 +14106,7 @@ public class EventController : MonoBehaviour
 			GameObject val33 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val33.GetComponent<EventRewardSlot>().RewardType = Action;
 			val33.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val33.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val33.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val33.GetComponent<EventRewardSlot>().RewardItem = item;
 			((Component)val33.transform.Find("RewardIcon")).GetComponent<Image>().sprite = item.icon;
 			InventoryManager.instance.AddToInventory(item);
@@ -14121,7 +14124,7 @@ public class EventController : MonoBehaviour
 			GameObject val25 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val25.GetComponent<EventRewardSlot>().RewardType = Action;
 			val25.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val25.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val25.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val25.GetComponent<EventRewardSlot>().RewardItem = equipment2;
 			((Component)val25.transform.Find("RewardIcon")).GetComponent<Image>().sprite = equipment2.icon;
 			InventoryManager.instance.AddToInventory(equipment2);
@@ -14139,7 +14142,7 @@ public class EventController : MonoBehaviour
 			GameObject val48 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val48.GetComponent<EventRewardSlot>().RewardType = Action;
 			val48.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val48.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val48.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val48.GetComponent<EventRewardSlot>().RewardCharacter = characterTemplate7;
 			((Component)val48.transform.Find("RewardIcon")).GetComponent<Image>().sprite = characterTemplate7.Sprite;
 			if (ProgressManager.instance.IsThereRoomInTeam())
@@ -14173,7 +14176,7 @@ public class EventController : MonoBehaviour
 			GameObject val35 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val35.GetComponent<EventRewardSlot>().RewardType = Action;
 			val35.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val35.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val35.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val35.GetComponent<EventRewardSlot>().RewardCharacter = characterTemplate5;
 			((Component)val35.transform.Find("RewardIcon")).GetComponent<Image>().sprite = characterTemplate5.Sprite;
 			if (ProgressManager.instance.IsThereRoomInTeam())
@@ -14203,7 +14206,7 @@ public class EventController : MonoBehaviour
 			GameObject val40 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val40.GetComponent<EventRewardSlot>().RewardType = "REWARDCHARACTER";
 			val40.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val40.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val40.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val40.GetComponent<EventRewardSlot>().RewardCharacter = characterTemplate6;
 			((Component)val40.transform.Find("RewardIcon")).GetComponent<Image>().sprite = characterTemplate6.Sprite;
 			if (ProgressManager.instance.IsThereRoomInTeam())
@@ -14231,7 +14234,7 @@ public class EventController : MonoBehaviour
 			GameObject val34 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val34.GetComponent<EventRewardSlot>().RewardType = Action;
 			val34.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val34.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val34.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val34.GetComponent<EventRewardSlot>().RewardItem = equipment5;
 			((Component)val34.transform.Find("RewardIcon")).GetComponent<Image>().sprite = equipment5.icon;
 			InventoryManager.instance.AddToInventory(equipment5);
@@ -14248,7 +14251,7 @@ public class EventController : MonoBehaviour
 			GameObject val31 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val31.GetComponent<EventRewardSlot>().RewardType = Action;
 			val31.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val31.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val31.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val31.GetComponent<EventRewardSlot>().RewardItem = equipment4;
 			((Component)val31.transform.Find("RewardIcon")).GetComponent<Image>().sprite = equipment4.icon;
 			InventoryManager.instance.AddToInventory(equipment4);
@@ -14265,7 +14268,7 @@ public class EventController : MonoBehaviour
 			GameObject val28 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val28.GetComponent<EventRewardSlot>().RewardType = Action;
 			val28.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val28.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val28.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val28.GetComponent<EventRewardSlot>().RewardItem = equipment3;
 			((Component)val28.transform.Find("RewardIcon")).GetComponent<Image>().sprite = equipment3.icon;
 			InventoryManager.instance.AddToInventory(equipment3);
@@ -14276,7 +14279,7 @@ public class EventController : MonoBehaviour
 			GameObject val15 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val15.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 			val15.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val15.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val15.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val15.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val15.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val15.GetComponent<EventRewardSlot>().RewardValueHelper = AffectedCharacter.GainRandomStat(ActionValue);
@@ -14288,7 +14291,7 @@ public class EventController : MonoBehaviour
 			GameObject val14 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val14.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 			val14.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val14.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val14.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val14.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val14.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val14.GetComponent<EventRewardSlot>().RewardValueHelper = AffectedCharacter.GainRandomStat(ActionValue, 0);
@@ -14300,7 +14303,7 @@ public class EventController : MonoBehaviour
 			GameObject val21 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val21.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 			val21.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val21.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val21.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val21.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val21.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val21.GetComponent<EventRewardSlot>().RewardValueHelper = AffectedCharacter.GainRandomStat(ActionValue, 1);
@@ -14312,7 +14315,7 @@ public class EventController : MonoBehaviour
 			GameObject val10 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val10.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 			val10.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val10.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val10.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val10.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val10.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val10.GetComponent<EventRewardSlot>().RewardValueHelper = AffectedCharacter.GainRandomStat(ActionValue, 2);
@@ -14324,7 +14327,7 @@ public class EventController : MonoBehaviour
 			GameObject val9 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val9.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 			val9.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val9.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val9.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val9.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val9.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val9.GetComponent<EventRewardSlot>().RewardValueHelper = AffectedCharacter.GainRandomStat(ActionValue, 3);
@@ -14336,7 +14339,7 @@ public class EventController : MonoBehaviour
 			GameObject val12 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val12.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 			val12.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val12.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val12.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val12.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val12.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val12.GetComponent<EventRewardSlot>().RewardValueHelper = AffectedCharacter.GainRandomStat(ActionValue, 4);
@@ -14351,7 +14354,7 @@ public class EventController : MonoBehaviour
 					GameObject val56 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val56.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 					val56.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val56.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+					((Graphic)((Component)val56.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 					val56.GetComponent<EventRewardSlot>().RewardCharacter = item2;
 					val56.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					val56.GetComponent<EventRewardSlot>().RewardValueHelper = item2.GainRandomStat(ActionValue);
@@ -14367,7 +14370,7 @@ public class EventController : MonoBehaviour
 					GameObject val55 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val55.GetComponent<EventRewardSlot>().RewardType = "REDUCED";
 					val55.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val55.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+					((Graphic)((Component)val55.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 					val55.GetComponent<EventRewardSlot>().RewardCharacter = item3;
 					val55.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					val55.GetComponent<EventRewardSlot>().RewardValueHelper = item3.LoseRandomStat(ActionValue, 0);
@@ -14383,7 +14386,7 @@ public class EventController : MonoBehaviour
 					GameObject val52 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val52.GetComponent<EventRewardSlot>().RewardType = "REDUCED";
 					val52.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val52.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+					((Graphic)((Component)val52.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 					val52.GetComponent<EventRewardSlot>().RewardCharacter = item4;
 					val52.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					val52.GetComponent<EventRewardSlot>().RewardValueHelper = item4.LoseRandomStat(ActionValue, 2);
@@ -14399,7 +14402,7 @@ public class EventController : MonoBehaviour
 					GameObject val51 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val51.GetComponent<EventRewardSlot>().RewardType = "REDUCED";
 					val51.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val51.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+					((Graphic)((Component)val51.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 					val51.GetComponent<EventRewardSlot>().RewardCharacter = item5;
 					val51.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					val51.GetComponent<EventRewardSlot>().RewardValueHelper = item5.LoseRandomStat(ActionValue, 4);
@@ -14418,7 +14421,7 @@ public class EventController : MonoBehaviour
 			GameObject val45 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val45.GetComponent<EventRewardSlot>().RewardType = "REWARDPERK";
 			val45.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val45.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val45.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val45.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val45.GetComponent<EventRewardSlot>().RewardValueHelper = LocalizationManager.GetTermTranslation("PERK/PERK_" + perk.name);
 			((Component)val45.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14430,7 +14433,7 @@ public class EventController : MonoBehaviour
 			GameObject val46 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val46.GetComponent<EventRewardSlot>().RewardType = "INJURED";
 			val46.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val46.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val46.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val46.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val46.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			((Component)val46.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14442,7 +14445,7 @@ public class EventController : MonoBehaviour
 			GameObject val42 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val42.GetComponent<EventRewardSlot>().RewardType = "DEAD";
 			val42.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val42.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val42.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val42.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val42.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			break;
@@ -14456,7 +14459,7 @@ public class EventController : MonoBehaviour
 					GameObject val41 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val41.GetComponent<EventRewardSlot>().RewardType = "INJURED";
 					val41.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val41.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+					((Graphic)((Component)val41.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 					val41.GetComponent<EventRewardSlot>().RewardCharacter = item6;
 					val41.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					((Component)val41.transform.Find("RewardIcon")).GetComponent<Image>().sprite = item6.Sprite;
@@ -14470,7 +14473,7 @@ public class EventController : MonoBehaviour
 			val39.GetComponent<EventRewardSlot>().RewardType = "REWARDTITLE";
 			val39.GetComponent<EventRewardSlot>().RewardValueHelper = LocalizationManager.GetTranslation("TITLE/TITLE_" + AffectedCharacter.Title);
 			val39.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val39.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val39.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val39.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val39.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			break;
@@ -14482,7 +14485,7 @@ public class EventController : MonoBehaviour
 			GameObject val36 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val36.GetComponent<EventRewardSlot>().RewardType = Action;
 			val36.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val36.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val36.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val36.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val36.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			if (ProgressManager.instance.IsThereRoomInTeam())
@@ -14506,7 +14509,7 @@ public class EventController : MonoBehaviour
 						GameObject val29 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 						val29.GetComponent<EventRewardSlot>().RewardType = "HEALED";
 						val29.transform.SetParent(RewardsPanel, false);
-						((Graphic)((Component)val29.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+						((Graphic)((Component)val29.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 						val29.GetComponent<EventRewardSlot>().RewardCharacter = item7;
 						val29.GetComponent<EventRewardSlot>().RewardValue = num3;
 						((Component)val29.transform.Find("RewardIcon")).GetComponent<Image>().sprite = item7.Sprite;
@@ -14539,7 +14542,7 @@ public class EventController : MonoBehaviour
 			GameObject val22 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val22.GetComponent<EventRewardSlot>().RewardType = "RANDOMIZEDSKILLS";
 			val22.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val22.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)235, (byte)235, (byte)75, byte.MaxValue));
+			((Graphic)((Component)val22.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)235, (byte)235, (byte)75, byte.MaxValue));
 			val22.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val22.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			break;
@@ -14558,7 +14561,7 @@ public class EventController : MonoBehaviour
 			GameObject val13 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val13.GetComponent<EventRewardSlot>().RewardType = "BOOSTEDSKILLSENEMY";
 			val13.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val13.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val13.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val13.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val13.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			break;
@@ -14569,7 +14572,7 @@ public class EventController : MonoBehaviour
 			GameObject val11 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val11.GetComponent<EventRewardSlot>().RewardType = "RANDOMIZEDSTATS";
 			val11.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val11.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)235, (byte)235, (byte)75, byte.MaxValue));
+			((Graphic)((Component)val11.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)235, (byte)235, (byte)75, byte.MaxValue));
 			val11.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val11.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			((Component)val11.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14582,12 +14585,12 @@ public class EventController : MonoBehaviour
 			val4.transform.SetParent(RewardsPanel, false);
 			if (ActionValue > 0)
 			{
-				((Graphic)((Component)val4.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+				((Graphic)((Component)val4.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 				val4.GetComponent<EventRewardSlot>().RewardType = "INCREASELUCK";
 			}
 			else
 			{
-				((Graphic)((Component)val4.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+				((Graphic)((Component)val4.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 				val4.GetComponent<EventRewardSlot>().RewardType = "DECREASELUCK";
 			}
 			val4.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
@@ -14601,7 +14604,7 @@ public class EventController : MonoBehaviour
 			val3.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val3.transform.SetParent(RewardsPanel, false);
 			((Component)val3.transform.Find("RewardIcon")).GetComponent<Image>().sprite = GoldReward;
-			((Graphic)((Component)val3.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val3.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			ProgressManager.instance.ChangeGold(-ActionValue);
 			break;
 		}
@@ -14612,12 +14615,12 @@ public class EventController : MonoBehaviour
 			val53.GetComponent<EventRewardSlot>().RewardType = "REWARDGOLD";
 			val53.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val53.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val53.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val53.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			((Component)val53.transform.Find("RewardIcon")).GetComponent<Image>().sprite = GoldReward;
 			ProgressManager.instance.ChangeGold(ActionValue);
 			GameObject val54 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val54.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val54.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val54.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val54.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val54.GetComponent<EventRewardSlot>().RewardValue = 1;
 			((Component)val54.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14640,12 +14643,12 @@ public class EventController : MonoBehaviour
 			val49.GetComponent<EventRewardSlot>().RewardType = "REWARDGOLD";
 			val49.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val49.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val49.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val49.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			((Component)val49.transform.Find("RewardIcon")).GetComponent<Image>().sprite = GoldReward;
 			ProgressManager.instance.ChangeGold(ActionValue);
 			GameObject val50 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val50.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val50.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val50.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val50.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val50.GetComponent<EventRewardSlot>().RewardValue = 2;
 			((Component)val50.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14672,12 +14675,12 @@ public class EventController : MonoBehaviour
 			val43.GetComponent<EventRewardSlot>().RewardType = "REWARDGOLD";
 			val43.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val43.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val43.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val43.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			((Component)val43.transform.Find("RewardIcon")).GetComponent<Image>().sprite = GoldReward;
 			ProgressManager.instance.ChangeGold(ActionValue);
 			GameObject val44 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val44.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val44.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val44.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val44.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val44.GetComponent<EventRewardSlot>().RewardValue = 3;
 			((Component)val44.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14704,12 +14707,12 @@ public class EventController : MonoBehaviour
 			val37.GetComponent<EventRewardSlot>().RewardType = "REWARDGOLD";
 			val37.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			val37.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val37.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val37.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			((Component)val37.transform.Find("RewardIcon")).GetComponent<Image>().sprite = GoldReward;
 			ProgressManager.instance.ChangeGold(ActionValue);
 			GameObject val38 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val38.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val38.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val38.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val38.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val38.GetComponent<EventRewardSlot>().RewardValue = 4;
 			((Component)val38.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14754,7 +14757,7 @@ public class EventController : MonoBehaviour
 			}
 			GameObject val32 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val32.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val32.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val32.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val32.GetComponent<EventRewardSlot>().RewardCharacter = characterTemplate4;
 			((Component)val32.transform.Find("RewardIcon")).GetComponent<Image>().sprite = characterTemplate4.Sprite;
 			val32.GetComponent<EventRewardSlot>().RewardType = "PUNISHENEMYBOSS";
@@ -14779,7 +14782,7 @@ public class EventController : MonoBehaviour
 				ProgressManager.instance.EnemyTeam.Add(characterTemplate3);
 				GameObject val30 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 				val30.transform.SetParent(RewardsPanel, false);
-				((Graphic)((Component)val30.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+				((Graphic)((Component)val30.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 				val30.GetComponent<EventRewardSlot>().RewardCharacter = characterTemplate3;
 				((Component)val30.transform.Find("RewardIcon")).GetComponent<Image>().sprite = characterTemplate3.Sprite;
 				val30.GetComponent<EventRewardSlot>().RewardType = "PUNISHENEMYBOSS";
@@ -14791,7 +14794,7 @@ public class EventController : MonoBehaviour
 			AffectedCharacter.CauseInjuryInTown(ActionValue);
 			GameObject val27 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val27.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val27.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val27.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val27.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val27.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			((Component)val27.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14811,7 +14814,7 @@ public class EventController : MonoBehaviour
 			AffectedCharacter.CauseInjuryInTown(ActionValue);
 			GameObject val26 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val26.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val26.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val26.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val26.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			val26.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 			((Component)val26.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
@@ -14833,7 +14836,7 @@ public class EventController : MonoBehaviour
 					item10.CauseInjuryInTown(ActionValue);
 					GameObject val23 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val23.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val23.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+					((Graphic)((Component)val23.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 					val23.GetComponent<EventRewardSlot>().RewardCharacter = item10;
 					val23.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					((Component)val23.transform.Find("RewardIcon")).GetComponent<Image>().sprite = item10.Sprite;
@@ -14849,7 +14852,7 @@ public class EventController : MonoBehaviour
 				item11.CauseInjuryInTown(ActionValue);
 				GameObject val24 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 				val24.transform.SetParent(RewardsPanel, false);
-				((Graphic)((Component)val24.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+				((Graphic)((Component)val24.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 				val24.GetComponent<EventRewardSlot>().RewardCharacter = item11;
 				val24.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 				((Component)val24.transform.Find("RewardIcon")).GetComponent<Image>().sprite = item11.Sprite;
@@ -14872,7 +14875,7 @@ public class EventController : MonoBehaviour
 					item12.CauseInjuryInTown(ActionValue);
 					GameObject val19 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val19.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val19.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+					((Graphic)((Component)val19.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 					val19.GetComponent<EventRewardSlot>().RewardCharacter = item12;
 					val19.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					((Component)val19.transform.Find("RewardIcon")).GetComponent<Image>().sprite = item12.Sprite;
@@ -14888,7 +14891,7 @@ public class EventController : MonoBehaviour
 				item13.CauseInjuryInTown(ActionValue);
 				GameObject val20 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 				val20.transform.SetParent(RewardsPanel, false);
-				((Graphic)((Component)val20.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+				((Graphic)((Component)val20.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 				val20.GetComponent<EventRewardSlot>().RewardCharacter = item13;
 				val20.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 				((Component)val20.transform.Find("RewardIcon")).GetComponent<Image>().sprite = item13.Sprite;
@@ -14901,7 +14904,7 @@ public class EventController : MonoBehaviour
 			ProgressManager.instance.PermanentlyKillUnit(AffectedCharacter);
 			GameObject val18 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val18.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val18.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val18.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val18.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val18.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			val18.GetComponent<EventRewardSlot>().RewardType = "DEAD";
@@ -14913,7 +14916,7 @@ public class EventController : MonoBehaviour
 			ProgressManager.instance.PermanentlyKillUnit(AffectedCharacter, DestroyGear: true, Retired: true);
 			GameObject val17 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val17.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val17.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val17.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val17.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val17.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			val17.GetComponent<EventRewardSlot>().RewardType = "ABANDON";
@@ -14924,7 +14927,7 @@ public class EventController : MonoBehaviour
 			ProgressManager.instance.PermanentlyKillUnit(AffectedCharacter, DestroyGear: false, Retired: true);
 			GameObject val16 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val16.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val16.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val16.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val16.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val16.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			val16.GetComponent<EventRewardSlot>().RewardType = "RETIRED";
@@ -14947,7 +14950,7 @@ public class EventController : MonoBehaviour
 			ProgressManager.instance.PermanentlyKillUnit(randomTeamMember);
 			GameObject val6 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val6.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val6.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val6.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val6.GetComponent<EventRewardSlot>().RewardCharacter = randomTeamMember;
 			((Component)val6.transform.Find("RewardIcon")).GetComponent<Image>().sprite = randomTeamMember.Sprite;
 			val6.GetComponent<EventRewardSlot>().RewardType = "DEAD";
@@ -14956,7 +14959,7 @@ public class EventController : MonoBehaviour
 				ProgressManager.instance.PermanentlyKillUnit(characterTemplate);
 				GameObject val7 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 				val7.transform.SetParent(RewardsPanel, false);
-				((Graphic)((Component)val7.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+				((Graphic)((Component)val7.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 				val7.GetComponent<EventRewardSlot>().RewardCharacter = characterTemplate;
 				((Component)val7.transform.Find("RewardIcon")).GetComponent<Image>().sprite = characterTemplate.Sprite;
 				val7.GetComponent<EventRewardSlot>().RewardType = "DEAD";
@@ -14981,7 +14984,7 @@ public class EventController : MonoBehaviour
 			ProgressManager.instance.AddToTeam(characterTemplate2);
 			GameObject val8 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val8.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val8.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val8.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val8.GetComponent<EventRewardSlot>().RewardCharacter = characterTemplate2;
 			((Component)val8.transform.Find("RewardIcon")).GetComponent<Image>().sprite = characterTemplate2.Sprite;
 			val8.GetComponent<EventRewardSlot>().RewardType = "RITUALGAINBOSS";
@@ -14995,7 +14998,7 @@ public class EventController : MonoBehaviour
 					GameObject val5 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 					val5.GetComponent<EventRewardSlot>().RewardType = "IMPROVED";
 					val5.transform.SetParent(RewardsPanel, false);
-					((Graphic)((Component)val5.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+					((Graphic)((Component)val5.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 					val5.GetComponent<EventRewardSlot>().RewardCharacter = item15;
 					val5.GetComponent<EventRewardSlot>().RewardValue = ActionValue;
 					val5.GetComponent<EventRewardSlot>().RewardValueHelper = item15.GainRandomStat(ActionValue);
@@ -15015,14 +15018,14 @@ public class EventController : MonoBehaviour
 			GameObject val = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val.GetComponent<EventRewardSlot>().RewardType = "REWARDEQUIPMENT";
 			val.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			val.GetComponent<EventRewardSlot>().RewardItem = equipment;
 			((Component)val.transform.Find("RewardIcon")).GetComponent<Image>().sprite = equipment.icon;
 			InventoryManager.instance.AddToInventory(equipment);
 			ProgressManager.instance.PermanentlyKillUnit(AffectedCharacter);
 			GameObject val2 = Object.Instantiate<GameObject>(EventRewardSlotPrefab);
 			val2.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val2.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
+			((Graphic)((Component)val2.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)122, (byte)122, byte.MaxValue));
 			val2.GetComponent<EventRewardSlot>().RewardCharacter = AffectedCharacter;
 			((Component)val2.transform.Find("RewardIcon")).GetComponent<Image>().sprite = AffectedCharacter.Sprite;
 			val2.GetComponent<EventRewardSlot>().RewardType = "DEAD";
@@ -15036,7 +15039,7 @@ public class EventController : MonoBehaviour
 			val57.GetComponent<EventRewardSlot>().RewardType = "REWARDSPACEFULL";
 			val57.GetComponent<EventRewardSlot>().RewardValue = num6;
 			val57.transform.SetParent(RewardsPanel, false);
-			((Graphic)((Component)val57.transform).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
+			((Graphic)((Component)val57.transform).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)125, (byte)220, (byte)125, byte.MaxValue));
 			((Component)val57.transform.Find("RewardIcon")).GetComponent<Image>().sprite = GoldReward;
 			ProgressManager.instance.ChangeGold(num6);
 		}
@@ -15113,7 +15116,7 @@ public class EventController : MonoBehaviour
 			}
 			else
 			{
-				AffectedCharacter = ProgressManager.instance.DeadHeroes[Random.Range(0, ProgressManager.instance.DeadHeroes.Count)];
+				AffectedCharacter = ProgressManager.instance.DeadHeroes[UnityEngine.Random.Range(0, ProgressManager.instance.DeadHeroes.Count)];
 			}
 			break;
 		case "Tending To The Broken":
@@ -15127,7 +15130,7 @@ public class EventController : MonoBehaviour
 			}
 			break;
 		case "An Original Coctail":
-			AffectedCharacter = ProgressManager.instance.EnemyTeam[Random.Range(0, ProgressManager.instance.EnemyTeam.Count)];
+			AffectedCharacter = ProgressManager.instance.EnemyTeam[UnityEngine.Random.Range(0, ProgressManager.instance.EnemyTeam.Count)];
 			break;
 		case "Shady Services":
 			if (ProgressManager.instance.EnemyTeam.Count < 2)
@@ -15140,7 +15143,7 @@ public class EventController : MonoBehaviour
 			}
 			else
 			{
-				AffectedCharacter = ProgressManager.instance.EnemyTeam[Random.Range(0, ProgressManager.instance.EnemyTeam.Count)];
+				AffectedCharacter = ProgressManager.instance.EnemyTeam[UnityEngine.Random.Range(0, ProgressManager.instance.EnemyTeam.Count)];
 			}
 			break;
 		case "Fame With A Price":
@@ -15256,7 +15259,7 @@ public class EventController : MonoBehaviour
 				}
 				else if (RosterManager.instance.Roster.Count > 0)
 				{
-					AffectedCharacter = RosterManager.instance.Roster[Random.Range(0, RosterManager.instance.Roster.Count)];
+					AffectedCharacter = RosterManager.instance.Roster[UnityEngine.Random.Range(0, RosterManager.instance.Roster.Count)];
 				}
 				num++;
 				if (num > 20)
@@ -15372,7 +15375,7 @@ public class EventController : MonoBehaviour
 		}
 		foreach (KeyValuePair<GameObject, float> FadeIn in FadeInList)
 		{
-			if (Object.op_Implicit((Object)(object)FadeIn.Key.GetComponent<Button>()))
+			if (MGCompat.Op.Imp((Object)(object)FadeIn.Key.GetComponent<Button>()))
 			{
 				((Selectable)FadeIn.Key.GetComponent<Button>()).interactable = true;
 			}
@@ -15612,7 +15615,7 @@ public class FloatingCombatText : MonoBehaviour
 			break;
 		}
 		floatingTextEntry.SetText(text, color, size);
-		((Component)floatingTextEntry).transform.localPosition = Vector2.op_Implicit(GetUnitPositionOnCanvas(Vector2.op_Implicit(position + val)));
+		((Component)floatingTextEntry).transform.localPosition = MGCompat.Op.Imp(GetUnitPositionOnCanvas(MGCompat.Op.Imp(position + val)));
 		((MonoBehaviour)this).StartCoroutine(floatingTextEntry.ShowText(0.8f, increaseSize));
 		yield return (object)new WaitForSeconds(0.3f);
 		EntityList.Remove(Entity);
@@ -15627,9 +15630,9 @@ public class FloatingCombatText : MonoBehaviour
 		//IL_0015: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0020: Unknown result type (might be due to invalid IL or missing references)
 		//IL_002a: Unknown result type (might be due to invalid IL or missing references)
-		Vector2 val = Vector2.op_Implicit(Camera.main.WorldToScreenPoint(Vector2.op_Implicit(position)));
+		Vector2 val = MGCompat.Op.Imp(Camera.main.WorldToScreenPoint(MGCompat.Op.Imp(position)));
 		Vector2 result = default(Vector2);
-		RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.instance.TooltipCanvasRectTransform, val, (Camera)null, ref result);
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.instance.TooltipCanvasRectTransform, val, (Camera)null, out result);
 		return result;
 	}
 }
@@ -18465,7 +18468,7 @@ public class MapManager : MonoBehaviour
 		settings.location = ES3.Location.Resources;
 		if (random)
 		{
-			counter = Random.Range(0, CountMaps(save: false));
+			counter = UnityEngine.Random.Range(0, CountMaps(save: false));
 		}
 		string filePath = "Map" + counter + ".bytes";
 		LayerDictionary = ES3.Load<Dictionary<Vector3Int, TileBase>>("Base", filePath, settings);
@@ -18543,8 +18546,8 @@ public class MapManager : MonoBehaviour
 		//IL_0058: Unknown result type (might be due to invalid IL or missing references)
 		LayerDictionary = new Dictionary<Vector3Int, TileBase>();
 		BoundsInt cellBounds = tilemap.cellBounds;
-		PositionEnumerator allPositionsWithin = cellBounds.allPositionsWithin;
-		PositionEnumerator enumerator = allPositionsWithin.GetEnumerator();
+		BoundsInt.PositionEnumerator allPositionsWithin = cellBounds.allPositionsWithin;
+		BoundsInt.PositionEnumerator enumerator = allPositionsWithin.GetEnumerator();
 		try
 		{
 			while (enumerator.MoveNext())
@@ -18735,32 +18738,32 @@ public class GlowEffect : MonoBehaviour
 		//IL_00c4: Unknown result type (might be due to invalid IL or missing references)
 		//IL_00c9: Unknown result type (might be due to invalid IL or missing references)
 		startPosition = ((Component)this).transform.position;
-		glowSpeed = Random.Range(0.25f, 0.5f);
-		moveSpeed = Random.Range(0.25f, 0.5f);
+		glowSpeed = UnityEngine.Random.Range(0.25f, 0.5f);
+		moveSpeed = UnityEngine.Random.Range(0.25f, 0.5f);
 		growSpeed = 0.6f;
 		sizeIncrease = 1.2f;
-		moveIncrease = Random.Range(7f, 20f);
+		moveIncrease = UnityEngine.Random.Range(7f, 20f);
 		switch (rarity)
 		{
 		case Rarity.Legendary:
 			GlowColor1 = new Color32((byte)250, (byte)150, (byte)0, (byte)50);
 			GlowColor2 = new Color32((byte)230, (byte)200, (byte)0, (byte)250);
-			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = Color32.op_Implicit(GlowColor2);
+			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = MGCompat.Op.Imp(GlowColor2);
 			break;
 		case Rarity.Epic:
 			GlowColor1 = new Color32((byte)250, (byte)10, (byte)200, (byte)50);
 			GlowColor2 = new Color32((byte)200, (byte)0, (byte)230, (byte)250);
-			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = Color32.op_Implicit(GlowColor2);
+			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = MGCompat.Op.Imp(GlowColor2);
 			break;
 		case Rarity.Rare:
 			GlowColor1 = new Color32((byte)20, (byte)90, (byte)250, (byte)50);
 			GlowColor2 = new Color32((byte)60, (byte)160, (byte)250, (byte)250);
-			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = Color32.op_Implicit(GlowColor2);
+			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = MGCompat.Op.Imp(GlowColor2);
 			break;
 		case Rarity.Uncommon:
 			GlowColor1 = new Color32((byte)100, (byte)250, (byte)30, (byte)50);
 			GlowColor2 = new Color32((byte)70, (byte)250, (byte)70, (byte)250);
-			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = Color32.op_Implicit(GlowColor2);
+			((Graphic)((Component)this).gameObject.GetComponent<Image>()).color = MGCompat.Op.Imp(GlowColor2);
 			break;
 		case Rarity.Common:
 			GlowActivated = false;
@@ -18786,7 +18789,7 @@ public class GlowEffect : MonoBehaviour
 		//IL_00ef: Unknown result type (might be due to invalid IL or missing references)
 		if (GlowActivated)
 		{
-			((Graphic)Glow).color = Color32.op_Implicit(Color32.Lerp(GlowColor1, GlowColor2, Mathf.PingPong(Time.time * glowSpeed, 1f)));
+			((Graphic)Glow).color = MGCompat.Op.Imp(Color32.Lerp(GlowColor1, GlowColor2, Mathf.PingPong(Time.time * glowSpeed, 1f)));
 		}
 		if (GrowActivated)
 		{
@@ -18880,7 +18883,7 @@ public class NewEquipmentSlot : MonoBehaviour, IDropHandler, IEventSystemHandler
 	{
 		//IL_00ec: Unknown result type (might be due to invalid IL or missing references)
 		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
-		if (!Object.op_Implicit((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerItem>()))
+		if (!MGCompat.Op.Imp((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerItem>()))
 		{
 			return;
 		}
@@ -18896,7 +18899,7 @@ public class NewEquipmentSlot : MonoBehaviour, IDropHandler, IEventSystemHandler
 			UIManager.instance.ShowErrorMessage(LocalizationManager.GetTranslation("MESSAGE/MESSAGE_wrongslot"), 2f);
 			return;
 		}
-		if (Object.op_Implicit((Object)(object)item))
+		if (MGCompat.Op.Imp((Object)(object)item))
 		{
 			Transform startParent = eventData.pointerDrag.GetComponent<DragHandlerItem>().startParent;
 			item.transform.position = startParent.position;
@@ -19049,7 +19052,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IEventSystemHandler
 	public void OnDrop(PointerEventData eventData)
 	{
 		//IL_0047: Unknown result type (might be due to invalid IL or missing references)
-		if (!Object.op_Implicit((Object)(object)item))
+		if (!MGCompat.Op.Imp((Object)(object)item))
 		{
 			item = DragHandlerItem.itemBeingDragged.GetComponent<ItemDetails>().containeditem;
 			DragHandlerItem.itemBeingDragged.transform.SetParent(((Component)this).transform);
@@ -19442,7 +19445,7 @@ public class EnemyStateMachine : MonoBehaviour
 		handleTurn.Attacker = enemy.name;
 		handleTurn.Type = "Enemy";
 		handleTurn.AttacksGameObject = ((Component)this).gameObject;
-		handleTurn.AttackersTarget = BSM.HerosInBattle[Random.Range(0, BSM.HerosInBattle.Count)];
+		handleTurn.AttackersTarget = BSM.HerosInBattle[UnityEngine.Random.Range(0, BSM.HerosInBattle.Count)];
 		BSM.CollectActions(handleTurn);
 	}
 
@@ -19537,8 +19540,8 @@ public class GridMovement : MonoBehaviour
 		//IL_0071: Unknown result type (might be due to invalid IL or missing references)
 		tileWorldLocations = new List<Vector3>();
 		BoundsInt cellBounds = tilemap.cellBounds;
-		PositionEnumerator allPositionsWithin = cellBounds.allPositionsWithin;
-		PositionEnumerator enumerator = allPositionsWithin.GetEnumerator();
+		BoundsInt.PositionEnumerator allPositionsWithin = cellBounds.allPositionsWithin;
+		BoundsInt.PositionEnumerator enumerator = allPositionsWithin.GetEnumerator();
 		try
 		{
 			while (enumerator.MoveNext())
@@ -19728,7 +19731,7 @@ public class HeroStateMachine : MonoBehaviour
 
 	private void Start()
 	{
-		CurrentCooldown = Random.Range(0f, 2.5f);
+		CurrentCooldown = UnityEngine.Random.Range(0f, 2.5f);
 		Selector.SetActive(false);
 		currentState = TurnState.PROCESSING;
 		BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
@@ -20024,7 +20027,7 @@ public class TurnBasedCombatStateMachine : MonoBehaviour
 	{
 		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
 		//IL_003b: Unknown result type (might be due to invalid IL or missing references)
-		if (GUILayout.Button("Next State", Array.Empty<GUILayoutOption>()))
+		if (GUILayout.Button("Next State", new GUILayoutOption[0]))
 		{
 			currentState = (BattleStates)((int)(currentState + 1) % 5);
 			((Object)Object.Instantiate<GameObject>(Character, new Vector3(0f, 0f, 0f), Quaternion.identity).GetComponent<SpriteRenderer>()).name = "Player4";
@@ -22020,7 +22023,7 @@ public class ProgressManager : MonoBehaviour
 				list.Add(item);
 			}
 		}
-		return list[Random.Range(0, list.Count)];
+		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
 	public void DebugTest()
@@ -22265,7 +22268,7 @@ public class ProgressManager : MonoBehaviour
 			list.Clear();
 			for (int i = 0; i < Amount; i++)
 			{
-				int num6 = Random.Range(Mathf.Clamp(num5 - num4, num3, 5), Mathf.Clamp(num5 + 2, num3, 6));
+				int num6 = UnityEngine.Random.Range(Mathf.Clamp(num5 - num4, num3, 5), Mathf.Clamp(num5 + 2, num3, 6));
 				num += num6;
 				list.Add(num6);
 			}
@@ -22370,7 +22373,7 @@ public class ProgressManager : MonoBehaviour
 		bool flag = false;
 		foreach (int item in list2)
 		{
-			int num6 = Random.Range(0, 100);
+			int num6 = UnityEngine.Random.Range(0, 100);
 			CharacterTemplate characterTemplate;
 			do
 			{
@@ -22386,7 +22389,7 @@ public class ProgressManager : MonoBehaviour
 				}
 				if (!GlobalVariables.instance.ChallengeBeastMode || flag)
 				{
-					characterTemplate = ((!GlobalVariables.instance.ChallengeBeastMode || Random.Range(0, 100) >= 15) ? Object.Instantiate<CharacterTemplate>(DataTables.instance.GetRandomCharacter()) : Object.Instantiate<CharacterTemplate>(DataTables.instance.GetRandomBoss()));
+					characterTemplate = ((!GlobalVariables.instance.ChallengeBeastMode || UnityEngine.Random.Range(0, 100) >= 15) ? Object.Instantiate<CharacterTemplate>(DataTables.instance.GetRandomCharacter()) : Object.Instantiate<CharacterTemplate>(DataTables.instance.GetRandomBoss()));
 					continue;
 				}
 				characterTemplate = Object.Instantiate<CharacterTemplate>(DataTables.instance.GetRandomBoss());
@@ -22443,7 +22446,7 @@ public class ProgressManager : MonoBehaviour
 	public void DressUpCharacter(CharacterTemplate EnemyChar, int Enemyindex, EquipmentSlot slot, classType type = classType.Balanced, int rarity = 3, int teamslot = 1)
 	{
 		bool exactMatch = false;
-		if (Random.Range(0, 100) < difficultyLevel * 5)
+		if (UnityEngine.Random.Range(0, 100) < difficultyLevel * 5)
 		{
 			type = ((EnemyChar.STR.GetValue() < EnemyChar.WIS.GetValue()) ? classType.Mage : classType.Warrior);
 			exactMatch = true;
@@ -22520,7 +22523,7 @@ public class ProgressManager : MonoBehaviour
 				while (true)
 				{
 					Skill skill = null;
-					if (Random.Range(0, 100) >= num)
+					if (UnityEngine.Random.Range(0, 100) >= num)
 					{
 						break;
 					}
@@ -22561,7 +22564,7 @@ public class ProgressManager : MonoBehaviour
 		int num = level * 6;
 		foreach (CharacterTemplate item in ThisTeam)
 		{
-			int num2 = Random.Range(0, 100);
+			int num2 = UnityEngine.Random.Range(0, 100);
 			int num3 = item.HowManyPerks();
 			int num4 = ((num2 < 5 + num && level > 2) ? Mathf.Clamp(2, 0, 4 - num3) : ((num2 < 15 + num) ? Mathf.Clamp(1, 0, 4 - num3) : 0));
 			for (int i = 0; i < num4; i++)
@@ -22593,7 +22596,7 @@ public class ProgressManager : MonoBehaviour
 		foreach (CharacterTemplate item in ThisTeam)
 		{
 			item.CreateListOfCharacterSkills();
-			int num2 = Random.Range(0, 100);
+			int num2 = UnityEngine.Random.Range(0, 100);
 			int num3 = item.HowManySkills();
 			int num4;
 			if (num2 < num)
@@ -22619,7 +22622,7 @@ public class ProgressManager : MonoBehaviour
 	{
 		bool flag = false;
 		classType type = Character.RaceMainType;
-		if (Random.Range(0, 100) < difficultyLevel * 5)
+		if (UnityEngine.Random.Range(0, 100) < difficultyLevel * 5)
 		{
 			type = ((Character.STR.GetValue() < Character.WIS.GetValue()) ? classType.Mage : classType.Warrior);
 			flag = true;
@@ -22656,7 +22659,7 @@ public class ProgressManager : MonoBehaviour
 		int num2 = ListOfCareerModeTeams.Count + 1;
 		foreach (int item in CreateRarityList(TeamSize, unitRarityPoints, 2))
 		{
-			Random.Range(0, 100);
+			UnityEngine.Random.Range(0, 100);
 			CharacterTemplate characterTemplate;
 			do
 			{
@@ -22702,7 +22705,7 @@ public class ProgressManager : MonoBehaviour
 		{
 			return;
 		}
-		int num = Random.Range(0, 100);
+		int num = UnityEngine.Random.Range(0, 100);
 		if (GlobalVariables.instance.ChallengeNeedyEmperor)
 		{
 			num = -1;
@@ -22720,7 +22723,7 @@ public class ProgressManager : MonoBehaviour
 			((TMP_Text)TownManager.instance.EmperorDemand).SetText("---");
 			TownManager.instance.EmperorDemandTooltip.type = EmpDemand;
 		}
-		num = Random.Range(0, 100);
+		num = UnityEngine.Random.Range(0, 100);
 		if (GlobalVariables.instance.ChallengeNeedyEmperor)
 		{
 			num = -1;
@@ -22879,11 +22882,11 @@ public class ProgressManager : MonoBehaviour
 		int num = 0;
 		if (guaranteedSpecial)
 		{
-			num = Random.Range(2, 6);
+			num = UnityEngine.Random.Range(2, 6);
 		}
 		else
 		{
-			int num2 = Random.Range(0, 100);
+			int num2 = UnityEngine.Random.Range(0, 100);
 			if (num2 < 4)
 			{
 				num = 2;
@@ -22903,7 +22906,7 @@ public class ProgressManager : MonoBehaviour
 		}
 		if (num == 2 && CurrentCareerRank == 5)
 		{
-			num = Random.Range(3, 6);
+			num = UnityEngine.Random.Range(3, 6);
 		}
 		if (TotalWins == 0)
 		{
@@ -23405,11 +23408,11 @@ public class RecruitShowcaseWindow : MonoBehaviour
 		((TMP_Text)CharacterName).SetText("<color=" + text + ">" + Character.Charname + "</color>");
 		if (Character.AIChar)
 		{
-			((Graphic)PortraitBackground).color = Color32.op_Implicit(new Color32((byte)215, (byte)84, (byte)84, byte.MaxValue));
+			((Graphic)PortraitBackground).color = MGCompat.Op.Imp(new Color32((byte)215, (byte)84, (byte)84, byte.MaxValue));
 		}
 		else
 		{
-			((Graphic)PortraitBackground).color = Color32.op_Implicit(new Color32((byte)108, (byte)226, (byte)108, byte.MaxValue));
+			((Graphic)PortraitBackground).color = MGCompat.Op.Imp(new Color32((byte)108, (byte)226, (byte)108, byte.MaxValue));
 		}
 		((TMP_Text)CharacterRace).SetText(LocalizationManager.GetTranslation("RACE/RACE_" + Character.Race));
 		if (Character.Title != "")
@@ -23500,11 +23503,11 @@ public class RecruitShowcaseWindow : MonoBehaviour
 			float num2 = Mathf.Clamp((float)item.Value.GetValue() / 10f, 0f, 1f);
 			if (num2 > 0.5f)
 			{
-				((Graphic)item.Key).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue), (num2 - 0.5f) * 2f));
+				((Graphic)item.Key).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue), (num2 - 0.5f) * 2f));
 			}
 			else
 			{
-				((Graphic)item.Key).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), num2 * 2f));
+				((Graphic)item.Key).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), num2 * 2f));
 			}
 		}
 		dictionary.Clear();
@@ -23550,20 +23553,20 @@ public class RecruitShowcaseWindow : MonoBehaviour
 				((TMP_Text)item2.Key).SetText(text2);
 				if (item2.Value.DoesItHaveModifiers() == 1)
 				{
-					((Graphic)item2.Key).color = Color32.op_Implicit(new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue));
+					((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue));
 				}
 				else if (item2.Value.DoesItHaveModifiers() == -1)
 				{
-					((Graphic)item2.Key).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)75, (byte)75, byte.MaxValue));
+					((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)75, (byte)75, byte.MaxValue));
 				}
 				else
 				{
-					((Graphic)item2.Key).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+					((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 				}
 			}
 			catch
 			{
-				((Graphic)item2.Key).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+				((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 				((TMP_Text)item2.Key).SetText("-");
 			}
 		}
@@ -23649,7 +23652,7 @@ public class RecruitSlot : MonoBehaviour, ITooltippable, IPointerEnterHandler, I
 
 	public void InitializeSlot(int initRarity = 0)
 	{
-		if (GlobalVariables.instance.CareerModeActivated && (float)Random.Range(0, 100) < GlobalVariables.instance.CareerRecruitBossChance)
+		if (GlobalVariables.instance.CareerModeActivated && (float)UnityEngine.Random.Range(0, 100) < GlobalVariables.instance.CareerRecruitBossChance)
 		{
 			Recruitable = Object.Instantiate<CharacterTemplate>(DataTables.instance.GetRandomBoss());
 		}
@@ -23701,9 +23704,9 @@ public class RecruitSlot : MonoBehaviour, ITooltippable, IPointerEnterHandler, I
 		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
-		((Graphic)PortraitPicture).color = Color32.op_Implicit(new Color32((byte)180, (byte)180, (byte)180, (byte)180));
-		((Graphic)PortraitBorders).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)190, (byte)0, byte.MaxValue));
-		((Graphic)PortraitBackground).color = Color32.op_Implicit(new Color32((byte)130, (byte)130, (byte)130, byte.MaxValue));
+		((Graphic)PortraitPicture).color = MGCompat.Op.Imp(new Color32((byte)180, (byte)180, (byte)180, (byte)180));
+		((Graphic)PortraitBorders).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)190, (byte)0, byte.MaxValue));
+		((Graphic)PortraitBackground).color = MGCompat.Op.Imp(new Color32((byte)130, (byte)130, (byte)130, byte.MaxValue));
 	}
 
 	public void UnDimThis()
@@ -23714,9 +23717,9 @@ public class RecruitSlot : MonoBehaviour, ITooltippable, IPointerEnterHandler, I
 		//IL_0022: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0038: Unknown result type (might be due to invalid IL or missing references)
-		((Graphic)PortraitPicture).color = Color32.op_Implicit(OriginalPortraitPictureColor);
-		((Graphic)PortraitBorders).color = Color32.op_Implicit(OriginalPortraitBordersColor);
-		((Graphic)PortraitBackground).color = Color32.op_Implicit(OriginalPortraitBackgroundColor);
+		((Graphic)PortraitPicture).color = MGCompat.Op.Imp(OriginalPortraitPictureColor);
+		((Graphic)PortraitBorders).color = MGCompat.Op.Imp(OriginalPortraitBordersColor);
+		((Graphic)PortraitBackground).color = MGCompat.Op.Imp(OriginalPortraitBackgroundColor);
 	}
 
 	public bool RecruitCharacter()
@@ -23751,9 +23754,9 @@ public class RecruitSlot : MonoBehaviour, ITooltippable, IPointerEnterHandler, I
 		((Component)GoldCost).gameObject.SetActive(false);
 		GoldIcon.SetActive(false);
 		((Component)PortraitPicture).gameObject.SetActive(false);
-		((Graphic)PortraitBorders).color = Color32.op_Implicit(OriginalPortraitBordersColor);
+		((Graphic)PortraitBorders).color = MGCompat.Op.Imp(OriginalPortraitBordersColor);
 		PortraitBackground.sprite = null;
-		((Graphic)PortraitBackground).color = Color32.op_Implicit(new Color32((byte)150, (byte)120, (byte)80, (byte)180));
+		((Graphic)PortraitBackground).color = MGCompat.Op.Imp(new Color32((byte)150, (byte)120, (byte)80, (byte)180));
 		PortraitBorders.sprite = UIManager.instance.BorderCommon;
 		return true;
 	}
@@ -23853,7 +23856,7 @@ public class RewardButton : MonoBehaviour, ITooltippable, IPointerEnterHandler, 
 				rewardType = RewardType.Gold;
 				if (rarityBonus >= 24)
 				{
-					RewardGoldAmount = Random.Range(AudienceManager.instance.AudienceCount, AudienceManager.instance.AudienceCount * rarityBonus / 24);
+					RewardGoldAmount = UnityEngine.Random.Range(AudienceManager.instance.AudienceCount, AudienceManager.instance.AudienceCount * rarityBonus / 24);
 				}
 				else
 				{
@@ -23865,7 +23868,7 @@ public class RewardButton : MonoBehaviour, ITooltippable, IPointerEnterHandler, 
 			}
 			return;
 		}
-		int num = Random.Range(0, 100);
+		int num = UnityEngine.Random.Range(0, 100);
 		if (num >= 100 - GlobalVariables.instance.rewardCharacterChance && RosterManager.instance.IsThereRoom())
 		{
 			rewardType = RewardType.Character;
@@ -23908,7 +23911,7 @@ public class RewardButton : MonoBehaviour, ITooltippable, IPointerEnterHandler, 
 			rewardType = RewardType.Gold;
 			if (rarityBonus >= 24)
 			{
-				RewardGoldAmount = Random.Range(AudienceManager.instance.AudienceCount, AudienceManager.instance.AudienceCount * rarityBonus / 24);
+				RewardGoldAmount = UnityEngine.Random.Range(AudienceManager.instance.AudienceCount, AudienceManager.instance.AudienceCount * rarityBonus / 24);
 			}
 			else
 			{
@@ -23944,7 +23947,7 @@ public class RewardButton : MonoBehaviour, ITooltippable, IPointerEnterHandler, 
 		rewardType = RewardType.Gold;
 		if (AudienceManager.instance.AudienceCount >= 24)
 		{
-			RewardGoldAmount = Random.Range(AudienceManager.instance.AudienceCount, AudienceManager.instance.AudienceCount * AudienceManager.instance.AudienceCount / 24);
+			RewardGoldAmount = UnityEngine.Random.Range(AudienceManager.instance.AudienceCount, AudienceManager.instance.AudienceCount * AudienceManager.instance.AudienceCount / 24);
 		}
 		else
 		{
@@ -25245,13 +25248,13 @@ public class Equipment : Item
 		itemLevel += raritylvlbuff;
 		itemLevel--;
 		StatPoints = itemLevel;
-		int num = Random.Range(0, 100);
+		int num = UnityEngine.Random.Range(0, 100);
 		if (num < skillGainChance / 2)
 		{
-			MaxAPmodifier = Random.Range(0, InitMaxAPmax);
+			MaxAPmodifier = UnityEngine.Random.Range(0, InitMaxAPmax);
 			StatPoints -= 3 * MaxAPmodifier;
 		}
-		num = Random.Range(0, 100);
+		num = UnityEngine.Random.Range(0, 100);
 		if (Bow)
 		{
 			givesSkill = DataTables.instance.GetRandomBowSkill(skillGainRarity);
@@ -25294,7 +25297,7 @@ public class Equipment : Item
 			{
 				break;
 			}
-			int index = Random.Range(0, list.Count);
+			int index = UnityEngine.Random.Range(0, list.Count);
 			ChosenPrimaryStats.Add(list[index]);
 			list.RemoveAt(index);
 		}
@@ -25319,7 +25322,7 @@ public class Equipment : Item
 		{
 			Debug.LogWarning((object)("<color=red>" + ((Object)this).name + ": POINTS REMAINING: </color>" + StatPoints));
 		}
-		if (ProfileManager.instance.DLC_ContentEnabled && MainStat != "PDMG" && MainStat != "MDMG" && ArcheryDamagemodifier == 0 && equipSlot != EquipmentSlot.Weapon && Random.Range(0, 10) < 3)
+		if (ProfileManager.instance.DLC_ContentEnabled && MainStat != "PDMG" && MainStat != "MDMG" && ArcheryDamagemodifier == 0 && equipSlot != EquipmentSlot.Weapon && UnityEngine.Random.Range(0, 10) < 3)
 		{
 			if (PhysicalDamagemodifier > 0)
 			{
@@ -25342,7 +25345,7 @@ public class Equipment : Item
 		}
 		itemValue = STRmodifier + AGImodifier + WISmodifier + VITmodifier + ARMORmodifier + PhysicalDamagemodifier + KnockbackChancemodifier / 2 + Mathf.RoundToInt((float)CritChancemodifier / 1.5f) + Mathf.RoundToInt((float)DodgeChancemodifier / 1.5f) + MPmodifier / 5 + MagicDamagemodifier + MagicDefensemodifier + HPmodifier / 5 + DebuffResistancemodifier / 2 + MaxAPmodifier * 5 + ArcheryDamagemodifier + DebuffChancemodifier / 2 + KnockbackResistancemodifier / 2;
 		itemValue = Mathf.RoundToInt(4f * priceRarityModifier * (float)itemValue);
-		shopValue = Mathf.RoundToInt(Random.Range((1f - GlobalVariables.instance.ShopItemVariance) * (float)itemValue, (1f + GlobalVariables.instance.ShopItemVariance) * (float)itemValue));
+		shopValue = Mathf.RoundToInt(UnityEngine.Random.Range((1f - GlobalVariables.instance.ShopItemVariance) * (float)itemValue, (1f + GlobalVariables.instance.ShopItemVariance) * (float)itemValue));
 		if (itemRarity == Rarity.Legendary && LocalizationManager.CurrentLanguage == "English")
 		{
 			if (Bow)
@@ -25358,12 +25361,12 @@ public class Equipment : Item
 
 	private void SetRarity(int predetermined = 0, int rarityBonus = 0, int maxRarity = 5)
 	{
-		int num = Random.Range(0, 100) - rarityBonus;
+		int num = UnityEngine.Random.Range(0, 100) - rarityBonus;
 		if (predetermined != 0)
 		{
 			num = predetermined;
 		}
-		int num2 = Random.Range(0, 100);
+		int num2 = UnityEngine.Random.Range(0, 100);
 		skillGainRarity = 1;
 		if (num < GlobalVariables.instance.EquipmentRarityLegendary && maxRarity >= 5)
 		{
@@ -25466,7 +25469,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, statPoints);
 			STRmodifier += num;
 			break;
 		}
@@ -25477,7 +25480,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, statPoints);
 			AGImodifier += num;
 			break;
 		}
@@ -25488,7 +25491,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, statPoints);
 			WISmodifier += num;
 			break;
 		}
@@ -25499,7 +25502,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, statPoints);
 			VITmodifier += num;
 			break;
 		}
@@ -25510,7 +25513,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
 			ARMORmodifier += num;
 			break;
 		}
@@ -25521,7 +25524,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
 			PhysicalDamagemodifier += num;
 			break;
 		}
@@ -25532,7 +25535,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 2), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 2), 1, statPoints);
 			KnockbackChancemodifier += num * 2;
 			break;
 		}
@@ -25543,7 +25546,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 2), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 2), 1, statPoints);
 			CritChancemodifier += Mathf.RoundToInt((float)num * 1.5f);
 			break;
 		}
@@ -25554,7 +25557,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 2), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 2), 1, statPoints);
 			DodgeChancemodifier += Mathf.RoundToInt((float)num * 1.5f);
 			break;
 		}
@@ -25565,7 +25568,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 4), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 4), 1, statPoints);
 			MPmodifier += num * 4;
 			break;
 		}
@@ -25576,7 +25579,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
 			MagicDamagemodifier += num;
 			break;
 		}
@@ -25587,7 +25590,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, statPoints);
 			MagicDefensemodifier += num;
 			break;
 		}
@@ -25598,7 +25601,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 4), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 4), 1, statPoints);
 			HPmodifier += num * 4;
 			break;
 		}
@@ -25609,7 +25612,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 2), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 2), 1, statPoints);
 			DebuffResistancemodifier += num * 2;
 			break;
 		}
@@ -25620,7 +25623,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3), 1, Mathf.RoundToInt((float)statPoints * 0.7f));
 			ArcheryDamagemodifier += num;
 			break;
 		}
@@ -25631,7 +25634,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 2), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 2), 1, statPoints);
 			KnockbackResistancemodifier += num * 2;
 			break;
 		}
@@ -25642,7 +25645,7 @@ public class Equipment : Item
 			{
 				num2 = num3;
 			}
-			num += Mathf.Clamp(Random.Range(num2, num3 / 2), 1, statPoints);
+			num += Mathf.Clamp(UnityEngine.Random.Range(num2, num3 / 2), 1, statPoints);
 			DebuffChancemodifier += num * 2;
 			break;
 		}
@@ -26293,7 +26296,7 @@ public class Spellbook : Item
 		{
 			initRarity = 0;
 		}
-		if (ProfileManager.instance.DLC_ContentEnabled && Random.Range(0, 100) < 10)
+		if (ProfileManager.instance.DLC_ContentEnabled && UnityEngine.Random.Range(0, 100) < 10)
 		{
 			TeachesSkill = DataTables.instance.GetRandomSkill(0, initRarity, AI: false, classType.Balanced, EpicsPossible: true, forcetype: false, ExactMatch: false, bowskill: true);
 		}
@@ -26348,7 +26351,7 @@ public class Spellbook : Item
 			itemRarity = Rarity.Uncommon;
 			itemValue = 40;
 		}
-		shopValue = Mathf.RoundToInt(Random.Range((1f - GlobalVariables.instance.ShopItemVariance) * (float)itemValue, (1f + GlobalVariables.instance.ShopItemVariance) * (float)itemValue));
+		shopValue = Mathf.RoundToInt(UnityEngine.Random.Range((1f - GlobalVariables.instance.ShopItemVariance) * (float)itemValue, (1f + GlobalVariables.instance.ShopItemVariance) * (float)itemValue));
 	}
 
 	public override int GetRealValue()
@@ -26737,7 +26740,7 @@ public class SkillButton : MonoBehaviour, ITooltippable, IPointerEnterHandler, I
 	{
 		//IL_002a: Unknown result type (might be due to invalid IL or missing references)
 		//IL_002f: Unknown result type (might be due to invalid IL or missing references)
-		((Graphic)((Component)((Component)this).transform.Find("Mask").Find("SkillPicture")).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)120, (byte)120, (byte)120, byte.MaxValue));
+		((Graphic)((Component)((Component)this).transform.Find("Mask").Find("SkillPicture")).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)120, (byte)120, (byte)120, byte.MaxValue));
 		ButtonToggle = true;
 	}
 
@@ -26745,7 +26748,7 @@ public class SkillButton : MonoBehaviour, ITooltippable, IPointerEnterHandler, I
 	{
 		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0038: Unknown result type (might be due to invalid IL or missing references)
-		((Graphic)((Component)((Component)this).transform.Find("Mask").Find("SkillPicture")).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+		((Graphic)((Component)((Component)this).transform.Find("Mask").Find("SkillPicture")).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 		ButtonToggle = false;
 	}
 
@@ -26957,7 +26960,7 @@ public class SkillController : MonoBehaviour
 				GameObject val = Object.Instantiate<GameObject>(SkillSlot);
 				val.transform.SetParent(SkillPanel, false);
 				SkillButton componentInChildren = val.GetComponentInChildren<SkillButton>();
-				ButtonClickedEvent onClick = val.GetComponentInChildren<Button>().onClick;
+				Button.ButtonClickedEvent onClick = val.GetComponentInChildren<Button>().onClick;
 				UnityAction val2 = __c.__c_9_29_0;
 				if (val2 == null)
 				{
@@ -26980,7 +26983,7 @@ public class SkillController : MonoBehaviour
 						((Component)componentInChildren.CooldownTimer).gameObject.SetActive(true);
 					}
 					((Selectable)val.GetComponentInChildren<Button>()).interactable = false;
-					((Graphic)((Component)val.transform.Find("Button/Mask/SkillPicture")).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+					((Graphic)((Component)val.transform.Find("Button/Mask/SkillPicture")).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				}
 			}
 			else
@@ -27073,7 +27076,7 @@ public class SkillController : MonoBehaviour
 				{
 					GameObject val = ListOfSkillButtons[num];
 					((Selectable)val.GetComponentInChildren<Button>()).interactable = false;
-					((Graphic)((Component)val.transform.Find("Button/Mask/SkillPicture")).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
+					((Graphic)((Component)val.transform.Find("Button/Mask/SkillPicture")).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)110, (byte)110, (byte)110, (byte)60));
 				}
 				num++;
 			}
@@ -27101,7 +27104,7 @@ public class SkillController : MonoBehaviour
 				{
 					GameObject val = ListOfSkillButtons[num];
 					((Selectable)val.GetComponentInChildren<Button>()).interactable = true;
-					((Graphic)((Component)val.transform.Find("Button/Mask/SkillPicture")).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+					((Graphic)((Component)val.transform.Find("Button/Mask/SkillPicture")).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 				}
 				num++;
 			}
@@ -27224,7 +27227,7 @@ public class SkillController : MonoBehaviour
 		TargetingIsActive = true;
 		ActiveButton = Button;
 		CheckSurroundingTiles(skill.Range, skill.SkillTargets, skill.SkillType);
-		if (!Object.op_Implicit((Object)(object)CharacterWithTurn.AI) && ProfileManager.instance.ShowDamageEstimates)
+		if (!MGCompat.Op.Imp((Object)(object)CharacterWithTurn.AI) && ProfileManager.instance.ShowDamageEstimates)
 		{
 			DamageEstimator.instance.ClearEstimates();
 			Dictionary<GameObject, string> dictionary = new Dictionary<GameObject, string>();
@@ -27536,7 +27539,7 @@ public class SkillController : MonoBehaviour
 						list2.Add(val4);
 						break;
 					}
-					if (Object.op_Implicit((Object)(object)BattleProcessor.instance.IsTileOccupied(val6)))
+					if (MGCompat.Op.Imp((Object)(object)BattleProcessor.instance.IsTileOccupied(val6)))
 					{
 						list2.Add(val4);
 					}
@@ -27553,7 +27556,7 @@ public class SkillController : MonoBehaviour
 						list2.Add(val5);
 						break;
 					}
-					if (Object.op_Implicit((Object)(object)BattleProcessor.instance.IsTileOccupied(val7)))
+					if (MGCompat.Op.Imp((Object)(object)BattleProcessor.instance.IsTileOccupied(val7)))
 					{
 						list2.Add(val5);
 					}
@@ -27570,7 +27573,7 @@ public class SkillController : MonoBehaviour
 						list2.Add(val2);
 						break;
 					}
-					if (Object.op_Implicit((Object)(object)BattleProcessor.instance.IsTileOccupied(val8)))
+					if (MGCompat.Op.Imp((Object)(object)BattleProcessor.instance.IsTileOccupied(val8)))
 					{
 						list2.Add(val2);
 					}
@@ -27587,7 +27590,7 @@ public class SkillController : MonoBehaviour
 						list2.Add(val3);
 						break;
 					}
-					if (Object.op_Implicit((Object)(object)BattleProcessor.instance.IsTileOccupied(val9)))
+					if (MGCompat.Op.Imp((Object)(object)BattleProcessor.instance.IsTileOccupied(val9)))
 					{
 						list2.Add(val3);
 					}
@@ -27632,7 +27635,7 @@ public class Slot : MonoBehaviour, IDropHandler, IEventSystemHandler
 	{
 		//IL_00c5: Unknown result type (might be due to invalid IL or missing references)
 		//IL_008a: Unknown result type (might be due to invalid IL or missing references)
-		if (!Object.op_Implicit((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerItem>()))
+		if (!MGCompat.Op.Imp((Object)(object)eventData.pointerDrag.GetComponent<DragHandlerItem>()))
 		{
 			return;
 		}
@@ -27640,7 +27643,7 @@ public class Slot : MonoBehaviour, IDropHandler, IEventSystemHandler
 		{
 			Transform startParent = eventData.pointerDrag.GetComponent<DragHandlerItem>().startParent;
 			GameObject gameObject = ((Component)((Component)this).transform.GetChild(0)).gameObject;
-			if (Object.op_Implicit((Object)(object)((Component)startParent).GetComponent<NewEquipmentSlot>()))
+			if (MGCompat.Op.Imp((Object)(object)((Component)startParent).GetComponent<NewEquipmentSlot>()))
 			{
 				Item containeditem = gameObject.GetComponent<ItemDetails>().containeditem;
 				if (!(containeditem is Equipment))
@@ -27876,7 +27879,7 @@ public class CharacterTemplate : ScriptableObject
 		list.Add(WIS);
 		list.Add(VIT);
 		list.Add(ARMOR);
-		int num = Random.Range(0, 5);
+		int num = UnityEngine.Random.Range(0, 5);
 		while (STR.GetBaseValue() + AGI.GetBaseValue() + WIS.GetBaseValue() + VIT.GetBaseValue() + ARMOR.GetBaseValue() < CharLevel)
 		{
 			list[num].IncreaseBaseValue(1);
@@ -27987,7 +27990,7 @@ public class CharacterTemplate : ScriptableObject
 			{
 				Skill1 = DataTables.instance.GetRandomSkill(0, 0, AI: false, RaceMainType, EpicsPossible: true, forcetype: true, ExactMatch: true);
 			}
-			else if (RaceMainType != classType.Balanced && Random.Range(0, 100) < GlobalVariables.instance.RecruitSkillMainTypeChance)
+			else if (RaceMainType != classType.Balanced && UnityEngine.Random.Range(0, 100) < GlobalVariables.instance.RecruitSkillMainTypeChance)
 			{
 				Skill1 = DataTables.instance.GetRandomSkill(0, 0, AI: false, RaceMainType, EpicsPossible: true, forcetype: true, ExactMatch: true);
 			}
@@ -28005,7 +28008,7 @@ public class CharacterTemplate : ScriptableObject
 				ApplyPerkEffect(Perk1.SecondaryEffect, Perk1.SecondaryEffectValue);
 			}
 		}
-		if (Random.Range(0, 100) < skillGainChance && (Object)(object)Skill2 == (Object)null)
+		if (UnityEngine.Random.Range(0, 100) < skillGainChance && (Object)(object)Skill2 == (Object)null)
 		{
 			do
 			{
@@ -28017,7 +28020,7 @@ public class CharacterTemplate : ScriptableObject
 				{
 					Skill2 = DataTables.instance.GetRandomSkill(0, 0, AI: false, RaceMainType, EpicsPossible: true, forcetype: true, ExactMatch: true);
 				}
-				else if (RaceMainType != classType.Balanced && Random.Range(0, 100) < GlobalVariables.instance.RecruitSkillMainTypeChance)
+				else if (RaceMainType != classType.Balanced && UnityEngine.Random.Range(0, 100) < GlobalVariables.instance.RecruitSkillMainTypeChance)
 				{
 					Skill2 = DataTables.instance.GetRandomSkill(0, 0, AI: false, RaceMainType, EpicsPossible: true, forcetype: true, ExactMatch: true);
 				}
@@ -28028,7 +28031,7 @@ public class CharacterTemplate : ScriptableObject
 			}
 			while (!(Skill1.name != Skill2.name));
 		}
-		if (Random.Range(0, 100) < skillGainChance / 3 && !Boss)
+		if (UnityEngine.Random.Range(0, 100) < skillGainChance / 3 && !Boss)
 		{
 			do
 			{
@@ -28091,10 +28094,10 @@ public class CharacterTemplate : ScriptableObject
 		UpdateHPMP();
 		CreateListOfCharacterSkills();
 		CreateListOfCharacterPerks();
-		shopValue = Mathf.RoundToInt(Random.Range((1f - GlobalVariables.instance.ShopItemVariance) * (float)characterValue, (1f + GlobalVariables.instance.ShopItemVariance) * (float)characterValue));
+		shopValue = Mathf.RoundToInt(UnityEngine.Random.Range((1f - GlobalVariables.instance.ShopItemVariance) * (float)characterValue, (1f + GlobalVariables.instance.ShopItemVariance) * (float)characterValue));
 		if (!AI)
 		{
-			InherentWageScalingModifier = Random.Range(0.85f, 1.15f);
+			InherentWageScalingModifier = UnityEngine.Random.Range(0.85f, 1.15f);
 			Wage = RecalculateWage();
 		}
 		else
@@ -28106,7 +28109,7 @@ public class CharacterTemplate : ScriptableObject
 
 	private void SetRarity(int predetermined = 0, int rarityBonus = 0, int maxRarity = 5, int minRarity = 1)
 	{
-		int num = Random.Range(0, 100) - rarityBonus;
+		int num = UnityEngine.Random.Range(0, 100) - rarityBonus;
 		if (predetermined != 0)
 		{
 			num = predetermined;
@@ -28750,7 +28753,7 @@ public class CharacterTemplate : ScriptableObject
 	public string GainRandomStat(int amount = 1, int presetstat = 9)
 	{
 		string result = "";
-		switch ((presetstat < 0 || presetstat > 4) ? Random.Range(0, 5) : presetstat)
+		switch ((presetstat < 0 || presetstat > 4) ? UnityEngine.Random.Range(0, 5) : presetstat)
 		{
 		case 0:
 			STR.ChangeValue(amount);
@@ -28781,7 +28784,7 @@ public class CharacterTemplate : ScriptableObject
 	public string LoseRandomStat(int amount = 1, int presetstat = 9)
 	{
 		string text = "";
-		switch ((presetstat < 0 || presetstat > 4) ? Random.Range(0, 5) : presetstat)
+		switch ((presetstat < 0 || presetstat > 4) ? UnityEngine.Random.Range(0, 5) : presetstat)
 		{
 		case 0:
 			amount = Mathf.Clamp(amount, -50, -1);
@@ -28828,7 +28831,7 @@ public class CharacterTemplate : ScriptableObject
 		list.Add(WIS);
 		list.Add(VIT);
 		list.Add(ARMOR);
-		int num = Random.Range(0, 5);
+		int num = UnityEngine.Random.Range(0, 5);
 		while (STR.GetBaseValue() + AGI.GetBaseValue() + WIS.GetBaseValue() + VIT.GetBaseValue() + ARMOR.GetBaseValue() < CharLevel)
 		{
 			list[num].IncreaseBaseValue(1);
@@ -28902,7 +28905,7 @@ public class CharacterTemplate : ScriptableObject
 		else if (Random)
 		{
 			Title = DataTables.instance.GetRandomTitle();
-			switch (Random.Range(0, 5))
+			switch (UnityEngine.Random.Range(0, 5))
 			{
 			case 0:
 				STR.AddTitleModifier(GlobalVariables.instance.StatgainFromTitle);
@@ -29511,7 +29514,7 @@ public class Stat
 
 	public void InitializeStat(int min, int max)
 	{
-		baseValue = Random.Range(min, max + 1);
+		baseValue = UnityEngine.Random.Range(min, max + 1);
 	}
 
 	public void SetStat(int Amount)
@@ -31859,12 +31862,12 @@ public class TownManager : MonoBehaviour
 			if (progression)
 			{
 				((Component)ProgressionLevelPanels[num2].GetChild(num3)).GetComponent<Image>().sprite = ProgressionVictory;
-				((Graphic)((Component)ProgressionLevelPanels[num2].GetChild(num3)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)225, byte.MaxValue, byte.MaxValue));
+				((Graphic)((Component)ProgressionLevelPanels[num2].GetChild(num3)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)225, byte.MaxValue, byte.MaxValue));
 			}
 			else
 			{
 				((Component)ProgressionLevelPanels[num2].GetChild(num3)).GetComponent<Image>().sprite = ProgressionLoss;
-				((Graphic)((Component)ProgressionLevelPanels[num2].GetChild(num3)).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)225, (byte)25, (byte)0, byte.MaxValue));
+				((Graphic)((Component)ProgressionLevelPanels[num2].GetChild(num3)).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)225, (byte)25, (byte)0, byte.MaxValue));
 			}
 			num3++;
 			if (num3 % ProgressManager.instance.ProgressionLevelFightsRequired == 0)
@@ -31879,7 +31882,7 @@ public class TownManager : MonoBehaviour
 		}
 		else if (ProgressManager.instance.ProgressionLevelFightsRequired * ProgressManager.instance.ProgressionLevelMax <= ProgressManager.instance.ProgressionList.Count)
 		{
-			((Graphic)ProgressionTrophy).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+			((Graphic)ProgressionTrophy).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 			((Component)ProgressionTroplyGlow).gameObject.SetActive(true);
 		}
 	}
@@ -31953,7 +31956,7 @@ public class TownManager : MonoBehaviour
 		int bowchance = 20;
 		for (int i = 0; i < ChangingVariables.instance.ShopItems; i++)
 		{
-			int num9 = Random.Range(0, 100);
+			int num9 = UnityEngine.Random.Range(0, 100);
 			EquipmentSlot slot = ((num9 < 44) ? EquipmentSlot.Weapon : ((num9 >= 72) ? EquipmentSlot.Accessory : EquipmentSlot.Chest));
 			Item item;
 			if (num > 0)
@@ -32019,7 +32022,7 @@ public class TownManager : MonoBehaviour
 		}
 		for (int j = 0; j < ChangingVariables.instance.DiscountedItemAmount; j++)
 		{
-			GameObject val2 = ShopSlotList[Random.Range(0, ShopSlotList.Count)];
+			GameObject val2 = ShopSlotList[UnityEngine.Random.Range(0, ShopSlotList.Count)];
 			ShopSlot component2 = val2.GetComponent<ShopSlot>();
 			component2.Item.containeditem.DiscountThis();
 			((TMP_Text)component2.GoldCost).SetText(component2.Item.containeditem.GetShopValue().ToString());
@@ -32945,11 +32948,11 @@ public class TownManager : MonoBehaviour
 					Transform val = item;
 					if (num2 > 0)
 					{
-						((Graphic)((Component)val).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+						((Graphic)((Component)val).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 					}
 					else
 					{
-						((Graphic)((Component)val).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)22, (byte)22, (byte)22, (byte)95));
+						((Graphic)((Component)val).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)22, (byte)22, (byte)22, (byte)95));
 					}
 					num2--;
 				}
@@ -32981,11 +32984,11 @@ public class TownManager : MonoBehaviour
 			Transform val2 = item2;
 			if (num3 > 0)
 			{
-				((Graphic)((Component)val2).GetComponent<Image>()).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+				((Graphic)((Component)val2).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 			}
 			else
 			{
-				((Graphic)((Component)val2).GetComponent<Image>()).color = Color32.op_Implicit(new Color32((byte)22, (byte)22, (byte)22, (byte)95));
+				((Graphic)((Component)val2).GetComponent<Image>()).color = MGCompat.Op.Imp(new Color32((byte)22, (byte)22, (byte)22, (byte)95));
 			}
 			num3--;
 		}
@@ -33012,7 +33015,7 @@ public class TownManager : MonoBehaviour
 		}
 		if (dimstars)
 		{
-			if (((Graphic)((Component)CareerLadderStarPanel.GetChild(0)).GetComponent<Image>()).color != Color32.op_Implicit(new Color32((byte)22, (byte)22, (byte)22, (byte)95)))
+			if (((Graphic)((Component)CareerLadderStarPanel.GetChild(0)).GetComponent<Image>()).color != MGCompat.Op.Imp(new Color32((byte)22, (byte)22, (byte)22, (byte)95)))
 			{
 				AudioManager.instance.AudioEffect("CareerDimStars");
 			}
@@ -33064,18 +33067,18 @@ public class TownManager : MonoBehaviour
 
 	public IEnumerator TransitionText(TextMeshProUGUI text, string newtext)
 	{
-		Color32 OriginalColor = Color32.op_Implicit(((Graphic)text).color);
+		Color32 OriginalColor = MGCompat.Op.Imp(((Graphic)text).color);
 		for (float t = 0f; t < 1f; t += Time.deltaTime * 3.5f)
 		{
-			((Graphic)text).color = Color32.op_Implicit(Color32.Lerp(OriginalColor, new Color32(OriginalColor.r, OriginalColor.g, OriginalColor.b, (byte)0), t));
+			((Graphic)text).color = MGCompat.Op.Imp(Color32.Lerp(OriginalColor, new Color32(OriginalColor.r, OriginalColor.g, OriginalColor.b, (byte)0), t));
 			yield return null;
 		}
-		Color32 TempColor = Color32.op_Implicit(((Graphic)text).color);
+		Color32 TempColor = MGCompat.Op.Imp(((Graphic)text).color);
 		((TMP_Text)text).SetText(newtext);
 		yield return (object)new WaitForSeconds(0.3f);
 		for (float t = 0f; t < 1f; t += Time.deltaTime * 2.5f)
 		{
-			((Graphic)text).color = Color32.op_Implicit(Color32.Lerp(TempColor, OriginalColor, t));
+			((Graphic)text).color = MGCompat.Op.Imp(Color32.Lerp(TempColor, OriginalColor, t));
 			yield return null;
 		}
 	}
@@ -33084,16 +33087,16 @@ public class TownManager : MonoBehaviour
 	{
 		//IL_0007: Unknown result type (might be due to invalid IL or missing references)
 		//IL_0008: Unknown result type (might be due to invalid IL or missing references)
-		Color32 OriginalColor = Color32.op_Implicit(((Graphic)OldSprite).color);
+		Color32 OriginalColor = MGCompat.Op.Imp(((Graphic)OldSprite).color);
 		if ((Object)(object)NewSprite != (Object)null)
 		{
 			for (float t = 0f; t < 1f; t += Time.deltaTime * 3.5f)
 			{
-				((Graphic)OldSprite).color = Color32.op_Implicit(Color32.Lerp(OriginalColor, new Color32(OriginalColor.r, OriginalColor.g, OriginalColor.b, (byte)0), t));
+				((Graphic)OldSprite).color = MGCompat.Op.Imp(Color32.Lerp(OriginalColor, new Color32(OriginalColor.r, OriginalColor.g, OriginalColor.b, (byte)0), t));
 				yield return null;
 			}
 			OldSprite.sprite = NewSprite;
-			OriginalColor = Color32.op_Implicit(((Graphic)OldSprite).color);
+			OriginalColor = MGCompat.Op.Imp(((Graphic)OldSprite).color);
 			yield return (object)new WaitForSeconds(0.3f);
 		}
 		if (soundeffect != null)
@@ -33102,7 +33105,7 @@ public class TownManager : MonoBehaviour
 		}
 		for (float t = 0f; t < 1f; t += Time.deltaTime * 2.5f * speedadjustment)
 		{
-			((Graphic)OldSprite).color = Color32.op_Implicit(Color32.Lerp(OriginalColor, ResultColor, t));
+			((Graphic)OldSprite).color = MGCompat.Op.Imp(Color32.Lerp(OriginalColor, ResultColor, t));
 			yield return null;
 		}
 	}
@@ -33180,7 +33183,7 @@ public class TownManager : MonoBehaviour
 		bool result = false;
 		if (CareerShowEvent == 0)
 		{
-			if (Random.Range(0, 100) < 40)
+			if (UnityEngine.Random.Range(0, 100) < 40)
 			{
 				CareerShowEvent = 1;
 			}
@@ -33623,11 +33626,11 @@ public class Trainer : MonoBehaviour
 				float num = Mathf.Clamp((float)item.Value.GetValue() / 10f, 0f, 1f);
 				if (num > 0.5f)
 				{
-					((Graphic)item.Key).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue), (num - 0.5f) * 2f));
+					((Graphic)item.Key).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue), (num - 0.5f) * 2f));
 				}
 				else
 				{
-					((Graphic)item.Key).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), num * 2f));
+					((Graphic)item.Key).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), num * 2f));
 				}
 			}
 			((TMP_Text)Heal).SetText(Character.InjuryCount.ToString());
@@ -34185,16 +34188,16 @@ public class UIManager : MonoBehaviour
 			switch (damagetype)
 			{
 			case "physical":
-				((Graphic)DamageIcon).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)60, (byte)60, byte.MaxValue));
+				((Graphic)DamageIcon).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)60, (byte)60, byte.MaxValue));
 				break;
 			case "magic":
-				((Graphic)DamageIcon).color = Color32.op_Implicit(new Color32((byte)60, (byte)140, byte.MaxValue, byte.MaxValue));
+				((Graphic)DamageIcon).color = MGCompat.Op.Imp(new Color32((byte)60, (byte)140, byte.MaxValue, byte.MaxValue));
 				break;
 			case "none":
-				((Graphic)DamageIcon).color = Color32.op_Implicit(new Color32((byte)160, (byte)160, (byte)160, byte.MaxValue));
+				((Graphic)DamageIcon).color = MGCompat.Op.Imp(new Color32((byte)160, (byte)160, (byte)160, byte.MaxValue));
 				break;
 			default:
-				((Graphic)DamageIcon).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)220, (byte)60, byte.MaxValue));
+				((Graphic)DamageIcon).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)220, (byte)60, byte.MaxValue));
 				break;
 			}
 			TooltipSkill.SetActive(true);
@@ -34452,11 +34455,11 @@ public class UIManager : MonoBehaviour
 		}
 		if (Character.AIChar)
 		{
-			((Graphic)PortraitBackground).color = Color32.op_Implicit(new Color32((byte)215, (byte)84, (byte)84, byte.MaxValue));
+			((Graphic)PortraitBackground).color = MGCompat.Op.Imp(new Color32((byte)215, (byte)84, (byte)84, byte.MaxValue));
 		}
 		else
 		{
-			((Graphic)PortraitBackground).color = Color32.op_Implicit(new Color32((byte)108, (byte)226, (byte)108, byte.MaxValue));
+			((Graphic)PortraitBackground).color = MGCompat.Op.Imp(new Color32((byte)108, (byte)226, (byte)108, byte.MaxValue));
 		}
 		float num2 = (float)Character.CurrentHP / (float)Character.HP.GetValue();
 		if (num2 < 0f)
@@ -34465,11 +34468,11 @@ public class UIManager : MonoBehaviour
 		}
 		if ((double)num2 > 0.5)
 		{
-			((Graphic)((Component)HpBar).GetComponent<Image>()).color = Color32.op_Implicit(Color32.Lerp(new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), new Color32((byte)70, (byte)250, (byte)50, byte.MaxValue), (num2 - 0.5f) * 2f));
+			((Graphic)((Component)HpBar).GetComponent<Image>()).color = MGCompat.Op.Imp(Color32.Lerp(new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), new Color32((byte)70, (byte)250, (byte)50, byte.MaxValue), (num2 - 0.5f) * 2f));
 		}
 		else
 		{
-			((Graphic)((Component)HpBar).GetComponent<Image>()).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), num2 * 2f));
+			((Graphic)((Component)HpBar).GetComponent<Image>()).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32((byte)230, (byte)230, (byte)50, byte.MaxValue), num2 * 2f));
 		}
 		HpBar.localScale = new Vector3(num2, 1f, 1f);
 		float num3 = ((Character.MP.GetValue() > 0) ? ((float)Character.CurrentMP / (float)Character.MP.GetValue()) : 0f);
@@ -34528,11 +34531,11 @@ public class UIManager : MonoBehaviour
 			float num5 = Mathf.Clamp((float)item.Value.GetValue() / 10f, 0f, 1f);
 			if (num5 > 0.5f)
 			{
-				((Graphic)item.Key).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue), (num5 - 0.5f) * 2f));
+				((Graphic)item.Key).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue), (num5 - 0.5f) * 2f));
 			}
 			else
 			{
-				((Graphic)item.Key).color = Color32.op_Implicit(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), num5 * 2f));
+				((Graphic)item.Key).color = MGCompat.Op.Imp(Color32.Lerp(new Color32(byte.MaxValue, (byte)0, (byte)0, byte.MaxValue), new Color32(byte.MaxValue, byte.MaxValue, (byte)0, byte.MaxValue), num5 * 2f));
 			}
 		}
 		dictionary.Clear();
@@ -34581,15 +34584,15 @@ public class UIManager : MonoBehaviour
 			((TMP_Text)luck).SetText(num6.ToString());
 			if (num6 > 0)
 			{
-				((Graphic)luck).color = Color32.op_Implicit(new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue));
+				((Graphic)luck).color = MGCompat.Op.Imp(new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue));
 			}
 			else if (num6 < 0)
 			{
-				((Graphic)luck).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)75, (byte)75, byte.MaxValue));
+				((Graphic)luck).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)75, (byte)75, byte.MaxValue));
 			}
 			else
 			{
-				((Graphic)luck).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+				((Graphic)luck).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 			}
 		}
 		catch (Exception)
@@ -34614,20 +34617,20 @@ public class UIManager : MonoBehaviour
 				((TMP_Text)item2.Key).SetText(text2);
 				if (item2.Value.DoesItHaveModifiers() == 1)
 				{
-					((Graphic)item2.Key).color = Color32.op_Implicit(new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue));
+					((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32((byte)0, byte.MaxValue, (byte)0, byte.MaxValue));
 				}
 				else if (item2.Value.DoesItHaveModifiers() == -1)
 				{
-					((Graphic)item2.Key).color = Color32.op_Implicit(new Color32(byte.MaxValue, (byte)75, (byte)75, byte.MaxValue));
+					((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, (byte)75, (byte)75, byte.MaxValue));
 				}
 				else
 				{
-					((Graphic)item2.Key).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+					((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 				}
 			}
 			catch (Exception)
 			{
-				((Graphic)item2.Key).color = Color32.op_Implicit(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
+				((Graphic)item2.Key).color = MGCompat.Op.Imp(new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue));
 				if ((Object)(object)item2.Key == (Object)(object)debuffchance)
 				{
 					((TMP_Text)item2.Key).SetText("100");

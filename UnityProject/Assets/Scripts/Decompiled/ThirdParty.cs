@@ -116,10 +116,10 @@ namespace I2.Loc
 
 		public void OnGUI()
 		{
-			GUILayout.Label("Translate:", Array.Empty<GUILayoutOption>());
+			GUILayout.Label("Translate:", new GUILayoutOption[0]);
 			OriginalText = GUILayout.TextArea(OriginalText, new GUILayoutOption[1] { GUILayout.Width((float)Screen.width) });
 			GUILayout.Space(10f);
-			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
+			GUILayout.BeginHorizontal(new GUILayoutOption[0]);
 			if (GUILayout.Button("English -> Español", new GUILayoutOption[1] { GUILayout.Height(100f) }))
 			{
 				StartTranslating("en", "es");
@@ -130,8 +130,8 @@ namespace I2.Loc
 			}
 			GUILayout.EndHorizontal();
 			GUILayout.Space(10f);
-			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-			GUILayout.TextArea("Multiple Translation with 1 call:\n'This is an example' -> en,zh\n'Hola' -> en", Array.Empty<GUILayoutOption>());
+			GUILayout.BeginHorizontal(new GUILayoutOption[0]);
+			GUILayout.TextArea("Multiple Translation with 1 call:\n'This is an example' -> en,zh\n'Hola' -> en", new GUILayoutOption[0]);
 			if (GUILayout.Button("Multi Translate", new GUILayoutOption[1] { GUILayout.ExpandHeight(true) }))
 			{
 				ExampleMultiTranslations_Async();
@@ -141,7 +141,7 @@ namespace I2.Loc
 			GUILayout.Space(10f);
 			if (IsTranslating)
 			{
-				GUILayout.Label("Contacting Google....", Array.Empty<GUILayoutOption>());
+				GUILayout.Label("Contacting Google....", new GUILayoutOption[0]);
 			}
 		}
 
@@ -4767,7 +4767,7 @@ namespace I2.Loc
 		{
 			string text = ((Object)((Component)this).gameObject).name;
 			Transform parent = ((Component)this).transform.parent;
-			while (Object.op_Implicit((Object)(object)parent))
+			while (MGCompat.Op.Imp((Object)(object)parent))
 			{
 				text = ((Object)parent).name + "_" + text;
 				parent = parent.parent;
@@ -7129,7 +7129,7 @@ namespace I2.Loc
 			}
 			Object val = LocalizationManager.FindAsset(value);
 			T val2 = (T)(object)((val is T) ? val : null);
-			if (Object.op_Implicit((Object)(object)val2))
+			if (MGCompat.Op.Imp((Object)(object)val2))
 			{
 				return val2;
 			}
@@ -7206,7 +7206,7 @@ namespace I2.Loc
 				FillValuesTMPro();
 				return;
 			}
-			foreach (OptionData option in component.options)
+			foreach (Dropdown.OptionData option in component.options)
 			{
 				_Terms.Add(option.text);
 			}
@@ -7226,7 +7226,7 @@ namespace I2.Loc
 			foreach (string term in _Terms)
 			{
 				string translation = LocalizationManager.GetTranslation(term);
-				component.options.Add(new OptionData(translation));
+				component.options.Add(new Dropdown.OptionData(translation));
 			}
 			component.RefreshShownValue();
 		}
@@ -7244,7 +7244,7 @@ namespace I2.Loc
 			foreach (string term in _Terms)
 			{
 				string translation = LocalizationManager.GetTranslation(term);
-				component.options.Add(new OptionData(translation));
+				component.options.Add(new TMP_Dropdown.OptionData(translation));
 			}
 			component.RefreshShownValue();
 		}
@@ -7256,7 +7256,7 @@ namespace I2.Loc
 			{
 				return;
 			}
-			foreach (OptionData option in component.options)
+			foreach (TMP_Dropdown.OptionData option in component.options)
 			{
 				_Terms.Add(option.text);
 			}
@@ -7804,7 +7804,7 @@ namespace I2.Loc
 		internal static string GetLocalizationParam(string ParamName, GameObject root)
 		{
 			string text = null;
-			if (Object.op_Implicit((Object)(object)root))
+			if (MGCompat.Op.Imp((Object)(object)root))
 			{
 				MonoBehaviour[] components = root.GetComponents<MonoBehaviour>();
 				int i = 0;
@@ -7959,7 +7959,7 @@ namespace I2.Loc
 			foreach (string name in globalSources)
 			{
 				LanguageSourceAsset asset = ResourceManager.pInstance.GetAsset<LanguageSourceAsset>(name);
-				if (Object.op_Implicit((Object)(object)asset) && !Sources.Contains(asset.mSource))
+				if (MGCompat.Op.Imp((Object)(object)asset) && !Sources.Contains(asset.mSource))
 				{
 					if (!asset.mSource.mIsGlobalSource)
 					{
@@ -8043,7 +8043,7 @@ namespace I2.Loc
 			for (int count = Sources.Count; i < count; i++)
 			{
 				Object val = Sources[i].FindAsset(value);
-				if (Object.op_Implicit(val))
+				if (MGCompat.Op.Imp(val))
 				{
 					return val;
 				}
@@ -8148,7 +8148,7 @@ namespace I2.Loc
 			}
 			Object val = FindAsset(AssetName);
 			T val2 = (T)(object)((val is T) ? val : null);
-			if (Object.op_Implicit((Object)(object)val2))
+			if (MGCompat.Op.Imp((Object)(object)val2))
 			{
 				return val2;
 			}
@@ -8432,7 +8432,7 @@ namespace I2.Loc
 
 		public override void GetFinalTerms(Localize cmp, string Main, string Secondary, out string primaryTerm, out string secondaryTerm)
 		{
-			primaryTerm = (Object.op_Implicit((Object)(object)mTarget) ? ((TMP_Text)mTarget).text : null);
+			primaryTerm = (MGCompat.Op.Imp((Object)(object)mTarget) ? ((TMP_Text)mTarget).text : null);
 			secondaryTerm = (((Object)(object)((TMP_Text)mTarget).font != (Object)null) ? ((Object)((TMP_Text)mTarget).font).name : string.Empty);
 		}
 
@@ -8851,7 +8851,7 @@ namespace I2.Loc
 
 		public override void GetFinalTerms(Localize cmp, string Main, string Secondary, out string primaryTerm, out string secondaryTerm)
 		{
-			primaryTerm = (Object.op_Implicit((Object)(object)mTarget) ? ((TMP_Text)mTarget).text : null);
+			primaryTerm = (MGCompat.Op.Imp((Object)(object)mTarget) ? ((TMP_Text)mTarget).text : null);
 			secondaryTerm = (((Object)(object)((TMP_Text)mTarget).font != (Object)null) ? ((Object)((TMP_Text)mTarget).font).name : string.Empty);
 		}
 
@@ -8972,7 +8972,7 @@ namespace I2.Loc
 
 		public override void GetFinalTerms(Localize cmp, string Main, string Secondary, out string primaryTerm, out string secondaryTerm)
 		{
-			primaryTerm = (Object.op_Implicit((Object)(object)mTarget.clip) ? ((Object)mTarget.clip).name : string.Empty);
+			primaryTerm = (MGCompat.Op.Imp((Object)(object)mTarget.clip) ? ((Object)mTarget.clip).name : string.Empty);
 			secondaryTerm = null;
 		}
 
@@ -8985,7 +8985,7 @@ namespace I2.Loc
 			{
 				mTarget.clip = val;
 			}
-			if (num && Object.op_Implicit((Object)(object)mTarget.clip))
+			if (num && MGCompat.Op.Imp((Object)(object)mTarget.clip))
 			{
 				mTarget.Play();
 			}
@@ -9217,7 +9217,7 @@ namespace I2.Loc
 
 		public override void DoLocalize(Localize cmp, string mainTranslation, string secondaryTranslation)
 		{
-			if (string.IsNullOrEmpty(mainTranslation) || (Object.op_Implicit((Object)(object)mTarget) && ((Object)mTarget).name == mainTranslation))
+			if (string.IsNullOrEmpty(mainTranslation) || (MGCompat.Op.Imp((Object)(object)mTarget) && ((Object)mTarget).name == mainTranslation))
 			{
 				return;
 			}
@@ -9262,7 +9262,7 @@ namespace I2.Loc
 			Transform transform = ((Component)cmp).transform;
 			Transform transform2 = mTarget.transform;
 			transform2.SetParent(transform);
-			Transform val3 = (Object.op_Implicit((Object)(object)val2) ? val2.transform : transform);
+			Transform val3 = (MGCompat.Op.Imp((Object)(object)val2) ? val2.transform : transform);
 			transform2.rotation = val3.rotation;
 			transform2.position = val3.position;
 			return transform2;
@@ -9377,7 +9377,7 @@ namespace I2.Loc
 
 		public override void GetFinalTerms(Localize cmp, string Main, string Secondary, out string primaryTerm, out string secondaryTerm)
 		{
-			primaryTerm = (Object.op_Implicit((Object)(object)mTarget) ? mTarget.text : null);
+			primaryTerm = (MGCompat.Op.Imp((Object)(object)mTarget) ? mTarget.text : null);
 			secondaryTerm = ((string.IsNullOrEmpty(Secondary) && (Object)(object)mTarget.font != (Object)null) ? ((Object)mTarget.font).name : null);
 		}
 
@@ -9480,7 +9480,7 @@ namespace I2.Loc
 
 		public override void GetFinalTerms(Localize cmp, string Main, string Secondary, out string primaryTerm, out string secondaryTerm)
 		{
-			primaryTerm = (Object.op_Implicit((Object)(object)((Graphic)mTarget).mainTexture) ? ((Object)((Graphic)mTarget).mainTexture).name : "");
+			primaryTerm = (MGCompat.Op.Imp((Object)(object)((Graphic)mTarget).mainTexture) ? ((Object)((Graphic)mTarget).mainTexture).name : "");
 			if ((Object)(object)mTarget.sprite != (Object)null && ((Object)mTarget.sprite).name != primaryTerm)
 			{
 				primaryTerm = primaryTerm + "." + ((Object)mTarget.sprite).name;
@@ -9541,7 +9541,7 @@ namespace I2.Loc
 
 		public override void GetFinalTerms(Localize cmp, string Main, string Secondary, out string primaryTerm, out string secondaryTerm)
 		{
-			primaryTerm = (Object.op_Implicit((Object)(object)((Graphic)mTarget).mainTexture) ? ((Object)((Graphic)mTarget).mainTexture).name : "");
+			primaryTerm = (MGCompat.Op.Imp((Object)(object)((Graphic)mTarget).mainTexture) ? ((Object)((Graphic)mTarget).mainTexture).name : "");
 			secondaryTerm = null;
 		}
 
@@ -9606,7 +9606,7 @@ namespace I2.Loc
 
 		public override void GetFinalTerms(Localize cmp, string Main, string Secondary, out string primaryTerm, out string secondaryTerm)
 		{
-			primaryTerm = (Object.op_Implicit((Object)(object)mTarget) ? mTarget.text : null);
+			primaryTerm = (MGCompat.Op.Imp((Object)(object)mTarget) ? mTarget.text : null);
 			secondaryTerm = (((Object)(object)mTarget.font != (Object)null) ? ((Object)mTarget.font).name : string.Empty);
 		}
 
@@ -10273,12 +10273,12 @@ namespace I2.Loc
 
 		public static H FindInParents<H>(Transform tr) where H : Component
 		{
-			if (!Object.op_Implicit((Object)(object)tr))
+			if (!MGCompat.Op.Imp((Object)(object)tr))
 			{
 				return default;
 			}
 			H component = ((Component)tr).GetComponent<H>();
-			while (!Object.op_Implicit((Object)(object)component) && Object.op_Implicit((Object)(object)tr))
+			while (!MGCompat.Op.Imp((Object)(object)component) && MGCompat.Op.Imp((Object)(object)tr))
 			{
 				component = ((Component)tr).GetComponent<H>();
 				tr = tr.parent;
@@ -10492,7 +10492,7 @@ namespace I2.Loc
 				if ((Object)(object)mInstance == (Object)null)
 				{
 					GameObject val = new GameObject("I2ResourceManager", new Type[1] { typeof(ResourceManager) });
-					((Object)val).hideFlags = (HideFlags)(((Object)val).hideFlags | 0x3D);
+					((Object)val).hideFlags = (HideFlags)((int)((Object)val).hideFlags | 0x3D);
 					mInstance = val.GetComponent<ResourceManager>();
 					SceneManager.sceneLoaded += MyOnLevelWasLoaded;
 				}
@@ -11621,7 +11621,6 @@ namespace I2.Loc.SimpleJSON
 			for (int i = 0; i < aText.Length; i++)
 			{
 				char c = aText[i];
-				text;
 				switch (c)
 				{
 					case '\\':
