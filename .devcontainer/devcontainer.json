@@ -1,0 +1,16 @@
+{
+  "name": "MG License Helper (noVNC + Unity Hub)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "bash Tools/codespace-license/setup-desktop.sh",
+  "postStartCommand": "bash Tools/codespace-license/start-desktop.sh",
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "noVNC Desktop (Unity Hub)",
+      "onAutoForward": "silent"
+    }
+  }
+}
