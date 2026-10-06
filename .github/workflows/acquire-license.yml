@@ -1,0 +1,125 @@
+name: Acquire Unity License (ALF -> ULF)
+
+# ============================================================
+#  方案③ · 全自动获取 Unity 个人版授权
+#  job1 request_alf : 用 game-ci action 生成 .alf 激活请求文件
+#  job2 acquire_ulf : 用 unity-license-activate(Puppeteer) 自动
+#                     操作 license.unity3d.com/manual，上传 .alf
+#                     换回 .ulf，并写入 secret UNITY_LICENSE
+# ============================================================
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  request_alf:
+    name: 1) Request manual activation file (.alf)
+    runs-on: ubuntu-latest
+    outputs:
+      alf: ${{ steps.alf.outputs.path }}
+    steps:
+      - name: Request manual activation file
+        id: alfFile
+        uses: game-ci/unity-request-activation-file@main
+        with:
+          unityVersion: 2019.1.8f1
+
+      - name: Upload .alf artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: alf-file
+          path: ${{ steps.alfFile.outputs.filePath }}
+          if-no-files-found: error
+
+      - name: Locate .alf file (robust path)
+        id: alf
+        run: |
+          F=$(ls *.alf 2>/dev/null | head -n1)
+          if [ -z "$F" ]; then F="${{ steps.alfFile.outputs.filePath }}"; fi
+          echo "path=$F" >> "$GITHUB_OUTPUT"
+          echo "ALF found at: $F"
+
+  acquire_ulf:
+    name: 2) Acquire .ulf & update secret
+    needs: [request_alf]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download .alf artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: alf-file
+
+      - name: Show workspace
+        run: ls -la
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Install unity-license-activate
+        run: npm install --global unity-license-activate
+
+      - name: Install unity-verify-code
+        run: npm install --global unity-verify-code
+
+      - name: Activate the license (ALF -> ULF)
+        id: activate
+        continue-on-error: true
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_TOTP_KEY: ${{ secrets.UNITY_TOTP_KEY }}
+          ALF_FILE: ${{ needs.request_alf.outputs.alf }}
+        run: |
+          EXTRA=""
+          if [ -n "$UNITY_TOTP_KEY" ]; then
+            EXTRA="--authenticator-key $UNITY_TOTP_KEY"
+          fi
+          echo "Running: unity-license-activate <email> <password> $ALF_FILE $EXTRA"
+          unity-license-activate "$UNITY_EMAIL" "$UNITY_PASSWORD" "$ALF_FILE" $EXTRA
+
+      - name: Locate .ulf file
+        id: ulf
+        run: |
+          F=$(ls *.ulf 2>/dev/null | head -n1)
+          echo "path=$F" >> "$GITHUB_OUTPUT"
+          echo "ULF found at: $F"
+
+      - name: Read .ulf content
+        id: ulfRead
+        if: ${{ steps.ulf.outputs.path != '' }}
+        uses: juliangruber/read-file-action@v1.1.8
+        with:
+          path: ${{ steps.ulf.outputs.path }}
+
+      - name: Upload .ulf artifact (backup)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ulf-file
+          path: ./*.ulf
+          if-no-files-found: warn
+
+      - name: Update secret UNITY_LICENSE
+        if: ${{ steps.ulfRead.outputs.content != '' }}
+        uses: hmanzur/actions-set-secret@v2.0.0
+        with:
+          name: 'UNITY_LICENSE'
+          value: '${{ steps.ulfRead.outputs.content }}'
+          token: ${{ secrets.PAT }}
+
+      - name: Result summary
+        if: always()
+        run: |
+          echo "=== acquire-license result ==="
+          echo "activate outcome : ${{ steps.activate.outcome }}"
+          echo "ulf path         : ${{ steps.ulf.outputs.path }}"
+
+      - name: Upload error screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-screenshot
+          path: error.png
+          if-no-files-found: warn
