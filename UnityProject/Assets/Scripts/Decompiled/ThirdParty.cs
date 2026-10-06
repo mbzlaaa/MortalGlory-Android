@@ -13,8 +13,6 @@ using System.Threading;
 using I2.Loc;
 using Moments;
 using Moments.Encoder;
-using Sirenix.OdinInspector;
-using Steamworks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14541,9 +14539,9 @@ namespace ca.HenrySoftware.Rage
 			}
 		};
 
-		private const float HalfPi = MathF.PI / 2f;
+		private const float HalfPi = Mathf.PI / 2f;
 
-		private const float DoublePi = MathF.PI * 2f;
+		private const float DoublePi = Mathf.PI * 2f;
 
 		public static IEnumerator Go(MonoBehaviour m, float from, float to, float time, Action<float> update, Action complete = null, EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
 		{
@@ -14734,17 +14732,17 @@ namespace ca.HenrySoftware.Rage
 
 		public static float SineIn(float from, float to, float time)
 		{
-			return Mathf.Lerp(from, to, 1f - Mathf.Cos(time * (MathF.PI / 2f)));
+			return Mathf.Lerp(from, to, 1f - Mathf.Cos(time * (Mathf.PI / 2f)));
 		}
 
 		public static float SineOut(float from, float to, float time)
 		{
-			return Mathf.Lerp(from, to, Mathf.Sin(time * (MathF.PI / 2f)));
+			return Mathf.Lerp(from, to, Mathf.Sin(time * (Mathf.PI / 2f)));
 		}
 
 		public static float SineInOut(float from, float to, float time)
 		{
-			return Mathf.Lerp(from, to, 0.5f * (1f - Mathf.Cos(MathF.PI * time)));
+			return Mathf.Lerp(from, to, 0.5f * (1f - Mathf.Cos(Mathf.PI * time)));
 		}
 
 		public static float QuadIn(float from, float to, float time)
@@ -14886,13 +14884,13 @@ namespace ca.HenrySoftware.Rage
 		public static float ElasticIn(float from, float to, float time)
 		{
 			to -= from;
-			return to * (0f - Mathf.Pow(2f, 10f * --time) * Mathf.Sin((time - 0.075f) * (MathF.PI * 2f) / 0.3f)) + from;
+			return to * (0f - Mathf.Pow(2f, 10f * --time) * Mathf.Sin((time - 0.075f) * (Mathf.PI * 2f) / 0.3f)) + from;
 		}
 
 		public static float ElasticOut(float from, float to, float time)
 		{
 			to -= from;
-			return to * Mathf.Pow(2f, -10f * time) * Mathf.Sin((time - 0.075f) * (MathF.PI * 2f) / 0.3f) + to + from;
+			return to * Mathf.Pow(2f, -10f * time) * Mathf.Sin((time - 0.075f) * (Mathf.PI * 2f) / 0.3f) + to + from;
 		}
 
 		public static float ElasticInOut(float from, float to, float time)
@@ -14900,9 +14898,9 @@ namespace ca.HenrySoftware.Rage
 			to -= from;
 			if ((time /= 0.5f) < 1f)
 			{
-				return -0.5f * (to * Mathf.Pow(2f, 10f * --time) * Mathf.Sin((time - 0.112500004f) * (MathF.PI * 2f) / 0.45000002f)) + from;
+				return -0.5f * (to * Mathf.Pow(2f, 10f * --time) * Mathf.Sin((time - 0.112500004f) * (Mathf.PI * 2f) / 0.45000002f)) + from;
 			}
-			return to * Mathf.Pow(2f, -10f * --time) * Mathf.Sin((time - 0.112500004f) * (MathF.PI * 2f) / 0.45000002f) * 0.5f + to + from;
+			return to * Mathf.Pow(2f, -10f * --time) * Mathf.Sin((time - 0.112500004f) * (Mathf.PI * 2f) / 0.45000002f) * 0.5f + to + from;
 		}
 
 		public static float BounceIn(float from, float to, float time)
@@ -14942,7 +14940,7 @@ namespace ca.HenrySoftware.Rage
 		public static float Spring(float from, float to, float time)
 		{
 			time = Mathf.Clamp01(time);
-			time = (Mathf.Sin(time * MathF.PI * (0.2f + 2.5f * time * time * time)) * Mathf.Pow(1f - time, 2.2f) + time) * (1f + 1.2f * (1f - time));
+			time = (Mathf.Sin(time * Mathf.PI * (0.2f + 2.5f * time * time * time)) * Mathf.Pow(1f - time, 2.2f) + time) * (1f + 1.2f * (1f - time));
 			return from + (to - from) * time;
 		}
 	}

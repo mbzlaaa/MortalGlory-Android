@@ -13,8 +13,6 @@ using System.Threading;
 using I2.Loc;
 using Moments;
 using Moments.Encoder;
-using Sirenix.OdinInspector;
-using Steamworks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7967,7 +7965,6 @@ public class BattleProcessor : MonoBehaviour
 		return result;
 	}
 
-	[Button("DebugWin")]
 	public void DebugWin()
 	{
 		battleStates = PerformAction.VICTORY;
@@ -7978,7 +7975,6 @@ public class BattleProcessor : MonoBehaviour
 		battleStates = PerformAction.LOSS;
 	}
 
-	[Button("DebugChances")]
 	public void DebugChances()
 	{
 		//IL_001a: Unknown result type (might be due to invalid IL or missing references)
@@ -8000,7 +7996,6 @@ public class BattleProcessor : MonoBehaviour
 		}
 	}
 
-	[Button("DebugLocations")]
 	public void DebugLocations()
 	{
 		//IL_005a: Unknown result type (might be due to invalid IL or missing references)
@@ -11379,7 +11374,6 @@ public class EnemyBattler : MonoBehaviour
 		}
 	}
 
-	[Button("Snap unit to grid")]
 	public void SnapToGrid()
 	{
 		//IL_0052: Unknown result type (might be due to invalid IL or missing references)
@@ -18370,7 +18364,6 @@ public class MainMenuScript : MonoBehaviour
 		CheckOptionAvailability();
 	}
 
-	[Button("Debug")]
 	private void DebugTest()
 	{
 	}
@@ -18411,7 +18404,6 @@ public class MapManager : MonoBehaviour
 		}
 	}
 
-	[Button("ClearLayer")]
 	public void ClearLayer(int Layer)
 	{
 		switch (Layer)
@@ -18437,7 +18429,6 @@ public class MapManager : MonoBehaviour
 		}
 	}
 
-	[Button("SAVE MAP")]
 	public void SaveCurrentMap()
 	{
 		if (settings == null)
@@ -18465,7 +18456,6 @@ public class MapManager : MonoBehaviour
 		return i;
 	}
 
-	[Button("LOAD MAP")]
 	public void LoadMap(int counter, bool random)
 	{
 		if (settings == null)
@@ -21069,10 +21059,8 @@ public class ProgressManager : MonoBehaviour
 
 	public List<bool> ProgressionList = new List<bool>();
 
-	[InlineEditor(/*Could not decode attribute arguments.*/)]
 	public List<CharacterTemplate> Team = new List<CharacterTemplate>();
 
-	[InlineEditor(/*Could not decode attribute arguments.*/)]
 	public List<CharacterTemplate> EnemyTeam = new List<CharacterTemplate>();
 
 	public Transform InventoryPanel;
@@ -23069,7 +23057,6 @@ public class ProgressManager : MonoBehaviour
 		EventLuckBonusTotal = EventLuckBonusFromPerks + EventLuckBonusDefault;
 	}
 
-	[Button("SubmitFinalScore")]
 	public void SubmitFinalScore()
 	{
 		int num = CalculateFinalScore(GlobalVariables.instance.EndlessModeActivated);
@@ -23178,7 +23165,6 @@ public class ProgressManager : MonoBehaviour
 		return num;
 	}
 
-	[Button("Debug")]
 	public void TestDebug(int debugslot)
 	{
 		switch (debugslot)
@@ -29549,246 +29535,6 @@ public class Stat
 		}
 	}
 }
-public class SteamAchievements : MonoBehaviour
-{
-	public static SteamAchievements instance;
-
-	private void Awake()
-	{
-		if ((Object)(object)instance != (Object)null)
-		{
-			Object.Destroy((Object)(object)((Component)this).gameObject);
-			return;
-		}
-		instance = this;
-		Object.DontDestroyOnLoad((Object)(object)((Component)((Component)this).transform).gameObject);
-	}
-
-	[Button("Unlock Achievement Status")]
-	public void UnlockSteamAchievement(string ID)
-	{
-		if (!SteamManager.Initialized)
-		{
-			return;
-		}
-		if (SteamManager.GOGVersion)
-		{
-			try
-			{
-				if (!CheckIfAchievementIsUnlocked(ID))
-				{
-					if (SteamUserStats.SetAchievement(ID))
-					{
-						Debug.Log((object)("GOG Achievement unlocked: " + ID));
-					}
-					if (!SteamUserStats.StoreStats())
-					{
-						Debug.Log((object)"Unable to store GOG stats");
-					}
-				}
-				return;
-			}
-			catch
-			{
-				Debug.Log((object)"GOG Achievement not saved");
-				return;
-			}
-		}
-		if (!CheckIfAchievementIsUnlocked(ID))
-		{
-			SteamUserStats.SetAchievement(ID);
-			SteamUserStats.StoreStats();
-			Debug.Log((object)("Achievement earned: " + ID));
-		}
-	}
-
-	[Button("Check Achievement Status")]
-	public void CheckAchievementStatus(string ID)
-	{
-		Debug.Log((object)CheckIfAchievementIsUnlocked(ID));
-	}
-
-	public bool CheckIfAchievementIsUnlocked(string ID)
-	{
-		SteamUserStats.GetAchievement(ID, out var pbAchieved);
-		return pbAchieved;
-	}
-
-	[Button("Clear Achievement")]
-	public void DEBUG_ClearAchievement(string ID)
-	{
-		SteamUserStats.ClearAchievement(ID);
-	}
-
-	[Button("Test Steam connection")]
-	public void DEBUG_TestConnection()
-	{
-		Debug.Log((object)SteamManager.GOGVersion);
-		Debug.Log((object)SteamManager.Initialized);
-	}
-
-	[Button("Test DLC activation")]
-	public bool IsDLCActivated()
-	{
-		if (SteamManager.GOGVersion)
-		{
-			try
-			{
-				if (File.Exists("goggame-1877130197.info"))
-				{
-					return true;
-				}
-				return false;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-		if (!SteamManager.Initialized)
-		{
-			return false;
-		}
-		return SteamApps.BIsDlcInstalled((AppId_t)1324470u);
-	}
-}
-[DisallowMultipleComponent]
-public class SteamManager : MonoBehaviour
-{
-	public bool steamEnabled;
-
-	public bool GOGVersionEnabled;
-
-	public static bool GOGVersion;
-
-	protected static SteamManager s_instance;
-
-	protected static bool s_EverInitialized;
-
-	protected bool m_bInitialized;
-
-	protected SteamAPIWarningMessageHook_t m_SteamAPIWarningMessageHook;
-
-	protected static SteamManager Instance
-	{
-		get
-		{
-			//IL_0012: Unknown result type (might be due to invalid IL or missing references)
-			if ((Object)(object)s_instance == (Object)null)
-			{
-				return new GameObject("SteamManager").AddComponent<SteamManager>();
-			}
-			return s_instance;
-		}
-	}
-
-	public static bool Initialized => Instance.m_bInitialized;
-
-	protected static void SteamAPIDebugTextHook(int nSeverity, StringBuilder pchDebugText)
-	{
-		Debug.LogWarning((object)pchDebugText);
-	}
-
-	protected virtual void Awake()
-	{
-		Debug.Log((object)"v.1.8.1");
-		if (GOGVersionEnabled)
-		{
-			GOGVersion = true;
-		}
-		if (steamEnabled)
-		{
-			if ((Object)(object)s_instance != (Object)null)
-			{
-				Object.Destroy((Object)(object)((Component)this).gameObject);
-				return;
-			}
-			s_instance = this;
-			if (GOGVersionEnabled)
-			{
-				Debug.Log((object)"GOG version");
-			}
-			if (s_EverInitialized)
-			{
-				throw new Exception("Tried to Initialize the SteamAPI twice in one session!");
-			}
-			Object.DontDestroyOnLoad((Object)(object)((Component)this).gameObject);
-			if (!Packsize.Test())
-			{
-				Debug.LogError((object)"[Steamworks.NET] Packsize Test returned false, the wrong version of Steamworks.NET is being run in this platform.", (Object)(object)this);
-			}
-			if (!DllCheck.Test())
-			{
-				Debug.LogError((object)"[Steamworks.NET] DllCheck Test returned false, One or more of the Steamworks binaries seems to be the wrong version.", (Object)(object)this);
-			}
-			try
-			{
-				if (!GOGVersion && SteamAPI.RestartAppIfNecessary((AppId_t)1097530u))
-				{
-					Debug.Log((object)"Restarting through Steam.");
-					Application.Quit();
-					return;
-				}
-			}
-			catch (DllNotFoundException ex)
-			{
-				Debug.LogError((object)("[Steamworks.NET] Could not load [lib]steam_api.dll/so/dylib. It's likely not in the correct location. Refer to the README for more details.\n" + ex), (Object)(object)this);
-				Application.Quit();
-				return;
-			}
-			m_bInitialized = SteamAPI.Init();
-			Debug.Log((object)("Connection initialized: " + m_bInitialized));
-			if (!m_bInitialized)
-			{
-				if (!GOGVersion)
-				{
-					Debug.LogError((object)"[Steamworks.NET] SteamAPI_Init() failed. Refer to Valve's documentation or the comment above this line for more information.", (Object)(object)this);
-				}
-			}
-			else
-			{
-				s_EverInitialized = true;
-			}
-		}
-		else
-		{
-			((Component)this).gameObject.SetActive(false);
-		}
-	}
-
-	protected virtual void OnEnable()
-	{
-		if ((Object)(object)s_instance == (Object)null)
-		{
-			s_instance = this;
-		}
-		if (m_bInitialized && m_SteamAPIWarningMessageHook == null)
-		{
-			m_SteamAPIWarningMessageHook = SteamAPIDebugTextHook;
-			SteamClient.SetWarningMessageHook(m_SteamAPIWarningMessageHook);
-		}
-	}
-
-	protected virtual void OnDestroy()
-	{
-		if (!((Object)(object)s_instance != (Object)(object)this))
-		{
-			s_instance = null;
-			if (m_bInitialized)
-			{
-				SteamAPI.Shutdown();
-			}
-		}
-	}
-
-	protected virtual void Update()
-	{
-		if (m_bInitialized)
-		{
-			SteamAPI.RunCallbacks();
-		}
-	}
-}
 public class TextLinkHandler : MonoBehaviour, IPointerClickHandler, IEventSystemHandler
 {
 	public TextMeshProUGUI text;
@@ -32022,7 +31768,6 @@ public class TownManager : MonoBehaviour
 		}
 	}
 
-	[Button]
 	private void AddBeastToFirstSlot()
 	{
 		CharacterTemplate characterTemplate = Object.Instantiate<CharacterTemplate>(DataTables.instance.GetRandomBoss());
@@ -33479,25 +33224,21 @@ public class TownManager : MonoBehaviour
 		}
 	}
 
-	[Button("Win")]
 	public void TestWin()
 	{
 		ProgressManager.instance.WinGame();
 	}
 
-	[Button("Save")]
 	public void TestSave()
 	{
 		SaveManager.instance.Save();
 	}
 
-	[Button("Load")]
 	public void TestLoad()
 	{
 		SaveManager.instance.Load();
 	}
 
-	[Button("Debug")]
 	public void TestDebug(int debugslot)
 	{
 		//IL_02de: Unknown result type (might be due to invalid IL or missing references)

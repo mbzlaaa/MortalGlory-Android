@@ -24,12 +24,17 @@
 - 抽象中继声明补齐（LocalizeTarget<T>）
 - 歧义消解别名：using Object = UnityEngine.Object; / using ThreadPriority = System.Threading.ThreadPriority;
 
-## 验证状态
+## 验证状态（第三次编译前）
+第二次云端编译（run 37537087696）失败的唯一根因是 **534 条 C# 编译错误**，已在本轮修复：
+- CS0111×342 / CS0101×72 / CS0579×33：`Scripts/Core/` 手写占位桩与 `GameCore.cs` 重复定义 → 已 `rm -rf Core`
+- CS0616×60 / CS0246×18：Odin `[Button]` / `[InlineEditor]` / `using Sirenix` → 已移除
+- CS0103×6：`MathF` 在旧版 .NET 不存在 → 已改 `Mathf`
+- CS0012×1（CI 真实仅这一条）：`SteamManager` 的 `SteamAPIWarningMessageHook_t` 委托
+  引用 `System.MulticastDelegate`（netstandard）→ 已将 `SteamAchievements`/`SteamManager`
+  整块替换为 `Scripts/Platform/SteamAndroidStubs.cs` 安卓安全桩
 
-本地 mcs（C# 7.0 内核，-langversion:latest）编译：
-- 语法错误零
-- CS0246 / CS0115 / CS0104 零
-- 仅剩 3 个 CS0012（TileBase / SteamAPIWarningMessageHook_t / TextAlignmentOptions），
-  均为类型转发到 netstandard 的本地 mono 引用环境限制，非源码问题。
-
+本地 mcs（-langversion:latest）离线预演结果：
+- `MulticastDelegate` CS0012 已消失
+- 仅剩 `ICloneable`（ES3Settings）/ `Enum`（TextAlignmentOptions）两条 CS0012，
+  均为本地 mcs 未引用 netstandard 的假阳性，CI（Unity 2019.1.8f1）从未报出这两条。
 最终权威验证将在 GitHub Actions 上用 Unity 2019.1.8f1 真实编译完成。
