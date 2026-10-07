@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 18985879, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  mTarget: {fileID: 2615, guid: 91921a9a3c8b6f34f8b5eb2119f40ef1, type: 2}
+  mTarget: {fileID:0}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
   mAlignmentWasRTL: 0
