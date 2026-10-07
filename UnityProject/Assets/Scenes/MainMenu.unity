@@ -34990,7 +34990,7 @@ MonoBehaviour:
   m_Script: {fileID: 1422312800, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  steamEnabled: 1
+  steamEnabled: 0
   GOGVersionEnabled: 0
 --- !u!114 &2372
 MonoBehaviour:
