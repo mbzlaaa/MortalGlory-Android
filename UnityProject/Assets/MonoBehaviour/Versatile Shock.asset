@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Versatile Shock
+  m_EditorClassIdentifier:
+  name: Versatile Shock
+  Id: 39
+  icon: {fileID: 21300000, guid: f20570cde584e404daa88462fd7ccb53, type: 2}
+  SkillType: 26
+  SkillTargets: 0
+  Range: 2
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 3
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 6
+  ShowInLog: 1
+  Description: Quickly shock an enemy. Applies <color=#FFCB37>Fleeting Strength</color> buff to yourself.
+  SkillRarity: 0
+  AIfriendly: 1
+  ClassType: 1
+  BookCategory: 1
+  DamageType: 1
+  MaxCooldown: 1
+  CausesBuff: {fileID: 11400000, guid: 72147853dd4eca44f8ed983f3dc606b4, type: 2}
+  BuffChance: 999
+  HitAnimation: LightningBurst4
+  HitSFX: LightningMedium
+  BowSkill: 0

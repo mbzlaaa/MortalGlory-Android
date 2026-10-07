@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Preparation
+  m_EditorClassIdentifier:
+  name: Preparation
+  Id: 116
+  icon: {fileID: 21300000, guid: 6d00cb8fd3a24ae4e81ff4f3ce067747, type: 2}
+  SkillType: 20
+  SkillTargets: 5
+  Range: 0
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 0
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 2
+  Description: Ready yourself to deliver a critical blow. Applies <color=#FFCB37>Murderous</color> buff to yourself.
+  SkillRarity: 2
+  AIfriendly: 0
+  ClassType: 2
+  BookCategory: 2
+  DamageType: 5
+  MaxCooldown: 3
+  CausesBuff: {fileID: 11400000, guid: 7573fc28d272a0f4a9c323989b47da39, type: 2}
+  BuffChance: 999
+  HitAnimation: none
+  HitSFX: none
+  BowSkill: 0

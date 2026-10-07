@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Spellshot
+  m_EditorClassIdentifier:
+  name: Spellshot
+  Id: 208
+  icon: {fileID: 21300000, guid: 980957e99eeb0cf48931b3584e2b6809, type: 2}
+  SkillType: 54
+  SkillTargets: 0
+  Range: 6
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 20
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 10
+  ShowInLog: 1
+  Description: Shoot a magic-imbued arrow at an enemy. Damage is reduced by 50% if target is within 2 tile radius of attacker. Requires a bow and an unblocked horizontal or vertical path to target. Applies a random <color=#FFCB37>debuff</color> on the enemy unit.
+  SkillRarity: 3
+  AIfriendly: 0
+  ClassType: 3
+  BookCategory: 3
+  DamageType: 0
+  MaxCooldown: 2
+  CausesBuff: {fileID: 11400000, guid: bcba9eece4fe8c144a605eb6c1bcaccc, type: 2}
+  BuffChance: 100
+  HitAnimation: Arcane3
+  HitSFX:
+  BowSkill: 1

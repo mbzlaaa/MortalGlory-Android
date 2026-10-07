@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Chaos Current
+  m_EditorClassIdentifier:
+  name: Chaos Current
+  Id: 127
+  icon: {fileID: 21300000, guid: 07721626a6ead1b49bcc4150945f61a0, type: 2}
+  SkillType: 26
+  SkillTargets: 0
+  Range: 2
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 10
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 12
+  ShowInLog: 1
+  Description: Channel chaotic energy towards an enemy. Applies a random <color=#FFCB37>buff</color> to yourself.
+  SkillRarity: 2
+  AIfriendly: 1
+  ClassType: 1
+  BookCategory: 1
+  DamageType: 1
+  MaxCooldown: 1
+  CausesBuff: {fileID: 11400000, guid: 1cc7537e319811e42887f16e49eccb1e, type: 2}
+  BuffChance: 999
+  HitAnimation: LightningBurst12
+  HitSFX: DarkSmall
+  BowSkill: 0

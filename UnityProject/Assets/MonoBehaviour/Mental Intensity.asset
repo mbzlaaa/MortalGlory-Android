@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Mental Intensity
+  m_EditorClassIdentifier:
+  name: Mental Intensity
+  Id: 65
+  icon: {fileID: 21300000, guid: eec82bb9d32bab1489a30feb2973033b, type: 2}
+  SkillType: 45
+  SkillTargets: 5
+  Range: 0
+  ExclusionRange: 0
+  ConsumesTurns: 0
+  ExtraDamage: 0
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 2
+  Description: Strain your brain to improve mental performance. Lose 20% of your current HP. Applies <color=#FFCB37>Focused</color> buff. Does not consume a turn.
+  SkillRarity: 2
+  AIfriendly: 0
+  ClassType: 1
+  BookCategory: 2
+  DamageType: 5
+  MaxCooldown: 2
+  CausesBuff: {fileID: 11400000, guid: 2e9164e46a1ff194cbac65eba2c7e2fc, type: 2}
+  BuffChance: 999
+  HitAnimation: none
+  HitSFX: none
+  BowSkill: 0

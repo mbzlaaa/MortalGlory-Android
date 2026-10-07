@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Hammer Throw
+  m_EditorClassIdentifier:
+  name: Hammer Throw
+  Id: 32
+  icon: {fileID: 21300000, guid: b8d11de49f29fae47b5f44abdbe213ae, type: 2}
+  SkillType: 14
+  SkillTargets: 0
+  Range: 4
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 0
+  SkillNumberVariable: 1
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 1
+  Description: Knocks the enemy back 1 tile. Requires an unblocked horizontal or vertical path to target. Damage is increased by 10% for each tile between user and target.
+  SkillRarity: 0
+  AIfriendly: 1
+  ClassType: 0
+  BookCategory: 0
+  DamageType: 0
+  MaxCooldown: 3
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation:
+  HitSFX: ImpactBig
+  BowSkill: 0

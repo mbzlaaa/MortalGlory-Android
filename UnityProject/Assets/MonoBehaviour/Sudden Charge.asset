@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Sudden Charge
+  m_EditorClassIdentifier:
+  name: Sudden Charge
+  Id: 75
+  icon: {fileID: 21300000, guid: 26c052371165f224ca4e18bcece63d78, type: 2}
+  SkillType: 28
+  SkillTargets: 0
+  Range: 3
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 0
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 1
+  Description: Suddenly charge at an enemy to lock their skills. Applies <color=#FFCB37>Amnesia</color> debuff. Requires an unblocked horizontal or vertical path to target. Damage is increased by 10% for each tile between user and target.
+  SkillRarity: 2
+  AIfriendly: 1
+  ClassType: 0
+  BookCategory: 0
+  DamageType: 0
+  MaxCooldown: 3
+  CausesBuff: {fileID: 11400000, guid: 3494aaed28f1f5f4eb143a4e2e525789, type: 2}
+  BuffChance: 100
+  HitAnimation: none
+  HitSFX: Charge
+  BowSkill: 0

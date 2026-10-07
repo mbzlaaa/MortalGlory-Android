@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Arcane Assault
+  m_EditorClassIdentifier:
+  name: Arcane Assault
+  Id: 304
+  icon: {fileID: 21300000, guid: 14452b41a1f850e45842e8b40c7e33ee, type: 2}
+  SkillType: 61
+  SkillTargets: 0
+  Range: 3
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 8
+  SkillNumberVariable: 10
+  SpecialVariable: 0
+  ManaCost: 25
+  ShowInLog: 1
+  Description: Launch an assault of pure magic at an enemy. Damage is increased by 10% of your remaining MP.
+  SkillRarity: 2
+  AIfriendly: 1
+  ClassType: 1
+  BookCategory: 1
+  DamageType: 1
+  MaxCooldown: 0
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation: Arcane1
+  HitSFX: Arcane2
+  BowSkill: 0

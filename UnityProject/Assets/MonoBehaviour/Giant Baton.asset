@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267687648, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Giant Baton
+  m_EditorClassIdentifier:
+  icon: {fileID: 21300000, guid: d670f2c70e511cc4fb3f1a77702564d8, type: 2}
+  title: Giant Baton
+  itemRarity: 4
+  discounted: 0
+  equipSlot: 1
+  EquipmentMainType: 0
+  itemLevel: 34
+  MainStat:
+  MainStat2:
+  InitSTRmax: 3
+  InitAGImax: 3
+  InitWISmax: 3
+  InitVITmax: 3
+  InitARMORmax: 3
+  InitPhysicalDamagemax: 10
+  InitKnockbackChancemax: 10
+  InitCritChancemax: 10
+  InitDodgeChancemax: 10
+  InitMPmax: 10
+  InitMagicDamagemax: 10
+  InitMagicDefensemax: 10
+  InitHPmax: 10
+  InitDebuffResistancemax: 10
+  InitMaxAPmax: 0
+  InitArcheryDamagemax: 0
+  InitKnockbackResistancemax: 0
+  InitDebuffChancemax: 0
+  STRmodifier: 0
+  AGImodifier: 0
+  WISmodifier: 0
+  VITmodifier: 0
+  ARMORmodifier: 8
+  PhysicalDamagemodifier: 8
+  KnockbackChancemodifier: 30
+  CritChancemodifier: 0
+  DodgeChancemodifier: 0
+  MaxAPmodifier: 0
+  MPmodifier: 0
+  MagicDamagemodifier: 0
+  MagicDefensemodifier: 0
+  HPmodifier: 0
+  DebuffResistancemodifier: 0
+  ArcheryDamagemodifier: 0
+  KnockbackResistancemodifier: 0
+  DebuffChancemodifier: 0
+  givesSkill: {fileID: 11400000, guid: a584b06e68b486847b3c9e0e4df01f29, type: 2}
+  givesPerk: {fileID: 0}
+  itemValue: 300
+  shopValue: 300
+  Bow: 0

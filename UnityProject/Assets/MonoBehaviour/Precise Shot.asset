@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Precise Shot
+  m_EditorClassIdentifier:
+  name: Precise Shot
+  Id: 206
+  icon: {fileID: 21300000, guid: a7544b629001a9940a9ae74b7adbccdb, type: 2}
+  SkillType: 53
+  SkillTargets: 0
+  Range: 6
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 10
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 1
+  Description: Shoot a sturdy arrow at an enemy. Damage is reduced by 50% if target is within 2 tile radius of attacker. Requires a bow and an unblocked horizontal or vertical path to target.
+  SkillRarity: 2
+  AIfriendly: 0
+  ClassType: 3
+  BookCategory: 3
+  DamageType: 0
+  MaxCooldown: 2
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation:
+  HitSFX:
+  BowSkill: 1

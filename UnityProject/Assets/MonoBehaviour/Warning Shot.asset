@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Warning Shot
+  m_EditorClassIdentifier:
+  name: Warning Shot
+  Id: 209
+  icon: {fileID: 21300000, guid: b2c7654d0ae491044886a5401f0fd82a, type: 2}
+  SkillType: 52
+  SkillTargets: 0
+  Range: 5
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: -7
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 1
+  Description: Shoot a dull arrow at an enemy. Damage is reduced by 50% if target is within 2 tile radius of attacker. Requires a bow to use. Applies <color=#FFCB37>Deadly</color> buff to yourself.
+  SkillRarity: 0
+  AIfriendly: 1
+  ClassType: 3
+  BookCategory: 3
+  DamageType: 0
+  MaxCooldown: 2
+  CausesBuff: {fileID: 11400000, guid: ab89c9e9ec68df34d92f2f13840272c7, type: 2}
+  BuffChance: 999
+  HitAnimation:
+  HitSFX:
+  BowSkill: 1

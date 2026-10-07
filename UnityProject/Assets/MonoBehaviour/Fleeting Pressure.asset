@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Fleeting Pressure
+  m_EditorClassIdentifier:
+  name: Fleeting Pressure
+  Id: 133
+  icon: {fileID: 21300000, guid: 1f8df59a0899505478e9b6c428b9aece, type: 2}
+  SkillType: 15
+  SkillTargets: 0
+  Range: 2
+  ExclusionRange: 0
+  ConsumesTurns: 0
+  ExtraDamage: 0
+  SkillNumberVariable: 4
+  SpecialVariable: 0
+  ManaCost: 15
+  ShowInLog: 1
+  Description: Release a quick burst of magic pressure at an enemy to knock them back 4 tiles. Requires an unblocked horizontal or vertical path to target. Does not consume a turn.
+  SkillRarity: 3
+  AIfriendly: 1
+  ClassType: 1
+  BookCategory: 1
+  DamageType: 5
+  MaxCooldown: 1
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation: LightningBurst9
+  HitSFX: PressureMedium
+  BowSkill: 0

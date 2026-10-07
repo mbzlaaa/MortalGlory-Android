@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Exhaust
+  m_EditorClassIdentifier:
+  name: Exhaust
+  Id: 42
+  icon: {fileID: 21300000, guid: 41aae2cd88660cd4b89af22a7eae1dd5, type: 2}
+  SkillType: 20
+  SkillTargets: 0
+  Range: 3
+  ExclusionRange: 0
+  ConsumesTurns: 0
+  ExtraDamage: 0
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 10
+  ShowInLog: 1
+  Description: Magically exhaust an enemy to slow them down. Applies <color=#FFCB37>Exhausted</color> debuff. Does not consume a turn. Cannot be dodged.
+  SkillRarity: 0
+  AIfriendly: 0
+  ClassType: 2
+  BookCategory: 2
+  DamageType: 5
+  MaxCooldown: 2
+  CausesBuff: {fileID: 11400000, guid: 8f999948f54bbb64c891de0baef0e87b, type: 2}
+  BuffChance: 100
+  HitAnimation: none
+  HitSFX: none
+  BowSkill: 0

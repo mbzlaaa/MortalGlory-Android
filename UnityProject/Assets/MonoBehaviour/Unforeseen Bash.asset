@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Unforeseen Bash
+  m_EditorClassIdentifier:
+  name: Unforeseen Bash
+  Id: 119
+  icon: {fileID: 21300000, guid: eb90d5ae576358248b7e1168dd62378a, type: 2}
+  SkillType: 40
+  SkillTargets: 0
+  Range: 1
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 10
+  SkillNumberVariable: 100
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 1
+  Description: Bash an enemy from an unexpected angle to invigorate yourself. Restores 100 MP. Applies <color=#FFCB37>Distracted</color> debuff.
+  SkillRarity: 3
+  AIfriendly: 1
+  ClassType: 1
+  BookCategory: 0
+  DamageType: 0
+  MaxCooldown: 3
+  CausesBuff: {fileID: 11400000, guid: 2fd4010cc4ac25c4d85420032fb0f3aa, type: 2}
+  BuffChance: 100
+  HitAnimation: PixelBuff2
+  HitSFX:
+  BowSkill: 0

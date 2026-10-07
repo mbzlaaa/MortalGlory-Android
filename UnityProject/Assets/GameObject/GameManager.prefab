@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  - component: {fileID: 114618682377417806}
+  - component: {fileID: 114703437598541787}
+  - component: {fileID: 114884547391421755}
+  - component: {fileID: 114099118695303065}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 584.9398, y: 332.6321, z: -16.41613}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1711921562, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Gold: 0
+  TotalWins: 0
+  ProgressionLevel: 0
+  ProgressionLevelMax: 5
+  ProgressionLevelWins: 0
+  ProgressionLevelLosses: 0
+  ProgressionLevelFightsRequired: 5
+  ProgressionLevelMaxLosses: 2
+  ProgressionList:
+  Team: []
+  EnemyTeam: []
+  InventoryPanel: {fileID: 0}
+  MainMenuPanel: {fileID: 0}
+  TeamPanel: {fileID: 0}
+  EnemyTeamName:
+  HeroTeamName:
+  difficultyLevel: 0
+  CurrentEventAffectedCharacter: 0
+  EmpDesire:
+  EmpDemand:
+  EventLuckBonusTotal: 0
+  EventLuckBonusDefault: 0
+  EventLuckBonusFromPerks: 0
+  DeadHeroes: []
+  LevelUp2: {fileID: 0}
+  LevelUp3: {fileID: 0}
+  LevelUp4: {fileID: 0}
+  LevelUp5: {fileID: 0}
+  GameHasEnded: 0
+  FirstTimeDemands: 0
+  FirstTimeInjury: 0
+  TotalGoldGainedFromBattle: 0
+  FirstTimeShopNotificationShown: 0
+  ListOfCareerModeTeams: []
+  CareerSpecialRule:
+  CareerFightRewardType: 0
+  PresetCareerPrizeRarity: 0
+  CareerVictoryBonusGold: 0
+  PresetCareerPrizeEquipment: {fileID: 0}
+  PresetCareerPrizeBook: {fileID: 0}
+  PresetCareerPrizeCharacter: {fileID: 0}
+  CurrentCareerRank: 0
+  HighestCareerRank: 0
+  CareerNextFights:
+  CurrentTypeOfMatch: 0
+  NumberOfNormalMatches: 0
+  NumberOfQualifierMatches: 0
+  NumberOfCareerProgressionStars: 0
+  NumberOfQualifierLosses: 0
+  CareerStarsRequiredToProgress: 0
+  CareerStarsRequiredToKeepRank: 0
+  LendingStatus: 0
+  CareerAnimateStatus: 0
+  CareerAnimateStarAmount: 0
+  Demotion1: {fileID: 0}
+  Demotion2: {fileID: 0}
+  Demotion3: {fileID: 0}
+  Demotion4: {fileID: 0}
+  StayAtRank1: {fileID: 0}
+  StayAtRank2: {fileID: 0}
+  StayAtRank3: {fileID: 0}
+  StayAtRank4: {fileID: 0}
+  StayAtRank5: {fileID: 0}
+--- !u!114 &114618682377417806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1338823788, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Roster: []
+  RosterPanel: {fileID: 0}
+  RosterBar: {fileID: 1709254077376921, guid: 9d61485ac509bc64492ebfba46fa4b91, type: 2}
+  RosterSize: {fileID: 0}
+--- !u!114 &114703437598541787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -596633419, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  InventoryPanel: {fileID: 0}
+  InventoryList: []
+  InventorySlot: {fileID: 1709254077376921, guid: 4de9fcdcaffa71d43861f976e959a7c7, type: 2}
+  ItemTemplate: {fileID: 1709254077376921, guid: f09a07e3c4060e74e9f687b6a70890f7, type: 2}
+  InventoryCount: {fileID: 0}
+--- !u!114 &114884547391421755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1814249674, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  EquipmentTemplate: {fileID: 1709254077376921, guid: f09a07e3c4060e74e9f687b6a70890f7, type: 2}
+  Hero1Equipment: []
+  Hero2Equipment: []
+  Hero3Equipment: []
+  Hero4Equipment: []
+  Enemy1Equipment: []
+  Enemy2Equipment: []
+  Enemy3Equipment: []
+  Enemy4Equipment: []
+  H1EquipBar: {fileID: 0}
+  H2EquipBar: {fileID: 0}
+  H3EquipBar: {fileID: 0}
+  H4EquipBar: {fileID: 0}
+  CharacterEquipBars: []
+  CareerTeam1Enemy1Equipment: []
+  CareerTeam1Enemy2Equipment: []
+  CareerTeam1Enemy3Equipment: []
+  CareerTeam1Enemy4Equipment: []
+  CareerTeam2Enemy1Equipment: []
+  CareerTeam2Enemy2Equipment: []
+  CareerTeam2Enemy3Equipment: []
+  CareerTeam2Enemy4Equipment: []
+  CareerTeam3Enemy1Equipment: []
+  CareerTeam3Enemy2Equipment: []
+  CareerTeam3Enemy3Equipment: []
+  CareerTeam3Enemy4Equipment: []
+--- !u!114 &114099118695303065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1460051659, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  BaseLayer: {fileID: 0}
+  CollideLayer: {fileID: 0}
+  ItemLayer: {fileID: 0}
+  BlockingLayer: {fileID: 0}
+  MiscObjectsParent: {fileID: 0}
+  BannerPrefab: {fileID: 1709254077376921, guid: 54ae8a784538c7a4181a6e23d96661e6, type: 2}
+  TorchPrefab: {fileID: 1709254077376921, guid: d344295925e3fdf4c95cc16b420182e3, type: 2}

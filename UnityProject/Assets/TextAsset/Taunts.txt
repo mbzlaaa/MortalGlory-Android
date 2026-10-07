@@ -1,0 +1,35 @@
+BeforeBattle	AfterDeath	Empty
+Hah, what a sorry looking group of weaklings!	I feast on your flesh!	
+That's your team? Oh… I expected more.	I will make a mantle out of you!	
+We will try to make it as painless as possible. No wait... We will make it as painful as possible. Sorry.		
+Throw down your weapons and lay down! We will make it painless.		
+So handsome... I think I will take a piece of you as a souvenier.		
+Don't worry, I will make you pretty.		
+I think your face will get along well with my fist.		
+Your weapon look a bit small. You know they come in adult sizes too, right?		
+Yech, put on a helmet, will you? A mask or a sack will do too…		
+You poor, poor thing. You look like someone who really should have been wearing a helmet.		
+To let a beast like you participate… What an insult to this fine event.		
+Ugh. It seems l will have to thoroughly clean my sword after this.		
+What brought you in here? Hubris, insanity or a general lack of wit?		
+Pretty as an ogre, smart as a boot and equipped with an aggresively offensive smell. You really are the full package.		
+You look like a habitual grass-eater.		
+It seems you are quite methodical with your incompetence.		
+Why must you taint this battlefield with your worthlessness?		
+You look like someone who eats candles.		
+I will make sure they send condolences to your mother. I promise.		
+You have nothing to fear. Death is but an inevitability.		
+I saw a vision of you dying. It was glorious.		
+I need something to polish my blade with. Your face will do.		
+This is it. This is the moment where you peak. You will have the honor to be ended by me.		
+I suspect this will be an unmitigated waste of my time.		
+Your presence is a testament to the obscenity of our world.		
+You remind me of something I saw in the latrine this morning.		
+Your perseverance is inspiring, but you need not struggle anymore. I will release you of your burdens.		
+I will honor your courage with a quick death.		
+You poor thing. Did they not feed you adequately when you were little?		
+Stupidity might be your birthright, but must you flaunt it?		
+You are not worthy of my blade. But alas, I must tolerate this insult.		
+Which god did I offend to be subjected to your presence?		
+To have to rid of such a lowly being... Fate is not kind to either of us today.		
+Your face is an affront to the beauty of this world.		

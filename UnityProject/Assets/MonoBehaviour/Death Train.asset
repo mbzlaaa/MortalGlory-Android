@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Death Train
+  m_EditorClassIdentifier:
+  name: Death Train
+  Id: 122
+  icon: {fileID: 21300000, guid: 02b8bf57706fa7b468b29b993b42366a, type: 2}
+  SkillType: 28
+  SkillTargets: 0
+  Range: 5
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 20
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 25
+  ShowInLog: 1
+  Description: Charge at an enemy with unnatural speed. Requires an unblocked horizontal or vertical path to target. Damage is increased by 10% for each tile between user and target.
+  SkillRarity: 3
+  AIfriendly: 1
+  ClassType: 2
+  BookCategory: 0
+  DamageType: 0
+  MaxCooldown: 6
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation: none
+  HitSFX: Charge
+  BowSkill: 0

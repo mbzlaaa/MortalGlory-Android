@@ -1,0 +1,71 @@
+Minotaur	Werewolf	Elf	Dryad	Vampire	Demon	Wizard	Whisperer	Gnome	Troll	Undine	Lizard	Angel	Prowler	Dwarf	Slitherer	Umibozu	Misc	Empty
+Mulver	Milver	Yrthi	Asha	Irene	Jezebel	Elymas	Ghirbet	Mili	Zulkis	Vellamo	Fizz	Apanthena	Meowth	Golmi	Fhashee	Mizu	Miller	
+Bulba	Shilf	Melthe	Amdis	Rebecca	Bezir	Julian	Mezeen	Liam	Rasha	Alcyone	Zhusk	Ballanthina	Shivi	Mugli	Afalthaz	Aitata	Tahla	
+Brahma	Helver	Thelthe	Alura	Edwina	Aibell	Morgan	Lebang	Thimbi	Zulma	Celaeno	Bhaza	Opalia	Lisha	Dawim	Shalvhath	Nurari	Tsintsin	
+Graash	Fenris	Enathel	Lumina	Lucy	Abere	Albertus	Seifer	Thombi	Zelki	Nephele	Zoak	Veilata	Miona	Bongli	Zhlevth	Hyon	Rumma	
+Grauth	Milway	Minerva	Illythia	Selena	Abyzou	Nicolas	Graeme	Milbi	Zulthu	Merope	Zeke	Alantina	Nala	Gilbi	Fhanath	Zato	Milo	
+Grout	Thorne	Ashryn	Elisia	Drusilla	Shazna	Ramon	Gosom	Bilbi	Zulu	Asterope	Thraz	Armantina	Nivie	Dhugnug	Fzilith	Atsui	Shinu	
+Angus	Sarmon	Talanth	Caela	Lucetta	Apsara	Pietro	Moldar	Bolbi	Kaz-Kaz	Taygete	Threze	Alamantina	Navie	Nolgim	Faztlah	Ichi		
+Hereford	Okami	Arwyn	Chrysanthe	Dolores	Asrai	Joachim	Bizhi	Molbi	Mah-Mah	Napae	Zhote	Ariela	Awie	Damgli	Sheltzu	Chizui		
+Abigar	Shiro	Celith	Alera	Milith	Korrigan	Gerald	Bokrug	Melbi	Jambo	Melia	Zhox	Arakina	Eyen	Magmir	Shathaf	Teishi		
+Albera	Radolf	Nueleth	Luna	Cassandra	Kumiho	Abraham	Bighin	Bibben	Rushu	Epimelia	Gitra	Albantina	Miena	Thorrum	Shivil	Suzei		
+Arado	Ulfrick	Lymseia	Calypso	Amalia	Befana	Gerhard	Buzsah	Pimbi	Jafa	Nerei	Ghaz	Cassiela	Minia	Glimgi	Zhonoth	Zochi		
+Braford	Valfred	Alyndra	Maia	Abigail	Lilith	Heinrich	Biati	Pimbe	Bubu	Naia	Ghee	Balthiena	Miela	Molgin	Zhilzfi	Katoru		
+Brangus	Aedel	Aerith	Aspen	Adriana	Dakini	Faust	Catha	Limi	Bilme	Pegae	Ghataz	Castiela	Meol	Glomni	Fliquth	Yute		
+Bachaur	Armon	Minthe	Amaranth	Delphine	Estries	Edward	Chutha	Lumi	Jin-Jin	Limna	Ghatash	Galadriela	Mow	Dhaglim	Fliezth	Yodete		
+Beefalo	Ulrick	Athiel	Ava	Evangelia	Simurgh	Johann	Dagath	Vili	Zulfu	Amina	Shraza	Jinairiela	Livie	Mudim	Falafel	Mago		
+Belmont	Cedric	Athyn	Calla	Florence	Vesna	Elias	Dezwal	Veli	Tam-Tam	Thyia	Azza	Jophiela	Lieon	Glimdi	Zhalftha	Ika		
+Albion	Wulfy	Ethna	Camellia	Helena	Illistar	Keijo	Ethor	Billi	Tazdingo	Lenai	Arakard	Joshuanna	Tigier	Mudin	Shatzel	Ebiru		
+Taurus	Thyber	Nieth	Celeste	Carmilla	Charun	Emanuel	Ghishu	Tubbi	Bum-Bum	Daphne	Shizu	Vishianna	Chitie	Dunim	Fizlah	Namako		
+Bonsmara	Darion	Anitha	Lydia	Celene	Culsu	Torvald	Misha	Baggi	Shushu	Dryope	Azha	Maraenna	Margi	Dinglim	Shivathz	Iwashi		
+Boran	Finch	Nytha	Estelle	Luciana	Dagon	Jacques	Gleath	Biggi	Burpy	Eurydice	Zhasha	Lamiena	Ocelia	Mhorin	Zhulnak	Ikatai		
+Brava	Lothian	Alitha	Marina	Morina	Daeva	Theodor	Goben	Tibbi	Raz	Pitys	Uzhu	Miriela	Neofil	Thormin	Khazale	Sametai		
+Butan	Derrett	Aelynth	Neva	Clare	Djall	Arthur	Goome	Mibbi	Taz	Chrysopeleia	Uzha	Phalliena	Panthi	Kilmin	Khozthuh	Kuratako		
+Gascon	Derrick	Erwyn	Talia	Claudia	Haagenti	Merlin	Gwanar	Bibbi	Zil-Zil	Atlanteia	Zhazu	Priviela	Leopri	Kelmin	Khaziel	Kameuni		
+Holstein	Dimper	Linyth	Viola	Cardelia	Gamigin	Eugen	Bonge	Dolbi	Lakjan	Phoebe	Hazazi	Puriela	Jagia	Filmin	Cthiz	Unagi		
+Ramo	Rolf	Eowyn	Acacia	Dahlia	Lechies	Damien	Hathus	Dilbi	Vuz-Vuz	Appia	Ghuzu	Muriela	Servi	Folgim	Cthutzla	Shinju		
+Baltata	Ronald	Aywyn	Lilac	Delia	Lempo	Crowley	Hanst	Debbi	Wanja	Aganippe	Ghinzi	Raphaela	Carcia	Folom	Czazthlu	Kamokaki		
+Baltha	Calem	Visthina	Iris	Diana	Izenia	Balducci	Hastum	Dabbi	Buh-Buh	Pallas	Hinza	Riziela	Ocali	Golom	Czistlha	Ratogoso		
+Buntha	Gavner	Chaelia	Lily	Alice	Ajatar	Reinfeld	Clutu	Baddi	Molm	Aegina	Zuguko	Raziela	Kodii	Dwalmin	Culthza	Sangokani		
+Mumba	Andrew	Aeraela	Willow	Anita	Surma	Cagliostro	Cluntu	Beddi	Buuh	Ismene	Zingo	Safrina	Migie	Dwilgi	Chulazt	Iruka		
+Bumba	Nathaniel	Lyirna	Celosia	Charlotta	Louhi	Mahdi	Cheltu	Midi	Bhaa	Peirene	Azgo	Illina	Maril	Glomin	Rhielz	Nami		
+Sanga	Zachariah	Gileain	Flora	Cordelia	Mara	Brychan	Chilt	Bibi	Bee-Bee	Thebe	Zago	Sarathiela	Oncil	Biflin	Rhylazu	Hoshi		
+Selembu	Elijah	Gilwyn	Fuschia	Harmony	Shedia	Harry	Mhult	Bebi	Dimba	Acraea	Thizi	Serafina	Tigri	Biglim	Rhythzha	Tsuki		
+Bombadan	Joshua	Lilowyn	Ivy	Carmelia	Shini	Branwen	Erthul	Balbi	Bah	Thespeia	Shaze	Ramiela	Sindi	Norgli	Fzeithas	Kazan		
+Wagyu	Bennet	Falathria	Juniper	Clementine	Valac	Leomund	Haiogh	Midbi	Bom-Bom	Amymone	Atzhe	Filiena	Carie	Noglin	Nyathez	Mizushima		
+Wangus	Horatio	Helaria	Laurel	Remilia	Mania	Sargon	Narhus	Medbi	Bim-Bim	Pherusa	Giztha	Jishina	Cirii	Dwiggi	Niatzsho	Hamizu		
+Zubron	Thaddeus	Avalyn	Lotus	Rosalia	Hera	Tormund	Blithi	Lebdi	Zug-Zug	Mycene	Zhago	Ilintena	Lirii	Dwoggi	Nezhielt	Kusazu		
+Zebu	Simeon	Taowyn	Magnolia	Sonya	Ardat	Cadell	Fisrma	Lemni	Zin-Zin	Glaucia	Zhingo	Tamiela	Velie	Floggim	Aztholc	Hanashima		
+Gruuth	Bertram	Lienthe	Mimosa	Victoria	Empusa	Malthus	Thaqui	Lemmi	Biz-Biz	Astyoche	Tzaga	Urielina	Mirri	Fliggin	Chuolzi	Morikusa		
+Grahma	Hector	Mieethi	Tulip	Felicia	Lilim	Allistair	Khalut	Mulli	Zaa-Zaa	Anippe	Mizza	Iziela	Virli	Thaggin	Zachieth	Namimizu		
+Tarma	Dorian	Imien	Zinnia	Gabriela	Falistar	Ardel	Migher	Melli	Baa-Baa	Anchinoe	Thigza	Izithina	Lacie	Thagun	Zachtha	Mizutani		
+Mutha	Regulus	Ythin	Leilani	Esmeralda	Orphne	Albus	Athel	Nilli	Dee-Dee	Chione	Zhine	Iveliana	Nilie	Dhargin	Zincthaz	Kazesuna		
+Brimmus	Remus	Ithiel	Fleur	Eugenia	Aziath	Isbahn	Krang	Nelli	Bama	Lethe	Bziga	Gilinthina	Nievi	Dhogin	Zylsthiz	Kazeame		
+Paxus	Reginald	Iethyn	Azalea	Irina	Azaria	Urbin	Klama	Nilbi	Ruzu	Metis	Zatha	Galiena	Lania	Domlin	Chaltoz	Hatake		
+Bromda	Salazar	Iowel	Alyssa	Isabella	Biziel	Hermes	Mordin	Tili	Aruz	Nana	Zasu	Thiriela	Leonia	Domgi	Chascol	Unabara		
+Grashi	Sirius	Sowyn	Cassia	Jacqueline	Bhaira	Alatar	Mormo	Telli	Zumu	Neda	Thaz	Ishiena	Irrit	Khimli	Chaztic	Kaigai		
+Mothas	Balthazar	Lowyn	Aster	Jillian	Chazi	Jafar	Mortli	Miki	Zimi	Corycia	Szithu	Ithiela	Lieni	Khimen	Khizel	Kawaumi		
+Grashma	Bishop	Liometh	Abilene	Josephine	Charina	Therin	Mynog	Mikki	Ezma	Melaina	Zhotshi	Vasthina	Itri	Ibun	Kthiza	Numaumi		
+Grimba	Edson	Aliant	Anemone	Mortana	Shiena	Ezodar	Nihrm	Kimi	Ezim	Iasis	Tharzi	Valienna	Altiti	Nibin	Khuloz	Yamaumi		
+Bomond	Eldridge	Alvileth	Anthea	Lorraine	Shimiz	Aewyn	Thutul	Kili	Zak-Zak	Euneica	Zhee	Shathiana	Citri	Bligni	Ratsfiz	Mizumi		
+Gammon	Fletcher	Iriath	Ayaka	Lucinda	Asthiz	Simon	Gharrub	Pili	Kuh-Kuh	Malis	Zhata	Castilla	Citra	Blenni	Fizaltha	Ebinori		
+Grubba	Gideon	Iretha	Cielia	Lucine	Shifaz	Ilius	Ghirren	Pelli	Kuzhma	Nycheia	Izzet	Filianna	Celit	Grovin	Fizethu	Ebiumi		
+Mangus	Lucien	Quathe	Celandine	Eleanor	Fhizana	Melwyn	Othuum	Pilli	Banzo	Albunea	Izzathe	Callantina	Celia	Grofi	Zacathu	Kaizoku		
+Buffasa	Randall	Quiwyn	Celinda	Morticia	Dagana	Belwyn	Nyogtha	Pimpi	Azma	Archidemia	Azzath	Athina	Calia	Grilin	Zielatho	Kaibatsu		
+Grabba	Oakley	Glyindil	Chryssa	Ramona	Dahara	Cornelius	Pharol	Mippi	Uzma	Cyane	Azzie	Allantina	Calit	Grimvi	Filezthu	Kaisui		
+Momba	Wallace	Galadi	Daffodil	Raven	Jezae	Colven	Pthars	Silli	Zeme	Magea	Guzi	Jilliantina	Khieli	Fronin	Lukutzu	Kaimen		
+Buffon	Wyatt	Glienthe	Diantha	Sabrina	Lizeth	Galahad	Milszh	Salli	Huba	Langia	Gazi	Cathiela	Khina	Framin	Zifletho	Kokai		
+Grooba	Herbert	Gliewyn	Elanor	Sorina	Milia	Vurtne	Mucle	Bumi	Moba	Hagno	Tzu	Callienthina	Chili	Filvin	Fathlazu	Araumi		
+Bomton	Horace	Alyan	Elowen	Tabitha	Minth	Keanu	Mince	Nimi	Muba	Pegasis	Tzish	Ithaela	Cheal	Frounin	Fathriz	Mizuko		
+Mondon	Warren	Lynaera	Euanthe	Elizabeth	Alazie	Peele	Quash	Nimpi	Bon-Bon	Heisoa	Tsiha	Avantina	Shili	Goumin	Afthaz	Kishiko		
+Groome	Theodore	Enialya	Fiorella	Dawn	Zimina	Magnus	Mequat	Nippi	Batan	Strophia	Azhit	Averiela	Shalie	Durmin	Thotzu	Hamako		
+Ammon	Leonard	Alenia	Hinata	Lenora	Zithia	Mordecai	Smatqhu	Nappi	Zibi	Telphousa	Zhin	Elathiela	Shana	Duvir	Thiezlan	Kishiran		
+Somba	Clifford	Athira	Honoka	Marceline	Supini	Mortimer	Qualem	Napi	Ozun	Asia	Hizi	Elianna	Shamie	Dienir	Afitlz	Umiko		
+Sommon	Milton	Lithien	Hyacintha	Elena	Zipi	Reuben	Rhonge	Nupi	Ozma	Clymene	Thezi	Ethaniela	Alcine	Dainir	Tizatsh	Nagisa		
+Grimma	Gilbert	Lithriel	Ilana	Mercy	Azathia	Tobovius	Morghe	Nuppu	Ozza	Cymo	Thazu	Thiliena	Rinea	Dinnir	Trufzac	Arame		
+Grauma	Archie	Ethraela	Kasumi	Angelica	Aliza	Woltmor	Sebek	Nuppi	Zuzha	Dione	Shazu	Cathariela	Pantir	Mindir	Thutzcu	Daikon		
+Mumon	Edgar	Ithrin	Kielo	Marybeth	Eliza	Zaviar	Rokon	Piltti	Zun-Zun	Dynamene	Shizith	Emmanuela	Rain	Mougi	Thazces	Hijiki		
+Grustus	Luther	Athryn	Laelia	Adelia	Zhivat	Minero	Shista	Sippi	Ezta	Galene	Tshaz	Ammanuela	Trilly	Maugi	Kazots	Katsuo		
+Bommus	Raymond	Ilwyn	Liana	Adalia	Alazat	Arthus	Swagor	Pilpeli	Banzu	Galatea	Ithiz	Ophelia	Tibby	Boflin	Muthoza	Mizunori		
+Bostus	Samuel	Ileal	Liliana	Almira	Shiera	Trevor	Thogef	Pilpen	Boh	Ione	Ziith	Orifiela	Tabby	Buflin	Mufthaz	Wakame		
+Bimmos	Preston	Minael	Misaki	Amelia	Shizav	Thaynor	Tsathag	Bubbi	Bonna	Menippe	Zitshi	Avianna	Telly	Bombin	Mifltaz	Mizuboshi		

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267687648, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Skin Of The Afflicted
+  m_EditorClassIdentifier:
+  icon: {fileID: 21300000, guid: 589b5b15e47fcbb4b870faebc810091b, type: 2}
+  title: Skin Of The Afflicted
+  itemRarity: 4
+  discounted: 0
+  equipSlot: 0
+  EquipmentMainType: 2
+  itemLevel: 13
+  MainStat:
+  MainStat2:
+  InitSTRmax: 3
+  InitAGImax: 3
+  InitWISmax: 3
+  InitVITmax: 3
+  InitARMORmax: 3
+  InitPhysicalDamagemax: 10
+  InitKnockbackChancemax: 10
+  InitCritChancemax: 10
+  InitDodgeChancemax: 10
+  InitMPmax: 10
+  InitMagicDamagemax: 10
+  InitMagicDefensemax: 10
+  InitHPmax: 10
+  InitDebuffResistancemax: 10
+  InitMaxAPmax: 0
+  InitArcheryDamagemax: 0
+  InitKnockbackResistancemax: 0
+  InitDebuffChancemax: 0
+  STRmodifier: 0
+  AGImodifier: 0
+  WISmodifier: 0
+  VITmodifier: 0
+  ARMORmodifier: 0
+  PhysicalDamagemodifier: 0
+  KnockbackChancemodifier: 0
+  CritChancemodifier: 0
+  DodgeChancemodifier: 0
+  MaxAPmodifier: 1
+  MPmodifier: 0
+  MagicDamagemodifier: 0
+  MagicDefensemodifier: -10
+  HPmodifier: 0
+  DebuffResistancemodifier: 30
+  ArcheryDamagemodifier: 0
+  KnockbackResistancemodifier: 0
+  DebuffChancemodifier: 0
+  givesSkill: {fileID: 11400000, guid: a294b529b5ae19f40872843e971f7280, type: 2}
+  givesPerk: {fileID: 0}
+  itemValue: 2
+  shopValue: 2
+  Bow: 0

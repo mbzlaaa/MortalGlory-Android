@@ -1,0 +1,255 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1053132537, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: CelebrityPossessed
+  m_EditorClassIdentifier:
+  Charname: Ilvin
+  Race: 7
+  RaceMainType: 2
+  Portrait: {fileID: 21300000, guid: fd6bca9475fc2e046be32ae2ade8ad1a, type: 2}
+  Sprite: {fileID: 21300000, guid: ba61e2b84f9b6a2499b29f37f90dd06b, type: 2}
+  CharLevel: 65
+  InitSTRmin: 10
+  InitSTRmax: 15
+  InitAGImin: 10
+  InitAGImax: 15
+  InitWISmin: 10
+  InitWISmax: 15
+  InitVITmin: 10
+  InitVITmax: 15
+  InitARMORmin: 10
+  InitARMORmax: 15
+  STR:
+    baseValue: 10
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  AGI:
+    baseValue: 10
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  WIS:
+    baseValue: 15
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  VIT:
+    baseValue: 20
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  ARMOR:
+    baseValue: 10
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  InitPhysicalDamage: 0
+  InitKnockbackChance: 0
+  InitCritChance: 0
+  InitDodgeChance: 0
+  InitMaxAP: 0
+  InitMP: 0
+  InitMagicDamage: 0
+  InitMagicDefense: 0
+  InitHP: 0
+  InitDebuffResistance: 0
+  InitKnockbackResistance: 0
+  InitDebuffChance: 0
+  InitArcheryDamage: 0
+  PhysicalDamage:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  KnockbackChance:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  CritChance:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  DodgeChance:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 80
+  MaxAP:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  MP:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  MagicDamage:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  MagicDefense:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  HP:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  DebuffResistance:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  KnockbackResistance:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  DebuffChance:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  ArcheryDamage:
+    baseValue: 0
+    description:
+    modifiers:
+    gearmodifiers:
+    racemodifiers:
+    perkmodifiers:
+    buffmodifiers:
+    titlemodifiers:
+    MaxValue: 1000
+  CurrentHP: 0
+  CurrentMP: 0
+  WinCount: 0
+  LossCount: 0
+  KillCount: 0
+  InjuryCount: 0
+  Skill1: {fileID: 11400000, guid: bb2e6c61ac61182449e6cbcfdd39acc8, type: 2}
+  Skill2: {fileID: 11400000, guid: 481ad96fe6d23bf43bdc37a5dc261908, type: 2}
+  Skill3: {fileID: 11400000, guid: 690d032cc7e6a9e4e88df1b098586e65, type: 2}
+  Skill4: {fileID: 0}
+  Perk1: {fileID: 11400000, guid: 867422521f871b440a91c2da0653d576, type: 2}
+  Perk2: {fileID: 11400000, guid: 50e35c4405df6e84680771998d93e7f0, type: 2}
+  Perk3: {fileID: 11400000, guid: 7e6596df1197f4b41bc15541c9254793, type: 2}
+  Perk4: {fileID: 0}
+  characterValue: 0
+  shopValue: 0
+  priceRarityModifier: 0
+  characterRarity: 4
+  Boss: 0
+  AIChar: 0
+  Title: The Insidious
+  PerkFromTitle: {fileID: 11400000, guid: 7e6596df1197f4b41bc15541c9254793, type: 2}
+  StatGainFromTitle: Vitality
+  CharacterSkills: []
+  CharacterPerks: []
+  CharacterSkillsFromGear: []
+  CharacterPerksFromGear: []
+  CharacterEquipList: []
+  BattleUnit: {fileID: 0}
+  Wage: 0
+  InherentWageScalingModifier: 0
+  GamesSatInRoster: 0

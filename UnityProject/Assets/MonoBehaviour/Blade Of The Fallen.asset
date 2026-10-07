@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267687648, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Blade Of The Fallen
+  m_EditorClassIdentifier:
+  icon: {fileID: 21300000, guid: 24ec7915babf5c945b15af4522e8fbf6, type: 2}
+  title: Blade Of The Fallen
+  itemRarity: 4
+  discounted: 0
+  equipSlot: 1
+  EquipmentMainType: 2
+  itemLevel: 10
+  MainStat:
+  MainStat2:
+  InitSTRmax: 3
+  InitAGImax: 3
+  InitWISmax: 3
+  InitVITmax: 3
+  InitARMORmax: 3
+  InitPhysicalDamagemax: 10
+  InitKnockbackChancemax: 10
+  InitCritChancemax: 10
+  InitDodgeChancemax: 10
+  InitMPmax: 10
+  InitMagicDamagemax: 10
+  InitMagicDefensemax: 10
+  InitHPmax: 10
+  InitDebuffResistancemax: 10
+  InitMaxAPmax: 0
+  InitArcheryDamagemax: 0
+  InitKnockbackResistancemax: 0
+  InitDebuffChancemax: 0
+  STRmodifier: 0
+  AGImodifier: 0
+  WISmodifier: 0
+  VITmodifier: 0
+  ARMORmodifier: -10
+  PhysicalDamagemodifier: 12
+  KnockbackChancemodifier: 0
+  CritChancemodifier: 0
+  DodgeChancemodifier: 0
+  MaxAPmodifier: 0
+  MPmodifier: 40
+  MagicDamagemodifier: 12
+  MagicDefensemodifier: -10
+  HPmodifier: 0
+  DebuffResistancemodifier: -18
+  ArcheryDamagemodifier: 0
+  KnockbackResistancemodifier: 0
+  DebuffChancemodifier: 0
+  givesSkill: {fileID: 11400000, guid: 40e2912d23921e0458e96798b9817dfd, type: 2}
+  givesPerk: {fileID: 0}
+  itemValue: 2
+  shopValue: 2
+  Bow: 0

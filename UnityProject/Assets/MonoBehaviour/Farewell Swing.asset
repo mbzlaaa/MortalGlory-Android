@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Farewell Swing
+  m_EditorClassIdentifier:
+  name: Farewell Swing
+  Id: 80
+  icon: {fileID: 21300000, guid: 10e21b37b225de5448b27ec9d0d219d0, type: 2}
+  SkillType: 10
+  SkillTargets: 0
+  Range: 1
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 0
+  SkillNumberVariable: 8
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 1
+  Description: Deliver a devastating blow at an enemy to send them flying and knock them back 8 tiles.
+  SkillRarity: 3
+  AIfriendly: 1
+  ClassType: 0
+  BookCategory: 0
+  DamageType: 0
+  MaxCooldown: 6
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation:
+  HitSFX:
+  BowSkill: 0

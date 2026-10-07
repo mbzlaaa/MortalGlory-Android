@@ -1,0 +1,88 @@
+Adj	Weapon	Armor	Accessory	Bows	Empty
+The Great	Redeemer	Bulwark	Revelation	Needler	
+The Illustrious	Annihilator	Protector	Miracle	Sharpshooter	
+The Prominent	Consumer	Guardian	Wonder	Bow	
+The Outstanding	Dismantler	Shieldwall	Legacy	Longbow	
+The Renowned	Eradicator	Shelter	Heirloom	Stinger	
+The Glorious	Gutlash	Aegis	Tribute	Composite Bow	
+The Famed	Defacer	Armament	Remembrance	Prickler	
+The Brilliant	Skinripper	Guard	Trinket	Slayer	
+The Peculiar	Eyesmasher	Defender	Bauble	Warbow	
+The Singular	Holemaker	Savior	Curio	Arrowsong	
+The Cherished	Reaper	Redeemer	Ornament	Arrow Launcher	
+The Grim	Obliterator	Redemption	Salvation	Shortbow	
+The Ghastly	Extinguisher	Atoner	Offering	Greatbow	
+The Ominous	Abolisher	Scale	Penance	Hunting Bow	
+The Somber	Deathswing	Salvation	Reward	Branch	
+The Gloomy	Exterminator	Safeguard	Indulgence	Striker	
+The Solemn	Liquidator	Sanctuary	Privilege	Smiter	
+The Ethereal	Dissolver	Ward	Boon	Tormentor	
+The Exquisite	Terminator	Insurance	Favor	Assailant	
+The Celestial	Destroyer	Preserver	Blessing	Heartseeker	
+The Divine	Executor	Refuge	Glory	Headseeker	
+The Faultless	Eliminator	Respite	Whisper	String Instrument	
+The Unrelenting	Beheader	Consolation	Hope	Arrowshooter	
+The Supreme	Dismemberer	Solace	Promise	Demonbow	
+The Unyielding	Bloodletter	Mitigator	Wish	Shatterer	
+The Sinister	Manslayer	Hearth	Fortune	Splitter	
+The Ruthless	Divider	Support	Gift	Provoker	
+The Formidable	Riblicker	Remission	Merit	Inciter	
+The Foreboding	Headstomper	Absolution	Keepsake	Fleshpiercer	
+The Revered	Bonecracker	Reprieve	Memento	Flesheater	
+The Esteemed	Splitter	Mercy	Curiosity	Heartpiercer	
+The Venerated	Enforcer	Lifesaver	Charm	Eyepoker	
+The Hallowed	Prosecutor	Bastion	Treasure	Ambusher	
+The Extraordinary	Dislocator		Pride	Assaulter	
+The Exceptional	Scourge		Delight	Slinger	
+The Prevailing	Massacre		Rapture	Violator	
+The Transcendent	Slaughter		Bliss	Zapper	
+The Enchanted	Terror		Splendor		
+The Magnificent	Affliction		Dazzle		
+The Fantastic	Discipliner				
+The Mysterious	Tormentor				
+The Cryptic	Disconnector				
+The Mystical	Disruptor				
+The Mystifying	Bonebreaker				
+The Enigmatic	Separator				
+The Puzzling	Reducer				
+The Inexplicable	Reckoning				
+The Unnatural	Desecrator				
+The Arcane	Violator				
+The Unfathomable	Purifier				
+The Remarkable	Vengeance				
+The Marvelous	Retribution				
+The Bizarre	Onslaught				
+The Exotic					
+The Intricate					
+The Obscure					
+The Abnormal					
+The Demonic					
+The Ghoulish					
+The Fiendish					
+The Heavenly					
+The Spectral					
+The Unholy					
+The Holy					
+The Beautiful					
+The Eerie					
+The Macabre					
+The Monstrous					
+The Grisly					
+The Dire					
+The Wicked					
+The Corrupt					
+The Depraved					
+The Barbaric					
+The Haunted					
+The Diabolical					
+The Baleful					
+The Insidious					
+The Nefarious					
+The Cursed					
+The Serene					
+The Tranquil					
+The Coveted					
+The Majestic					
+The Lustrous					
+The Wonderful					
+The Abyssal					

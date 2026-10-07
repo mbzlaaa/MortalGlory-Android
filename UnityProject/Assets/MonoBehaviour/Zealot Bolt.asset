@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Zealot Bolt
+  m_EditorClassIdentifier:
+  name: Zealot Bolt
+  Id: 5
+  icon: {fileID: 21300000, guid: ffa31c33c6eaa524bb7b1f0c9785bc43, type: 2}
+  SkillType: 39
+  SkillTargets: 0
+  Range: 2
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 5
+  SkillNumberVariable: 10
+  SpecialVariable: 0
+  ManaCost: 12
+  ShowInLog: 1
+  Description: Launch a bolt of zealous energy at an enemy. Restores 10 HP.
+  SkillRarity: 0
+  AIfriendly: 1
+  ClassType: 1
+  BookCategory: 1
+  DamageType: 1
+  MaxCooldown: 3
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation: LightningBurst9
+  HitSFX: HolySmall
+  BowSkill: 0

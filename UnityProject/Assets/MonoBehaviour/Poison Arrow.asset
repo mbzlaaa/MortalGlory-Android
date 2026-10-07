@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Poison Arrow
+  m_EditorClassIdentifier:
+  name: Poison Arrow
+  Id: 204
+  icon: {fileID: 21300000, guid: 12742f12d31cc684392e874d5291c18f, type: 2}
+  SkillType: 53
+  SkillTargets: 0
+  Range: 5
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 3
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 1
+  Description: Shoot a poisonous arrow at an enemy. Damage is reduced by 50% if target is within 2 tile radius of attacker. Requires a bow and an unblocked horizontal or vertical path to target. Applies <color=#FFCB37>Poisoned</color> debuff.
+  SkillRarity: 0
+  AIfriendly: 0
+  ClassType: 3
+  BookCategory: 3
+  DamageType: 0
+  MaxCooldown: 1
+  CausesBuff: {fileID: 11400000, guid: 9cccb5449b1767c49a876a97b6baec82, type: 2}
+  BuffChance: 100
+  HitAnimation:
+  HitSFX:
+  BowSkill: 1

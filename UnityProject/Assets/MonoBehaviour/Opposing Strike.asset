@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Opposing Strike
+  m_EditorClassIdentifier:
+  name: Opposing Strike
+  Id: 103
+  icon: {fileID: 21300000, guid: ddd6e69412cb2a044a03a04130fcb5fc, type: 2}
+  SkillType: 25
+  SkillTargets: 0
+  Range: 1
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 5
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 12
+  ShowInLog: 1
+  Description: Strike at an enemy defensively. Applies <color=#FFCB37>Stone Skin</color> buff to yourself.
+  SkillRarity: 0
+  AIfriendly: 1
+  ClassType: 0
+  BookCategory: 0
+  DamageType: 0
+  MaxCooldown: 3
+  CausesBuff: {fileID: 11400000, guid: 7f065a997a0ed6a4d93b8f8dab3278bb, type: 2}
+  BuffChance: 999
+  HitAnimation:
+  HitSFX:
+  BowSkill: 0

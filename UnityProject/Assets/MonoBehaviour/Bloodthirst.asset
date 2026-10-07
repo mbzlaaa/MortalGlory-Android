@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Bloodthirst
+  m_EditorClassIdentifier:
+  name: Bloodthirst
+  Id: 64
+  icon: {fileID: 21300000, guid: 4af355193028c6c43b0a2f6f508467e7, type: 2}
+  SkillType: 45
+  SkillTargets: 5
+  Range: 0
+  ExclusionRange: 0
+  ConsumesTurns: 0
+  ExtraDamage: 0
+  SkillNumberVariable: 0
+  SpecialVariable: 0
+  ManaCost: 0
+  ShowInLog: 2
+  Description: Boil your blood to improve physical performance. Lose 20% of your current HP. Applies <color=#FFCB37>Bloodthirst</color> buff. Does not consume a turn.
+  SkillRarity: 2
+  AIfriendly: 0
+  ClassType: 0
+  BookCategory: 2
+  DamageType: 5
+  MaxCooldown: 3
+  CausesBuff: {fileID: 11400000, guid: e7f0fab65dc44ec47848ced0acae5f7e, type: 2}
+  BuffChance: 999
+  HitAnimation: none
+  HitSFX: none
+  BowSkill: 0

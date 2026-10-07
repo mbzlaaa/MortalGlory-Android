@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2019389346, guid: 67dfb1fdfb2b407222eda8e23ac8b724, type: 3}
+  m_Name: WeaponShade
+  m_EditorClassIdentifier:
+  hashCode: 778802585
+  material: {fileID: 2100000, guid: 75a01c5eaae27fc4592bce758bd406d5, type: 2}
+  materialHashCode: 0
+  m_Version: 1.1.0
+  spriteSheet: {fileID: 2800000, guid: 9fa2983b2df901a42a44c26a6108c3bd, type: 3}
+  m_SpriteCharacterTable:
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 0
+    m_Scale: 1
+    m_Name: WeaponShade
+    m_HashCode: 778802585
+  m_SpriteGlyphTable:
+  - m_Index: 0
+    m_Metrics:
+      m_Width: 163
+      m_Height: 163
+      m_HorizontalBearingX: 20
+      m_HorizontalBearingY: 118
+      m_HorizontalAdvance: 80
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 0
+      m_Width: 163
+      m_Height: 163
+    m_Scale: 2
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300000, guid: b8dd2a3dc1375d7438b5dda6c5d26c7d, type: 2}
+  spriteInfoList: []
+  fallbackSpriteAssets: []

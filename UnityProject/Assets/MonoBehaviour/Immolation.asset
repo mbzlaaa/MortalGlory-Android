@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Immolation
+  m_EditorClassIdentifier:
+  name: Immolation
+  Id: 57
+  icon: {fileID: 21300000, guid: 7bacc10650e811b408cdd2bd84517083, type: 2}
+  SkillType: 48
+  SkillTargets: 0
+  Range: 4
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 0
+  SkillNumberVariable: 10
+  SpecialVariable: 0
+  ManaCost: 12
+  ShowInLog: 1
+  Description: If target is <color=#FFCB37>Burning</color>, deals 10 extra damage multiplied by the duration of the effect.
+  SkillRarity: 2
+  AIfriendly: 0
+  ClassType: 1
+  BookCategory: 1
+  DamageType: 1
+  MaxCooldown: 1
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation: FirePillar3
+  HitSFX: FireMedium
+  BowSkill: 0

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1680495120, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Purging Bolt
+  m_EditorClassIdentifier:
+  name: Purging Bolt
+  Id: 316
+  icon: {fileID: 21300000, guid: 9c49b886e98185f4695a30da242af80c, type: 2}
+  SkillType: 60
+  SkillTargets: 0
+  Range: 4
+  ExclusionRange: 0
+  ConsumesTurns: 999
+  ExtraDamage: 0
+  SkillNumberVariable: 0
+  SpecialVariable: 5
+  ManaCost: 12
+  ShowInLog: 1
+  Description: 'Blast an enemy with purging energy. Requires an unblocked horizontal or vertical path to target. Remove all <color=#FFCB37>effects</color> from target. Damage is increased by 20% for each removed effect. '
+  SkillRarity: 0
+  AIfriendly: 1
+  ClassType: 1
+  BookCategory: 1
+  DamageType: 1
+  MaxCooldown: 2
+  CausesBuff: {fileID: 0}
+  BuffChance: 0
+  HitAnimation: LightningBurst7
+  HitSFX: DarkExtra2
+  BowSkill: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 908929944, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: Obtuse
+  m_EditorClassIdentifier:
+  Icon: {fileID: 21300000, guid: 6e9d0256bdf4a8947872d35cc68d52b7, type: 2}
+  IsItBuff: 0
+  title: Obtuse
+  Description: Reduces Magic damage by 50.
+  BuffType: BuffMDMG
+  BuffValue: -50
+  Duration: 1
+  Activation: 0
+  OnApplyText: ' is feeling obtuse!'
+  OnApplyAnimation: EnergyRing4
+  OnApplySFX: Debuff3
