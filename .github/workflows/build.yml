@@ -29,10 +29,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: UnityProject/Library
-          key: Library-Android-${{ github.sha }}
+          # 【重要】前缀 Library2- 用于打断 66612f8 时代遗留的旧 Library 缓存。
+          # 旧缓存里带着“已删除的 Scripts/*.cs”的编译记录，会引发 CS2001 后崩溃(exit134)。
+          # 只在同前缀内回退，绝不落到旧前缀，避免拿到过期的编译输入。
+          key: Library2-Android-${{ hashFiles('UnityProject/Assets/**','UnityProject/ProjectSettings/**','UnityProject/Packages/**') }}
           restore-keys: |
-            Library-Android-
-            Library-
+            Library2-Android-
 
       # ---------- 3. 用 Unity 2019.1.8f1 构建 Android ----------
       - name: Build with Unity
