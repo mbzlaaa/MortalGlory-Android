@@ -29,12 +29,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: UnityProject/Library
-          # 【重要】前缀 Library2- 用于打断 66612f8 时代遗留的旧 Library 缓存。
-          # 旧缓存里带着“已删除的 Scripts/*.cs”的编译记录，会引发 CS2001 后崩溃(exit134)。
+          # 【重要】前缀 Library9- 用于强行打断旧的 Library 缓存（B 路线：清空重建）。
+          # 旧缓存里带着已删除脚本的编译记录，会引发 CS2001 后崩溃(exit134)。
           # 只在同前缀内回退，绝不落到旧前缀，避免拿到过期的编译输入。
-          key: Library2-Android-${{ hashFiles('UnityProject/Assets/**','UnityProject/ProjectSettings/**','UnityProject/Packages/**') }}
+          key: Library9-Android-${{ hashFiles('UnityProject/Assets/**','UnityProject/ProjectSettings/**','UnityProject/Packages/**') }}
           restore-keys: |
-            Library2-Android-
+            Library9-Android-
 
       # ---------- 3. 用 Unity 2019.1.8f1 构建 Android ----------
       - name: Build with Unity
@@ -50,6 +50,11 @@ jobs:
           androidExportType: androidPackage     # 直接导出 APK
           buildMethod: ""                       # 留空则用默认构建方法；后续可填自定义 BuildScript.BuildAndroid
           allowDirtyBuild: true
+
+      # ---------- 3.5 构建后自动解剖 APK（B 路线取证）----------
+      - name: Dump APK Data layout
+        if: always()
+        run: python3 Tools/dump_apk.py
 
       # ---------- 4. 上传 APK 产物 ----------
       - name: Upload APK
