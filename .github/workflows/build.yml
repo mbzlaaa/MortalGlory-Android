@@ -56,10 +56,52 @@ jobs:
         if: always()
         run: python3 Tools/dump_apk.py
 
+      # ---------- 3.6 修复 I2 多语言截断（中文/俄/日/韩等残字）----------
+      # 原因：I2 资产 assets/bin/Data/<GUID> 里的非 ASCII 字符串在序列化时
+      # 被"按字符数当字节数"截断（如「敏捷度提高10点。」9字符/23字节 → 只剩 9 字节）。
+      # 此处用工程源 YAML(I2Languages.asset) 的完整值按真实 UTF-8 字节长度重写，
+      # 并保留文件尾部 mLanguages 语言列表，输出 *-patched-unsigned.apk。
+      - name: Patch I2 localization
+        if: always()
+        run: python3 Tools/patch_i2_apk.py 2>&1 | tail -30
+
+      # ---------- 3.7 zipalign + 重签（改了 APK 内容，原签名必然失效）----------
+      # 重签必须用与设备已装包相同的密钥（Tools/keys/ks.jks），否则无法覆盖升级。
+      # 可用 secret 覆盖仓库内测试密钥：ANDROID_KEYSTORE_BASE64。
+      - name: Re-align and sign patched APK
+        if: always()
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          shopt -s nullglob
+          files=(build/Android/*-patched-unsigned.apk)
+          if [ ${#files[@]} -eq 0 ]; then echo "NO_PATCHED_APK"; exit 0; fi
+          APK="${files[0]}"
+          SDK="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          ZA=$(ls "$SDK"/build-tools/*/zipalign 2>/dev/null | sort -V | tail -1)
+          AS=$(ls "$SDK"/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
+          echo "zipalign=$ZA"; echo "apksigner=$AS"
+          if [ -z "$ZA" ] || [ -z "$AS" ]; then echo "NO_BUILD_TOOLS"; exit 0; fi
+          ALIGNED="${APK%-patched-unsigned.apk}-aligned.apk"
+          "$ZA" -p -f 4 "$APK" "$ALIGNED"
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/ks.jks"
+          else
+            cp Tools/keys/ks.jks "$RUNNER_TEMP/ks.jks"
+          fi
+          OUT="build/Android/MortalGlory-Android.apk"
+          "$AS" sign --ks "$RUNNER_TEMP/ks.jks" \
+            --ks-pass pass:android --key-pass pass:android --ks-key-alias k \
+            --out "$OUT" "$ALIGNED"
+          "$AS" verify --print-certs "$OUT" > "$RUNNER_TEMP/certs.txt" 2>&1 || true
+          head -6 "$RUNNER_TEMP/certs.txt" || true
+          rm -f "$APK" "$ALIGNED"
+          ls -la build/Android/
+
       # ---------- 4. 上传 APK 产物 ----------
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: MortalGlory-Android-APK
-          path: build/Android/*.apk
+          path: build/Android/MortalGlory-Android.apk
           if-no-files-found: error
