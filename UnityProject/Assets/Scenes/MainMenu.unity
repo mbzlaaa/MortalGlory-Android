@@ -41088,7 +41088,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Credits
+  m_text: 制作人员
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c6b2afee4cc9394483ca6e307459d58, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 68b77cdd2fae71245af1b07c6416e7c9, type: 2}
@@ -44973,7 +44973,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Tutorial
+  m_text: 教程
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c6b2afee4cc9394483ca6e307459d58, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 68b77cdd2fae71245af1b07c6416e7c9, type: 2}
@@ -51744,7 +51744,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Quit
+  m_text: 退出
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c6b2afee4cc9394483ca6e307459d58, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 68b77cdd2fae71245af1b07c6416e7c9, type: 2}
@@ -52077,7 +52077,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Options
+  m_text: 选项
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c6b2afee4cc9394483ca6e307459d58, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 68b77cdd2fae71245af1b07c6416e7c9, type: 2}
@@ -57627,7 +57627,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Continue
+  m_text: 继续
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c6b2afee4cc9394483ca6e307459d58, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 68b77cdd2fae71245af1b07c6416e7c9, type: 2}
@@ -61845,7 +61845,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Hall of Fame
+  m_text: 荣誉殿堂
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c6b2afee4cc9394483ca6e307459d58, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 68b77cdd2fae71245af1b07c6416e7c9, type: 2}
