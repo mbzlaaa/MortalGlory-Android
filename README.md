@@ -67,12 +67,22 @@ MortalGlory-Android/
 ## 📋 进度
 
 - [x] 阶段 0：逆向分析（Unity 版本 / 脚本后端 / 资源机制 / 依赖清单）
-- [ ] 阶段 1：工程骨架搭建（进行中）
-- [ ] 阶段 2：反编译源码回填
-- [ ] 阶段 3：资源导出与重导入
-- [ ] 阶段 4：场景重建
-- [ ] 阶段 5：平台适配完善
-- [ ] 阶段 6：首次云端编译出包
+- [x] 阶段 1：工程骨架搭建
+- [x] 阶段 2：脚本回填（采用**原版托管 DLL 直投**：Mono 程序集平台无关，避免重编译丢失约 73% 代码）
+- [x] 阶段 3：资源导出与重导入（AssetRipper 逆向 PC 数据 → Unity 工程）
+- [x] 阶段 4：场景重建（主包 3 个场景 level0/1/2）
+- [x] 阶段 5：平台适配完善（Steam P/Invoke 处理、shader/音频修复、I2 本地化修复）
+- [x] 阶段 6：首次云端编译出包（GitHub Actions + Unity 2019.1.8f1 国际版）
+- [x] 阶段 7：实机可玩验证（APK 可正常安装启动、进入游戏、BGM 正常）
+- [ ] 阶段 8：问题修复与打磨（进行中）
+
+### 当前状态（2026-10-10）
+
+- ✅ CI 可稳定出包，产物 `build/Android/MortalGlory-Android.apk`（已签名、I2 本地化完整）。
+- ✅ 设备实测：安装启动正常、可进入游戏、背景音乐正常。
+- 🔧 近期修复中：
+  - **触摸端 tooltip 秒退**：移动端触摸被 EventSystem 判为"进入随即退出"，触发 `OnPointerExit → HideTooltip → ClosingTimer(0.2s) → CloseAllTooltips`，导致点击书本/道具/人物后弹窗 0.2 秒即消失。已通过 DLL 补丁修复：①移除 `OnPointerExit` 中的 `HideTooltip()` 调用（16 处）；②在 `UIManager.Update()` 注入"点击空白处关闭弹窗"逻辑。
+  - **中文显示不全**：`NotoSansCJKsc-Bold SDF` 字体资产为残缺汉化残留（Static 模式、仅烘焙 2 个字符、atlas 512×512），待修复。
 
 ---
 
