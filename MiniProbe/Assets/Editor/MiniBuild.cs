@@ -27,6 +27,13 @@ public static class MiniBuild
         var go = new GameObject("BigSprite");
         var sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = spr;
+        for (int i = 0; i < 6000; i++)
+        {
+            var o = new GameObject("Obj" + i);
+            var r = o.AddComponent<SpriteRenderer>();
+            r.sprite = spr;
+            o.transform.position = new Vector3((i % 100), (i / 100), 0f);
+        }
         EditorSceneManager.SaveScene(scene, "Assets/MiniScene.unity");
         EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene("Assets/MiniScene.unity", true) };
 
