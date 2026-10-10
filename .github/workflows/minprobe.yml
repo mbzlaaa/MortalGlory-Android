@@ -1,0 +1,33 @@
+name: MiniProbe
+on:
+  workflow_dispatch: {}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: MiniProbe/Library
+          key: MiniProbe-Library-${{ hashFiles('MiniProbe/Assets/**','MiniProbe/ProjectSettings/**','MiniProbe/Packages/**') }}
+      - name: Build
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: MiniProbe
+          unityVersion: 2019.1.8f1
+          targetPlatform: Android
+          androidExportType: androidPackage
+          buildMethod: MiniBuild.Build
+          allowDirtyBuild: true
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: MiniProbe-APK
+          path: build/Android/MiniProbe.apk
+          if-no-files-found: error
