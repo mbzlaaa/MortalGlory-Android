@@ -35,6 +35,12 @@ public static class MiniBuild
         Directory.CreateDirectory(outDir);
         string apk = Path.Combine(outDir, "MiniProbe.apk");
 
+        PlayerSettings.companyName = "TestCo";
+        PlayerSettings.productName = "MiniProbe";
+        PlayerSettings.bundleVersion = "1.0";
+        PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.test.miniprobe");
+        PlayerSettings.Android.bundleVersionCode = 1;
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
         var opts = new BuildPlayerOptions();
         opts.scenes = new[] { "Assets/MiniScene.unity" };
         opts.locationPathName = apk;
