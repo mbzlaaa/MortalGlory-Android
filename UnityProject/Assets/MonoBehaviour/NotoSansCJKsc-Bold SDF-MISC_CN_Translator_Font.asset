@@ -17,8 +17,8 @@ MonoBehaviour:
   materialHashCode: -1702300493
   m_Version: 1.1.0
   m_SourceFontFileGUID: 58c8370b9ad67914991c2c3e2bf68f92
-  m_SourceFontFile: {fileID: 0}
-  m_AtlasPopulationMode: 0
+  m_SourceFontFile: {fileID: 12800000, guid: 58c8370b9ad67914991c2c3e2bf68f92, type: 3}
+  m_AtlasPopulationMode: 1
   m_FaceInfo:
     m_FamilyName: Noto Sans CJK SC
     m_StyleName: Bold
