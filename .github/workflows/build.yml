@@ -56,6 +56,21 @@ jobs:
         if: always()
         run: python3 Tools/dump_apk.py
 
+      # ---------- 3.55 修正 build 目录属主 ----------
+      # game-ci/unity-builder 在 Docker 内以 root 构建，build/Android/ 归 root 所有，
+      # 宿主 runner 用户无法写入，会导致后续 patch 写文件报 PermissionError [Errno 13]。
+      - name: Fix build dir ownership
+        if: always()
+        run: |
+          if [ -d build ]; then
+            echo "before:"; ls -ld build build/Android 2>/dev/null || true
+            sudo chown -R "$(id -u):$(id -g)" build
+            sudo chmod -R u+rwX build
+            echo "after:"; ls -ld build build/Android 2>/dev/null || true
+          else
+            echo "NO_BUILD_DIR"
+          fi
+
       # ---------- 3.6 修复 I2 多语言截断（中文/俄/日/韩等残字）----------
       # 原因：I2 资产 assets/bin/Data/<GUID> 里的非 ASCII 字符串在序列化时
       # 被"按字符数当字节数"截断（如「敏捷度提高10点。」9字符/23字节 → 只剩 9 字节）。
@@ -75,7 +90,11 @@ jobs:
         run: |
           shopt -s nullglob
           files=(build/Android/*-patched-unsigned.apk)
-          if [ ${#files[@]} -eq 0 ]; then echo "NO_PATCHED_APK"; exit 0; fi
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "::error::NO_PATCHED_APK（I2 patch 未产出，检查上一步）"
+            ls -la build/Android/ || true
+            exit 1
+          fi
           APK="${files[0]}"
           SDK="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
           ZA=$(ls "$SDK"/build-tools/*/zipalign 2>/dev/null | sort -V | tail -1)
@@ -95,6 +114,8 @@ jobs:
             --out "$OUT" "$ALIGNED"
           "$AS" verify --print-certs "$OUT" > "$RUNNER_TEMP/certs.txt" 2>&1 || true
           head -6 "$RUNNER_TEMP/certs.txt" || true
+          if [ ! -f "$OUT" ]; then echo "::error::SIGN_FAILED no $OUT"; exit 1; fi
+          echo "SIGNED_OK $(stat -c%s "$OUT") bytes"
           rm -f "$APK" "$ALIGNED"
           ls -la build/Android/
 
