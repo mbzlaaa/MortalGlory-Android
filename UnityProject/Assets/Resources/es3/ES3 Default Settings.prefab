@@ -57,7 +57,7 @@ MonoBehaviour:
     memberReferenceMode: 0
     referenceMode: 2
     assemblyNames:
-    - Assembly-CSharp
-    - Assembly-CSharp-firstpass
+    - MortalGloryCore
+    - MortalGlory.FirstPassCore
   addMgrToSceneAutomatically: 1
   autoUpdateReferences: 1

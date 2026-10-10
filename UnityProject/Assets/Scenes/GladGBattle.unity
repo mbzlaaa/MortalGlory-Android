@@ -18758,8 +18758,8 @@ MonoBehaviour:
     memberReferenceMode: 0
     referenceMode: 2
     assemblyNames:
-    - Assembly-CSharp
-    - Assembly-CSharp-firstpass
+    - MortalGloryCore
+    - MortalGlory.FirstPassCore
   autoSaves: []
 --- !u!114 &597
 MonoBehaviour:
